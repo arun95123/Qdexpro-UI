@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 import ContentArea from '../ContentArea';
 import Header from '../Header';
+import LeftPane from '../LeftPane';
 
 const App = () => (
-  <div>
-    <Header />
-    <ContentArea />
-  </div>
+<div>
+    <LeftPane />
+</div>
 );
 
 export default App;
