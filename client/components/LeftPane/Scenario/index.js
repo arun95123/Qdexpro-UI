@@ -1,1 +1,1 @@
-export {default} from './scenario.js.jsx'
+export {default} from './scenario'
