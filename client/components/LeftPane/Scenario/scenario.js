@@ -9,14 +9,12 @@ return(
 )
 };
 
-class Scenario extends Component{
-  render(){
-    return(
-      <div>
+const scenario = () => (
+    <div>
         <MainItem label={'SCENARIO'} onClick={mainItemOnClick}/>
-      </div>
-    )
-  };
-}
+    </div>
+);
 
-export default Scenario;
+
+
+export default scenario;
