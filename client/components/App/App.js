@@ -8,6 +8,7 @@ import LeftPane from '../LeftPane';
 const App = () => (
 <div>
     <LeftPane />
+    <ContentArea />
 </div>
 );
 
