@@ -1,20 +1,37 @@
-import React,{Component} from 'react';
+import React from 'react';
 import MainItem from '../MainItem';
 import SubItem from '../SubItem'
 
-const mainItemOnClick = () => {
-  console.log('This is Clicked');
-return(
-    <SubItem label={'Add Scenario'}/>
-)
-};
+class Scenario extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {clicked: false};
+    this.mainItemOnClick = this.mainItemOnClick.bind(this);
+    this.renderSubItems = this.renderSubItems.bind(this);
+  }
 
-const scenario = () => (
-    <div>
-        <MainItem label={'SCENARIO'} onClick={mainItemOnClick}/>
-    </div>
-);
+  mainItemOnClick(){
+    this.setState({clicked: !this.state.clicked});
+  }
 
+  renderSubItems(){
+    if(this.state.clicked){
+      return(
+        <SubItem label={'ADD SCENARIO'} />
+      );
+    } else{
+      null
+    }
+  }
 
+  render() {
+    return (
+      <div>
+          <MainItem label={'SCENARIO'} onClick={this.mainItemOnClick}/>
+          {this.renderSubItems()}
+      </div>
+    );
+  }
+}
 
-export default scenario;
+export default Scenario;

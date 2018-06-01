@@ -7,8 +7,8 @@ import './ContentArea.style.scss';
 const ContentArea = () =>
   <main className='content-area'>
     <Switch>
-      <Route exact path={'/'} component={Qdex}  />
-      <Route path={'/about'} component={HelloWorld} />
+      <Route exact path={'/'} component={HelloWorld}  />
+      <Route path={'/about'} component={Qdex} />
     </Switch>
   </main>;
 

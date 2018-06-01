@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const subItem = ({label}) => (
        <div>
-           {label}
+           <Link to='/about'>{label}</Link>
       </div>
 );
 
