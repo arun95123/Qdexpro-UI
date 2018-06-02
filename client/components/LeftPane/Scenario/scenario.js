@@ -11,8 +11,7 @@ class Scenario extends React.Component {
   }
 
   mainItemOnClick(){
-    this.setState({clicked: !this.state.clicked});
-  }
+    this.setState({clicked: !this.state.clicked});}
 
   renderSubItems(){
     if(this.state.clicked){
@@ -27,7 +26,7 @@ class Scenario extends React.Component {
   render() {
     return (
       <div>
-          <MainItem label={'Scenario'} onClick={this.mainItemOnClick}/>
+          <MainItem label={'Scenario'} onClick={this.mainItemOnClick} status={this.state.clicked}/>
           {this.renderSubItems()}
       </div>
     );
