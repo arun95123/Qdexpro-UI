@@ -1,10 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './subItem.Style.scss'
 
 const subItem = ({label}) => (
-       <div>
-           <Link to='/about'>{label}</Link>
-      </div>
+  <div className='sub-item'>
+    <Link to='/about'>
+      <p className='sub-item--content'>
+        {label}
+      </p>
+    </Link>
+  </div>
 );
 
 export default subItem;

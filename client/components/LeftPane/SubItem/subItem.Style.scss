@@ -1,0 +1,10 @@
+.sub-item {
+  margin-left: 1rem;
+  padding: 0.5rem;
+  cursor: pointer;
+
+  &--content {
+    font-size: 1rem;
+    color: #ffffff;
+  }
+}

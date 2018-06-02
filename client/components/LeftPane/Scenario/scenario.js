@@ -17,7 +17,7 @@ class Scenario extends React.Component {
   renderSubItems(){
     if(this.state.clicked){
       return(
-        <SubItem label={'ADD SCENARIO'} />
+        <SubItem label={'Add Scenario'} />
       );
     } else{
       null
@@ -27,7 +27,7 @@ class Scenario extends React.Component {
   render() {
     return (
       <div>
-          <MainItem label={'SCENARIO'} onClick={this.mainItemOnClick}/>
+          <MainItem label={'Scenario'} onClick={this.mainItemOnClick}/>
           {this.renderSubItems()}
       </div>
     );
