@@ -1,11 +1,11 @@
 import React from 'react';
 import './leftPane.Style.scss';
-import Scenario from './Scenario'
+import Scenario from './Scenario';
+
 
 const leftPane = () => (
     <div className='left-pane'>
-        <h2>this is left pane</h2>
-        <hr />
+        <img className='left-pane--logo' src="pp.jpg" />
         <Scenario />
     </div>
 );

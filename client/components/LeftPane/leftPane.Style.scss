@@ -1,8 +1,14 @@
 .left-pane{
   position : fixed;
-  width : 15%;
+  width : 11%;
   height : 100%;
-  background-color:#566573  ;
+  background-color:#566573;
   border-color: black;
   border-bottom-width: thin;
+
+  &--logo{
+    height : 75px;
+    width : 100%;
+  }
 }
+

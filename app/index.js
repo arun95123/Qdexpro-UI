@@ -31,6 +31,7 @@ if (isDeveloping) {
     res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')));
     res.end();
   });
+    app.use(express.static('public'));
 } else {
   app.use(express.static(__dirname + '/dist'));
   app.get('/', function response(req, res) {
