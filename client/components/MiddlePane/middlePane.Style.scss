@@ -1,0 +1,46 @@
+.middle-pane{
+  border-radius: 10px;
+  background: #c5c5c5;
+  padding: 20px;
+  margin-top : 3%;
+  margin-left :7%;
+  width: 75%;
+  height: 48rem;
+
+  &--content{
+    font-style: oblique;
+    font-size : 17px;
+    position : relative;
+
+    &--button{
+      position: absolute;
+      border-radius: 8px;
+      right : 20px;
+      bottom : 1px;
+      height : 22px;
+      width : 8%;
+      font-size : 12px;
+      color : white;
+      border : solid 1px #5da0ff;
+      background-color: #5da0ff;
+    }
+    &--triangle--down{
+      position: absolute;
+      right : 30px;
+      bottom : 5px;
+      width: 0;
+      height: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-top: 7px solid #040404;
+    }
+  }
+  &--subcontent{
+    padding : 10px;
+    margin-left:3%;
+    font-style : normal;
+    font-size : 14px;
+    /*background-color: #aaaaaa;*/
+  }
+
+}
