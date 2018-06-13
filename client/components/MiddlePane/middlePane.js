@@ -18,9 +18,10 @@ const middlePane =() =>(
             <p className='middle-pane--content--text'>Setup</p>
             <p className='middle-pane--content--plus'><i className="plus circle icon"></i></p>
         </div>
-        <div className='middle-pane--subcontent'>
-            <i className="angle right icon"></i>
-            <p>Step 1</p>
+        <div className='middle-pane--content middle-pane--content--subcontent'>
+            <p className='middle-pane--content--caret--right'>
+                 <i className="angle right icon"></i></p>
+            <p className='middle-pane--content--text'>Step 1</p>
         </div>
         <hr />
         <div className='middle-pane--content'>
@@ -31,25 +32,27 @@ const middlePane =() =>(
                 <i className="edit icon"></i></p>
             <button className='middle-pane--content--button'>Add</button>
         </div>
-        <div className='middle-pane--subcontent'>
-            <p className='middle-pane--subcontent--caret--right'>
+        <div className='middle-pane--content middle-pane--content--subcontent'>
+            <p className='middle-pane--content--caret--right'>
                 <i className="caret right icon"></i></p>
-            <p className='middle-pane--subcontent--text'>Setup</p>
+            <p className='middle-pane--content--text'>Setup</p>
             <p className='middle-pane--content--plus'><i className="plus circle icon"></i></p>
         </div>
-        <div className='middle-pane--subcontent2'>
-            <i className="angle right icon"></i>
-            <p>Step 1</p>
+        <div className='middle-pane--content middle-pane--content--subcontent2'>
+            <p className='middle-pane--content--caret--right'>
+                <i className="angle right icon"></i></p>
+            <p className='middle-pane--content--text'>Step 1</p>
         </div>
-        <div className='middle-pane--subcontent'>
-            <p className='middle-pane--subcontent--caret--right'>
+        <div className='middle-pane--content middle-pane--content--subcontent'>
+            <p className='middle-pane--content--caret--right'>
                 <i className="caret right icon"></i></p>
-            <p className='middle-pane--subcontent--text'>Test Case 1</p>
+            <p className='middle-pane--content--text'>Test Step 1</p>
             <p className='middle-pane--content--plus'><i className="plus circle icon"></i></p>
         </div>
-        <div className='middle-pane--subcontent2'>
-            <i className="angle right icon"></i>
-            <p>Step 1</p>
+        <div className='middle-pane--content middle-pane--content--subcontent2'>
+              <p className='middle-pane--content--caret--right'>
+                  <i className="angle right icon"></i></p>
+            <p className='middle-pane--content--text'>Step 1</p>
         </div>
         <hr />
 
