@@ -17,23 +17,37 @@ const click3 =() => (
 class scenario extends React.Component {
   constructor(props){
     super(props);
-    this.state = {editing: false};
+    this.state = {editing: "false"};
+    this.textId='';
     this.edit = this.edit.bind(this);
     this.changeIcon = this.changeIcon.bind(this);
   }
 
+  componentDidUpdate(){
+    if(this.state.editing === "true"){
+      this.textId.focus();
+    }
+ }
+
   edit(){
-    this.setState({editing: !this.state.editing});
+    if(this.state.editing === "true"){
+      this.setState({editing: "fasle"});
+    }else{
+      this.setState({editing: "true"});
+    }
   }
 
   changeIcon(){
-    return (this.state.editing) ? "save icon" : "edit icon" ;
+    if(this.state.editing === "true"){
+      return "save icon"
+    }
+    return "edit icon" ;
   }
 
   render() {
     return(
       <div className='middle-pane--content'>
-          <p className='middle-pane--content--text' contenteditable="true">Scenario</p>
+          <p className='middle-pane--content--text' contentEditable={this.state.editing} ref={(elem) => {this.textId = elem;}}>Scenario</p>
           <p className='middle-pane--content--edit'>
               <i className={this.changeIcon()} onClick={this.edit}></i></p>
           <button className='middle-pane--content--button'>
