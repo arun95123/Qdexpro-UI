@@ -1,0 +1,19 @@
+.setupTearDown-content{
+  font-style: oblique;
+  font-size: 17px;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+
+    &--header{
+      margin-right: auto;
+      margin-bottom: 0;
+    }
+    &--plus{
+      margin-left:auto;
+    }
+    &--caret--right {
+      align-self: center;
+      margin-bottom: 0;
+    }
+}

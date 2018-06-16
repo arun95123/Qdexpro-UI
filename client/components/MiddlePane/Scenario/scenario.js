@@ -1,5 +1,5 @@
 import React from 'react'
-import '../middlePane.Style.scss'
+import './scenario.Style.scss'
 
 const click1 =() => (
   console.log('Setup is clicked')
@@ -46,11 +46,11 @@ class scenario extends React.Component {
 
   render() {
     return(
-      <div className='middle-pane--content'>
-          <p className='middle-pane--content--text' contentEditable={this.state.editing} ref={(elem) => {this.textId = elem;}}>Scenario</p>
-          <p className='middle-pane--content--edit'>
+      <div className='scenario-content'>
+          <p className='scenario-content--header' contentEditable={this.state.editing} ref={(elem) => {this.textId = elem;}}>Scenario</p>
+          <p className='scenario-content--edit'>
               <i className={this.changeIcon()} onClick={this.edit}></i></p>
-          <button className='middle-pane--content--button'>
+          <button className='scenario-content--button'>
           <div className="ui dropdown">
              Add
             <i className="dropdown icon"></i>

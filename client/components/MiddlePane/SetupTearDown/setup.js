@@ -1,8 +1,8 @@
 import React from 'react'
-import '../middlePane.Style.scss'
+import './middlePane.Style.scss'
 
-const setup =() =>(
-  <div className='middle-pane--content'>
+const setupTearDown =() =>(
+  <div className='setupTearDown-content'>
       <p className='middle-pane--content--caret--right'>
           <i className="caret right icon"></i></p>
       <p className='middle-pane--content--text'>Setup</p>
@@ -10,4 +10,4 @@ const setup =() =>(
   </div>
   );
 
-export default setup;
+export default setupTearDown;
