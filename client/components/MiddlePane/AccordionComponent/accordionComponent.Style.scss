@@ -1,0 +1,8 @@
+.accordion-component {
+  &--header {
+    display: flex;
+    flex-flow: row wrap;
+    font-style: oblique;
+    font-size: 17px;
+  }
+}

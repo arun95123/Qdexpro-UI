@@ -1,22 +1,40 @@
-import React from 'react'
-import '../middlePane.Style.scss'
-import Step from '../Step'
+import React,{Component} from 'react'
+import AccordionBlock from '../AccordionBlock'
+import './accordionComponent.Style.scss'
 
-const accordionComponent =() =>(
-  <div class="ui accordion">
-  <div class="title">
-    <div className='middle-pane--content'>
-        <p className='middle-pane--content--caret--right'>
-            <i className="caret right icon"></i></p>
-        <p className='middle-pane--content--text'>Setup</p>
-        <p className='middle-pane--content--plus'><i className="plus circle icon"></i></p>
-    </div>
-  </div>
-  <div class="content">
-    <Step />
-  </div>
-  </div>
+class accordionComponent extends Component{
+  constructor(){
+    super();
+    this.state= {expanded: false};
+    this.getImage = this.getImage.bind(this);
+    this.toggleClick = this.toggleClick.bind(this);
+  }
 
-  );
+  getImage(expanded){
+    return expanded ? 'caret down icon' : 'caret right icon';
+  }
+
+  toggleClick(){
+    this.setState({expanded: !this.state.expanded});
+  }
+
+  render(){
+    const {title, children} = this.props;
+    return(
+      <div className='accordion-component'>
+        <div className='accordion-component--header'>
+          <i className={this.getImage(this.state.expanded)} onClick={this.toggleClick}/>
+          {title}
+        </div>
+
+        <AccordionBlock
+          expanded= {this.state.expanded}
+          children={children}
+        />
+      </div>
+    );
+  }
+}
+
 
 export default accordionComponent;
