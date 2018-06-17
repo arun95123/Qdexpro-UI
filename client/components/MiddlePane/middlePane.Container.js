@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => {
   return {
-    scenarioSetup: state.scenarioSetup
+    scenarioSetup: state.scenarioReducer.scenarioSetup
   };
 };
 

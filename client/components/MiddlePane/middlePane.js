@@ -7,26 +7,31 @@ import Scenario from './Scenario'
 
 
 const showSetup = (scenarioSetup) => {
-  console.log('%%%%%%%%%%%%%');
   if(scenarioSetup){
-    <SetupTearDown
-      title='Setup'
-    />
+    return(
+      <div>
+        <SetupTearDown
+          title='Setup'
+        />
+        <hr />
+      </div>
+    );
   }else{
-    null;
+    return null;
   }
 }
 
-const middlePane =({scenarioSetup}) =>(
+const middlePane =({scenarioSetup}) =>{
+  return(
     <div className='middle-pane'>
         <Scenario />
         <hr />
         {showSetup(scenarioSetup)}
-        <AccordionComponent title='title'>
-          <Step />
-        </AccordionComponent>
-        <hr />
     </div>
-);
+  );
+
+}
+
+
 
 export default middlePane;
