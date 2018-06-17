@@ -1,25 +1,15 @@
 import React from 'react'
 import './scenario.Style.scss'
 
-const click1 =() => (
-  console.log('Setup is clicked')
-)
-
-const click2 =() => (
-    console.log('Test case is clicked')
-)
-
-const click3 =() => (
-    console.log('Tear Down is clicked')
-)
-
-
 class scenario extends React.Component {
   constructor(props){
     super(props);
     this.state = {editing: "false"};
     this.textId='';
     this.edit = this.edit.bind(this);
+    this.createSetup = this.createSetup.bind(this);
+    this.createTestCase = this.createTestCase.bind(this);
+    this.createTearDown = this.createTearDown.bind(this);
     this.changeIcon = this.changeIcon.bind(this);
   }
 
@@ -27,6 +17,18 @@ class scenario extends React.Component {
     if(this.state.editing === "true"){
       this.textId.focus();
     }
+  }
+
+  createSetup(){
+   console.log('Setup is clicked');
+  }
+
+  createTestCase(){
+     console.log('Test case is clicked')
+  }
+
+  createTearDown(){
+     console.log('Tear Down is clicked')
  }
 
   edit(){
@@ -45,6 +47,8 @@ class scenario extends React.Component {
   }
 
   render() {
+    const {showScenarioSetup} = this.props;
+
     return(
       <div className='scenario-content'>
           <p className='scenario-content--header' contentEditable={this.state.editing} ref={(elem) => {this.textId = elem;}}>Scenario</p>
@@ -55,9 +59,9 @@ class scenario extends React.Component {
              Add
             <i className="dropdown icon"></i>
             <div className="menu">
-                <div className="item" data-value="0" onClick={click1}>Setup</div>
-                <div className="item" data-value="1" onClick={click2}>Test Case</div>
-                <div className="item" data-value="2" onClick={click3}>Tear Down</div>
+                <div className="item" data-value="0" onClick={showScenarioSetup}>Setup</div>
+                <div className="item" data-value="1" onClick={this.createTestCase}>Test Case</div>
+                <div className="item" data-value="2" onClick={this.createTearDown}>Tear Down</div>
             </div>
         </div>
           </button>
