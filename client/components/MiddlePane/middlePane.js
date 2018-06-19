@@ -6,7 +6,7 @@ import Step from './Step'
 import Scenario from './Scenario'
 
 
-const showSetup = (scenarioSetup) => {
+const showSetup = (scenarioSetup,scenarioTearDown) => {
   if(scenarioSetup){
     return(
       <div>
@@ -16,17 +16,27 @@ const showSetup = (scenarioSetup) => {
         <hr />
       </div>
     );
-  }else{
+  }else if(scenarioTearDown){
+      return(
+        <div>
+          <SetupTearDown
+            title='Tear Down'
+          />
+          <hr />
+        </div>
+      ); }
+      else{
     return null;
   }
 }
 
-const middlePane =({scenarioSetup}) =>{
+const middlePane =({scenarioSetup},{scenarioTearDown}) =>{
+  console.log(scenarioTearDown)
   return(
     <div className='middle-pane'>
         <Scenario />
         <hr />
-        {showSetup(scenarioSetup)}
+        {showSetup(scenarioSetup,scenarioTearDown)}
     </div>
   );
 

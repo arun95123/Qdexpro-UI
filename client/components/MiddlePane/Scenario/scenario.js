@@ -33,7 +33,7 @@ class scenario extends React.Component {
 
   edit(){
     if(this.state.editing === "true"){
-      this.setState({editing: "fasle"});
+      this.setState({editing: "false"});
     }else{
       this.setState({editing: "true"});
     }
@@ -47,7 +47,7 @@ class scenario extends React.Component {
   }
 
   render() {
-    const {showScenarioSetup} = this.props;
+    const {showScenarioSetup,showScenarioTearDown} = this.props;
 
     return(
       <div className='scenario-content'>
@@ -61,7 +61,7 @@ class scenario extends React.Component {
             <div className="menu">
                 <div className="item" data-value="0" onClick={showScenarioSetup}>Setup</div>
                 <div className="item" data-value="1" onClick={this.createTestCase}>Test Case</div>
-                <div className="item" data-value="2" onClick={this.createTearDown}>Tear Down</div>
+                <div className="item" data-value="2" onClick={showScenarioTearDown}>Tear Down</div>
             </div>
         </div>
           </button>

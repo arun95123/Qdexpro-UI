@@ -1,15 +1,17 @@
 import { connect } from 'react-redux';
-import { showScenarioSetup } from '../../../actions'
+import { showScenarioSetup,showScenarioTearDown } from '../../../actions'
 
 const mapStateToProps = (state) => {
   return {
-    scenarioSetup: state.scenarioSetup
+    scenarioSetup: state.scenarioSetup,
+    scenarioTearDown: state.scenarioTearDown
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showScenarioSetup: () => dispatch(showScenarioSetup())
+    showScenarioSetup: () => dispatch(showScenarioSetup()),
+    showScenarioTearDown: () => dispatch(showScenarioTearDown())
   };
 };
 

@@ -6,7 +6,7 @@ import scenarioReducer from './scenario-reducer'
 export const reducers = {
   reducerOne: reducerOne,
   reducerTwo: reducerTwo,
-  scenarioReducer
+  scenarioReducer : scenarioReducer
 };
 
 export default combineReducers(reducers);
