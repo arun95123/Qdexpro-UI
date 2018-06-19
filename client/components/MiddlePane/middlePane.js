@@ -16,27 +16,34 @@ const showSetup = (scenarioSetup,scenarioTearDown) => {
         <hr />
       </div>
     );
-  }else if(scenarioTearDown){
-      return(
-        <div>
-          <SetupTearDown
-            title='Tear Down'
-          />
-          <hr />
-        </div>
-      ); }
-      else{
+  }else{
     return null;
   }
 }
 
-const middlePane =({scenarioSetup},{scenarioTearDown}) =>{
+const showTearDown = (scenarioTearDown) => {
+  if(scenarioTearDown){
+    return(
+      <div>
+        <SetupTearDown
+          title='Tear Down'
+        />
+        <hr />
+      </div>
+    );
+  }else{
+    return null;
+  }
+}
+
+const middlePane =({scenarioSetup, scenarioTearDown}) =>{
   console.log(scenarioTearDown)
   return(
     <div className='middle-pane'>
         <Scenario />
         <hr />
-        {showSetup(scenarioSetup,scenarioTearDown)}
+        {showSetup(scenarioSetup)}
+        {showTearDown(scenarioTearDown)}
     </div>
   );
 
