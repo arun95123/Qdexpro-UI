@@ -4,6 +4,7 @@ import AccordionComponent from './AccordionComponent'
 import SetupTearDown from './SetupTearDown'
 import Step from './Step'
 import Scenario from './Scenario'
+import TestCase from './TestCaseAccordion'
 
 
 const showSetup = (scenarioSetup,scenarioTearDown) => {
@@ -36,7 +37,19 @@ const showTearDown = (scenarioTearDown) => {
   }
 }
 
-const middlePane =({scenarioSetup, scenarioTearDown}) =>{
+const showTestCase = (scenarioTestCase) => {
+  if(scenarioTestCase){
+    return(
+    <TestCase />
+    );
+  }else{
+    return null;
+  }
+}
+
+
+
+const middlePane =({scenarioSetup, scenarioTearDown, scenarioTestCase}) =>{
   console.log(scenarioTearDown)
   return(
     <div className='middle-pane'>
@@ -44,6 +57,7 @@ const middlePane =({scenarioSetup, scenarioTearDown}) =>{
         <hr />
         {showSetup(scenarioSetup)}
         {showTearDown(scenarioTearDown)}
+        {showTestCase(scenarioTestCase)}
     </div>
   );
 

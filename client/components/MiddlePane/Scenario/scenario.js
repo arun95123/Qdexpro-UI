@@ -47,7 +47,7 @@ class scenario extends React.Component {
   }
 
   render() {
-    const {showScenarioSetup,showScenarioTearDown} = this.props;
+    const {showScenarioSetup,showScenarioTearDown,showScenarioTestCase} = this.props;
 
     return(
       <div className='scenario-content'>
@@ -60,7 +60,7 @@ class scenario extends React.Component {
             <i className="dropdown icon"></i>
             <div className="menu">
                 <div className="item" data-value="0" onClick={showScenarioSetup}>Setup</div>
-                <div className="item" data-value="1" onClick={this.createTestCase}>Test Case</div>
+                <div className="item" data-value="1" onClick={showScenarioTestCase}>Test Case</div>
                 <div className="item" data-value="2" onClick={showScenarioTearDown}>Tear Down</div>
             </div>
         </div>

@@ -1,0 +1,30 @@
+.scenario-content{
+  font-style: oblique;
+  font-size: 17px;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+
+    &--caret{
+      align-self: center;
+    }
+    &--header{
+      margin-right: auto;
+      margin-bottom: 0;
+    }
+    &--button {
+      border-radius: 8px;
+      bottom: 1px;
+      height: 22px;
+      width: 8%;
+      font-size: 12px;
+      color: white;
+      border: solid 1px #5da0ff;
+      background-color: #5da0ff;
+    }
+
+    &--edit {
+      margin-right: 10px;
+      margin-bottom: 0;
+    }
+}
