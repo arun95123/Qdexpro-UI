@@ -13,11 +13,13 @@ class testCaseAccordion extends React.Component {
     this.changeIcon = this.changeIcon.bind(this);
     this.getImage = this.getImage.bind(this);
     this.toggleClick = this.toggleClick.bind(this);
+    this.setEndOfContenteditable = this.setEndOfContenteditable.bind(this);
   }
 
   componentDidUpdate(){
     if(this.state.editing === "true"){
       this.textId.focus();
+      this.setEndOfContenteditable(this.textId)
     }
   }
 
@@ -56,14 +58,25 @@ class testCaseAccordion extends React.Component {
     this.setState({expanded: !this.state.expanded});
   }
 
+  setEndOfContenteditable(contentEditableElement)
+ {
+     var range,selection;
+     range = document.createRange();
+     range.selectNodeContents(contentEditableElement);
+     range.collapse(false);
+     selection = window.getSelection();
+     selection.removeAllRanges();
+     selection.addRange(range);
+ }
+
   render() {
         return(
-      <div className='scenario-content'>
-          <p className='scenario-content--caret'><i className={this.getImage(this.state.expanded)} onClick={this.toggleClick}/></p>
-          <p className='scenario-content--header' contentEditable={this.state.editing} ref={(elem) => {this.textId = elem;}}>Test Case</p>
-          <p className='scenario-content--edit'>
+      <div className='testCase-content'>
+          <p className='testCase-content--caret'><i className={this.getImage(this.state.expanded)} onClick={this.toggleClick}/></p>
+          <p className='testCase-content--header' contentEditable={this.state.editing} ref={(elem) => {this.textId = elem;}}>Test Case</p>
+          <p className='testCase-content--edit'>
               <i className={this.changeIcon()} onClick={this.edit}></i></p>
-          <button className='scenario-content--button'>
+          <button className='testCase-content--button'>
           <div className="ui dropdown">
              Add
             <i className="dropdown icon"></i>

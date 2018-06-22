@@ -1,4 +1,4 @@
-.scenario-content{
+.testCase-content{
   font-style: oblique;
   font-size: 17px;
   position: relative;
@@ -11,6 +11,7 @@
     &--header{
       margin-right: auto;
       margin-bottom: 0;
+      outline:0;
     }
     &--button {
       border-radius: 8px;
@@ -21,6 +22,7 @@
       color: white;
       border: solid 1px #5da0ff;
       background-color: #5da0ff;
+      outline:0;
     }
 
     &--edit {

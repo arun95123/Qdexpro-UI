@@ -8,8 +8,10 @@
     &--header{
       margin-right: auto;
       margin-bottom: 0;
+      outline:0;
     }
     &--button {
+
       border-radius: 8px;
       bottom: 1px;
       height: 22px;
@@ -18,6 +20,7 @@
       color: white;
       border: solid 1px #5da0ff;
       background-color: #5da0ff;
+      outline:0;
     }
 
     &--edit {
