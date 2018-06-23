@@ -1,16 +1,15 @@
-.testCase-content{
-  font-style: oblique;
-  font-size: 17px;
-  position: relative;
+.testcase-content{
   display: flex;
-  justify-content: flex-end;
+  flex-flow: column;
 
-    &--caret{
-      align-self: center;
-    }
-    &--header{
+  &--header{
+    font-style: oblique;
+    font-size: 17px;
+    display: flex;
+    flex-flow: row;
+
+    &--title{
       margin-right: auto;
-      margin-bottom: 0;
       outline:0;
     }
     &--button {
@@ -29,4 +28,14 @@
       margin-right: 10px;
       margin-bottom: 0;
     }
+  }
+
+  &--body{
+    overflow: hidden;
+    transition: 0.4s;
+  }
+}
+
+.testcase--setup-teardown{
+  margin-left: 2%;
 }

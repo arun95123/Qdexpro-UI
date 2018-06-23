@@ -51,7 +51,10 @@ class middlePane extends React.Component {
   showTestCase(scenarioTestCase){
     if(scenarioTestCase){
       return(
-      <TestCase />
+        <div>
+          <TestCase />
+          <hr />
+        </div>
       );
     }else{
       return null;
