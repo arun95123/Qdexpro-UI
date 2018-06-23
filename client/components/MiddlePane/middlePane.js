@@ -6,61 +6,71 @@ import Step from './Step'
 import Scenario from './Scenario'
 import TestCase from './TestCaseAccordion'
 
+class middlePane extends React.Component {
+  constructor(props){
+    super(props);
+    this.showSetup = this.showSetup.bind(this);
+    this.showTearDown = this.showTearDown.bind(this);
+    this.showTestCase = this.showTestCase.bind(this);
+  }
 
-const showSetup = (scenarioSetup,scenarioTearDown) => {
-  if(scenarioSetup){
+  componentDidUpdate(){
+     $('.ui.dropdown').dropdown();
+  }
+
+  showSetup(scenarioSetup){
+    if(scenarioSetup){
+      return(
+        <div>
+          <SetupTearDown
+            title='Setup'
+          />
+          <hr />
+        </div>
+      );
+    }else{
+      return null;
+    }
+  }
+
+  showTearDown(scenarioTearDown){
+    if(scenarioTearDown){
+      return(
+        <div>
+          <SetupTearDown
+            title='Tear Down'
+          />
+          <hr />
+        </div>
+      );
+    }else{
+      return null;
+    }
+  }
+
+  showTestCase(scenarioTestCase){
+    if(scenarioTestCase){
+      return(
+      <TestCase />
+      );
+    }else{
+      return null;
+    }
+  }
+
+  render() {
+    const {scenarioSetup,scenarioTearDown,scenarioTestCase} = this.props;
+
     return(
-      <div>
-        <SetupTearDown
-          title='Setup'
-        />
-        <hr />
+      <div className='middle-pane'>
+          <Scenario />
+          <hr />
+          {this.showSetup(scenarioSetup)}
+          {this.showTestCase(scenarioTestCase)}
+          {this.showTearDown(scenarioTearDown)}
       </div>
     );
-  }else{
-    return null;
   }
-}
-
-const showTearDown = (scenarioTearDown) => {
-  if(scenarioTearDown){
-    return(
-      <div>
-        <SetupTearDown
-          title='Tear Down'
-        />
-        <hr />
-      </div>
-    );
-  }else{
-    return null;
-  }
-}
-
-const showTestCase = (scenarioTestCase) => {
-  if(scenarioTestCase){
-    return(
-    <TestCase />
-    );
-  }else{
-    return null;
-  }
-}
-
-
-
-const middlePane =({scenarioSetup, scenarioTearDown, scenarioTestCase}) =>{
-  console.log(scenarioTearDown)
-  return(
-    <div className='middle-pane'>
-        <Scenario />
-        <hr />
-        {showSetup(scenarioSetup)}
-        {showTearDown(scenarioTearDown)}
-        {showTestCase(scenarioTestCase)}
-    </div>
-  );
-
 }
 
 

@@ -49,8 +49,7 @@ class scenario extends React.Component {
     return "edit icon" ;
   }
 
- setEndOfContenteditable(contentEditableElement)
-{
+  setEndOfContenteditable(contentEditableElement){
     var range,selection;
 
     range = document.createRange();//Create a range (a range is a like the selection but invisible)
@@ -59,7 +58,7 @@ class scenario extends React.Component {
     selection = window.getSelection();//get the selection object (allows you to change selection)
     selection.removeAllRanges();//remove any selections already made
     selection.addRange(range);//make the range you have just created the visible selection
-}
+  }
 
   render() {
     const {showScenarioSetup,showScenarioTearDown,showScenarioTestCase} = this.props;
@@ -68,7 +67,8 @@ class scenario extends React.Component {
       <div className='scenario-content'>
           <p className='scenario-content--header' contentEditable={this.state.editing} ref={(elem) => {this.textId = elem;}}>Scenario</p>
           <p className='scenario-content--edit'>
-              <i className={this.changeIcon()} onClick={this.edit}></i></p>
+              <i className={this.changeIcon()} onClick={this.edit} />
+          </p>
           <button className='scenario-content--button'>
           <div className="ui dropdown">
              Add
@@ -78,12 +78,12 @@ class scenario extends React.Component {
                 <div className="item" data-value="1" onClick={showScenarioTestCase}>Test Case</div>
                 <div className="item" data-value="2" onClick={showScenarioTearDown}>Tear Down</div>
             </div>
-        </div>
+          </div>
           </button>
-        </div>
-      );
-    }
+      </div>
+    );
   }
+}
 
 
 export default scenario;
