@@ -11,6 +11,10 @@
     &--title{
       margin-right: auto;
       outline:0;
+      margin-bottom:0;
+    }
+    &--caret{
+      margin-bottom:0;
     }
     &--button {
       border-radius: 8px;
@@ -32,7 +36,8 @@
 
   &--body{
     overflow: hidden;
-    transition: 0.4s;
+    transition: 0.2s;
+    padding-top: 10px;
   }
 }
 

@@ -28,20 +28,20 @@ class testCaseAccordion extends React.Component {
     if(this.state.showTestCaseSetup){
       return(
         <div className='testcase--setup-teardown'>
-          <SetupTearDown title='Setup' />
+          <SetupTearDown title='Setup' isTestCase= 'true' />
           <hr/>
         </div>
       );
     }else{
       return null;
-    }
+     }
   }
 
   showTestCaseTearDown(){
     if(this.state.showTestCaseTearDown){
       return(
         <div className='testcase--setup-teardown'>
-          <SetupTearDown title='TearDown' />
+          <SetupTearDown title='TearDown' isTestCase= 'true'  />
           <hr/>
         </div>
       );
@@ -96,10 +96,12 @@ class testCaseAccordion extends React.Component {
   }
 
   setHeight(expanded, elem){
-    elem.style.maxHeight = expanded ? elem.scrollHeight + 'px' : '0';
+    const {testCaseSetupHeight, testCaseTearDownHeight} = this.props;
+    elem.style.maxHeight = expanded ? elem.scrollHeight + testCaseSetupHeight + testCaseTearDownHeight + 'px' : '0';
   };
 
   render(){
+    const {showTestCaseSetup, showTestCaseTearDown} = this.props;
     return(
       <div className='testcase-content'>
         <div className='testcase-content--header'>

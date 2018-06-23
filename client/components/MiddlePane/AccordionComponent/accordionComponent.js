@@ -7,30 +7,26 @@ class accordionComponent extends Component{
     super();
     this.state= {expanded: false};
     this.getImage = this.getImage.bind(this);
-    this.toggleClick = this.toggleClick.bind(this);
   }
 
   getImage(expanded){
     return expanded ? 'caret down icon' : 'caret right icon';
   }
 
-  toggleClick(){
-    this.setState({expanded: !this.state.expanded});
-  }
-
   render(){
-    const {title, children} = this.props;
+    const {title, children, isTestCase, stepClick, toggleClick, expanded} = this.props;
     return(
       <div className='accordion-component'>
         <div className='accordion-component--header'>
-          <i className={this.getImage(this.state.expanded)} onClick={this.toggleClick}/>
+          <i className={this.getImage(expanded)} onClick={toggleClick}/>
           {title}
-          <p className='accordion-component--plus'><i className="plus circle icon" /></p>
+          <p className='accordion-component--plus' onClick={stepClick}><i className="plus circle icon" /></p>
         </div>
-
         <AccordionBlock
-          expanded= {this.state.expanded}
+          expanded= {expanded}
           children={children}
+          isTestCase={isTestCase}
+          title={title}
         />
       </div>
     );
