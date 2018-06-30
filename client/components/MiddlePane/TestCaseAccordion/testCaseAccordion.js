@@ -98,15 +98,24 @@ class testCaseAccordion extends React.Component {
   setHeight(expanded, elem){
     const {testCaseSetupHeight, testCaseTearDownHeight} = this.props;
     elem.style.maxHeight = expanded ? elem.scrollHeight + testCaseSetupHeight + testCaseTearDownHeight + 'px' : '0';
-  };
+  }
+
+  disableSetup(showTestCaseSetup){
+      return showTestCaseSetup ? 'disabled item' : 'item';
+  }
+
+  disableTearDown(showTestCaseTearDown){
+      return showTestCaseTearDown ? 'disabled item' : 'item';
+  }
+
 
   render(){
-    const {showTestCaseSetup, showTestCaseTearDown} = this.props;
+    const {showTestCaseSetup, showTestCaseTearDown, count} = this.props;
     return(
       <div className='testcase-content'>
         <div className='testcase-content--header'>
           <p className='testcase-content--header--caret'><i className={this.getImage(this.state.expanded)} onClick={this.toggleClick}/></p>
-          <p className='testcase-content--header--title' contentEditable={this.state.editing} ref={(elem) => {this.textId = elem;}}>Test Case</p>
+          <p className='testcase-content--header--title' contentEditable={this.state.editing} ref={(elem) => {this.textId = elem;}}>Test Case {count}</p>
           <p className='testcase-content--header--edit'>
             <i className={this.changeIcon()} onClick={this.edit} />
           </p>
@@ -115,9 +124,9 @@ class testCaseAccordion extends React.Component {
             Add
             <i className="dropdown icon"></i>
             <div className="menu">
-              <div className="item" data-value="0" onClick={this.createTestSetup}>Setup</div>
-              <div className="item" data-value="1" onClick={this.createTestStep}>Test Case</div>
-              <div className="item" data-value="2" onClick={this.createTestTearDown}>Tear Down</div>
+              <div className={this.disableSetup(this.state.showTestCaseSetup)} data-value="0" onClick={this.createTestSetup}>Setup</div>
+              <div className="item" data-value="1" onClick={this.createTestStep}>Test Step</div>
+              <div className={this.disableTearDown(this.state.showTestCaseTearDown)} data-value="2" onClick={this.createTestTearDown}>Tear Down</div>
             </div>
           </div>
           </button>

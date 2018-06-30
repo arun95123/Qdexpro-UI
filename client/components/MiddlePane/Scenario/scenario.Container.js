@@ -3,9 +3,9 @@ import { showScenarioSetup,showScenarioTearDown,showScenarioTestCase } from '../
 
 const mapStateToProps = (state) => {
   return {
-    scenarioSetup: state.scenarioSetup,
-    scenarioTearDown: state.scenarioTearDown,
-    scenarioTestCase: state.scenarioTestCase
+    scenarioSetup: state.scenarioReducer.scenarioSetup,
+    scenarioTearDown: state.scenarioReducer.scenarioTearDown,
+    scenarioTestCase: state.scenarioReducer.scenarioTestCase
   };
 };
 
@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     showScenarioSetup: () => dispatch(showScenarioSetup()),
     showScenarioTearDown: () => dispatch(showScenarioTearDown()),
-    showScenarioTestCase: () => dispatch(showScenarioTestCase())  
+    showScenarioTestCase: () => dispatch(showScenarioTestCase())
   };
 };
 

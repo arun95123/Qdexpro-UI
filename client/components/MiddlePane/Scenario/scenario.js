@@ -49,6 +49,16 @@ class scenario extends React.Component {
     return "edit icon" ;
   }
 
+  disableSetup(){
+      const {scenarioSetup} = this.props;
+      return scenarioSetup ? 'disabled item' : 'item';
+  }
+
+  disableTearDown(){
+      const {scenarioTearDown} = this.props;
+      return scenarioTearDown ? 'disabled item' : 'item';
+  }
+
   setEndOfContenteditable(contentEditableElement){
     var range,selection;
 
@@ -74,9 +84,9 @@ class scenario extends React.Component {
              Add
             <i className="dropdown icon"></i>
             <div className="menu">
-                <div className="item" data-value="0" onClick={showScenarioSetup}>Setup</div>
+                <div className={this.disableSetup()} data-value="0" onClick={showScenarioSetup}>Setup</div>
                 <div className="item" data-value="1" onClick={showScenarioTestCase}>Test Case</div>
-                <div className="item" data-value="2" onClick={showScenarioTearDown}>Tear Down</div>
+                <div className={this.disableTearDown()} data-value="2" onClick={showScenarioTearDown}>Tear Down</div>
             </div>
           </div>
           </button>

@@ -5,7 +5,7 @@ import {
 const initialState = {
   scenarioSetup: false,
   scenarioTearDown: false,
-  scenarioTestCase: false
+  scenarioTestCase: 0
 };
 
 //change to es6
@@ -28,7 +28,7 @@ export default function(state = initialState, action) {
     case SHOW_SCENARIO_TESTCASE: {
       return {
         ...state,
-        scenarioTestCase: true
+        scenarioTestCase: state.scenarioTestCase + 1
       };
       break;
     }

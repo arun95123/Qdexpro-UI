@@ -18,7 +18,6 @@ class setupTearDown extends Component{
   }
 
   showStep(){
-    console.log(this.state.step)
     let stepItems = [];
     for (var i = 1; i <= this.state.step; i++) {
       stepItems.push(<Step key={i} count={i} />);
