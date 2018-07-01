@@ -30,9 +30,15 @@ class setupTearDown extends Component{
   }
 
   render(){
-    const {title, isTestCase} = this.props;
+    const {title, isTestCase, index} = this.props;
     return(
-    <AccordionComponent title={title} isTestCase = {isTestCase} stepClick = {this.addStep} toggleClick = {this.toggleClick} expanded = {this.state.expanded}>
+    <AccordionComponent
+       title={title}
+       isTestCase = {isTestCase}
+       stepClick = {this.addStep}
+       toggleClick = {this.toggleClick}
+       expanded = {this.state.expanded}
+       index={index}>
         {this.showStep()}
     </AccordionComponent>
    )

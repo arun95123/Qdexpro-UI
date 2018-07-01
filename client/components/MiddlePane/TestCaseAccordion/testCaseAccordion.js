@@ -26,9 +26,10 @@ class testCaseAccordion extends React.Component {
 
   showTestCaseSetup(){
     if(this.state.showTestCaseSetup){
+      const {count} = this.props;
       return(
         <div className='testcase--setup-teardown'>
-          <SetupTearDown title='Setup' isTestCase= 'true' />
+          <SetupTearDown index={count-1} title='Setup' isTestCase= 'true' />
           <hr/>
         </div>
       );
@@ -39,9 +40,10 @@ class testCaseAccordion extends React.Component {
 
   showTestCaseTearDown(){
     if(this.state.showTestCaseTearDown){
+      const {count} = this.props;
       return(
         <div className='testcase--setup-teardown'>
-          <SetupTearDown title='TearDown' isTestCase= 'true'  />
+          <SetupTearDown index={count-1} title='TearDown' isTestCase= 'true'  />
           <hr/>
         </div>
       );
@@ -96,8 +98,8 @@ class testCaseAccordion extends React.Component {
   }
 
   setHeight(expanded, elem){
-    const {testCaseSetupHeight, testCaseTearDownHeight} = this.props;
-    elem.style.maxHeight = expanded ? elem.scrollHeight + testCaseSetupHeight + testCaseTearDownHeight + 'px' : '0';
+    const {testCases, count} = this.props;
+    elem.style.maxHeight = expanded ? elem.scrollHeight + testCases[count - 1].testCaseSetupHeight + testCases[count - 1].testCaseTearDownHeight + 'px' : '0';
   }
 
   disableSetup(showTestCaseSetup){
@@ -110,7 +112,7 @@ class testCaseAccordion extends React.Component {
 
 
   render(){
-    const {showTestCaseSetup, showTestCaseTearDown, count} = this.props;
+    const {key, count} = this.props;
     return(
       <div className='testcase-content'>
         <div className='testcase-content--header'>

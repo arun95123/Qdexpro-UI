@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import { showScenarioSetup,showScenarioTearDown,showScenarioTestCase } from '../../../actions'
+import { showScenarioSetup,showScenarioTearDown,addTestCase } from '../../../actions'
 
 const mapStateToProps = (state) => {
   return {
     scenarioSetup: state.scenarioReducer.scenarioSetup,
     scenarioTearDown: state.scenarioReducer.scenarioTearDown,
-    scenarioTestCase: state.scenarioReducer.scenarioTestCase
+    testCases: state.testcaseReducer.testCases
   };
 };
 
@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     showScenarioSetup: () => dispatch(showScenarioSetup()),
     showScenarioTearDown: () => dispatch(showScenarioTearDown()),
-    showScenarioTestCase: () => dispatch(showScenarioTestCase())
+    addTestCase: () => dispatch(addTestCase())
   };
 };
 

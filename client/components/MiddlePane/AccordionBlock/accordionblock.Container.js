@@ -3,14 +3,13 @@ import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => {
   return {
-    testCaseSetupHeight:state.testcaseReducer.testCaseSetupHeight,
-    testCaseTearDownHeight:state.testcaseReducer.testCaseTearDownHeight
+    testCases: state.testcaseReducer.testCases
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    testCaseSetupteardownHeight: (isTestCase, title, height) => dispatch(testCaseSetupteardownHeight(isTestCase, title, height))
+    testCaseSetupteardownHeight: (isTestCase, title, height, index) => dispatch(testCaseSetupteardownHeight(isTestCase, title, height, index))
   };
 };
 

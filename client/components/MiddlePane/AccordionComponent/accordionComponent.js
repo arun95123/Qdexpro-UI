@@ -14,7 +14,7 @@ class accordionComponent extends Component{
   }
 
   render(){
-    const {title, children, isTestCase, stepClick, toggleClick, expanded} = this.props;
+    const {title, children, isTestCase, stepClick, toggleClick, expanded, index} = this.props;
     return(
       <div className='accordion-component'>
         <div className='accordion-component--header'>
@@ -24,9 +24,10 @@ class accordionComponent extends Component{
         </div>
         <AccordionBlock
           expanded= {expanded}
-          children={children}
-          isTestCase={isTestCase}
-          title={title}
+          children= {children}
+          isTestCase= {isTestCase}
+          title= {title}
+          index= {index}
         />
       </div>
     );
