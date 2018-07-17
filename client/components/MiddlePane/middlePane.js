@@ -24,6 +24,7 @@ class middlePane extends React.Component {
         <div>
           <SetupTearDown
             title='Setup'
+            isTestCase='false'
           />
           <hr />
         </div>
@@ -39,7 +40,8 @@ class middlePane extends React.Component {
         <div>
           <SetupTearDown
             title='Tear Down'
-          />
+            isTestCase='false'
+             />
           <hr />
         </div>
       );

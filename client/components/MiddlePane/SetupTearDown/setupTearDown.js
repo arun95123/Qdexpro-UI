@@ -5,24 +5,29 @@ import Step from '../Step'
 class setupTearDown extends Component{
   constructor(){
     super();
-    this.state= {expanded: false,step : 1};
-    this.addStep = this.addStep.bind(this);
+    this.state= {expanded: false}
     this.showStep = this.showStep.bind(this);
     this.toggleClick = this.toggleClick.bind(this);
   }
 
-  addStep(){
-    this.setState({expanded: true});
-    var arr = this.state.step;
-    this.setState({step : this.state.step + 1});
-  }
-
   showStep(){
-    let stepItems = [];
-    for (var i = 1; i <= this.state.step; i++) {
-      stepItems.push(<Step key={i} count={i} />);
+    const {scenarioSetupStep, scenarioTearDownStep,isTestCase,title} = this.props;
+    if(!isTestCase && title==='Setup')
+    {
+    let setupStepItems = [];
+    for (var i = 0; i <= scenarioSetupStep.length; i++) {
+      setupStepItems.push(<Step key={i} count={i+1} />);
     }
-    return <div>{stepItems}</div>;
+    return <div>{setupStepItems}</div>;
+  }
+  else if(!isTestCase && title==='Tear Down'){
+    let tearDownStepItems = [];
+    for (var i = 0; i <= scenarioTearDownStep.length; i++) {
+      tearDownStepItems.push(<Step key={i} count={i+1} />);
+    }
+    return <div>{tearDownStepItems}</div>;
+  }
+  else return null
   }
 
   toggleClick(){
@@ -35,7 +40,6 @@ class setupTearDown extends Component{
     <AccordionComponent
        title={title}
        isTestCase = {isTestCase}
-       stepClick = {this.addStep}
        toggleClick = {this.toggleClick}
        expanded = {this.state.expanded}
        index={index}>
