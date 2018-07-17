@@ -23,8 +23,8 @@ class middlePane extends React.Component {
       return(
         <div>
           <SetupTearDown
-            title='Setup'
-            isTestCase='false'
+            title= 'Setup'
+            isTestCase= 'false'
           />
           <hr />
         </div>
@@ -39,8 +39,8 @@ class middlePane extends React.Component {
       return(
         <div>
           <SetupTearDown
-            title='Tear Down'
-            isTestCase='false'
+            title= 'Tear Down'
+            isTestCase= 'false'
              />
           <hr />
         </div>

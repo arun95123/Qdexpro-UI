@@ -9,12 +9,10 @@ const initialState = {
 
 //change to es6
 export default function(state = initialState, action) {
-  console.log(action)
   switch(action.type) {
     case ADD_STEP: {
-      if(action.title ==='Setup' && !action.isTestCase )
+      if(action.title ==='Setup' && action.isTestCase ==='false' )
       {
-        console.log(action)
       const {scenarioSetupStep} = {...state};
       var newSetupStep = scenarioSetupStep.concat({
         name: 'SetupStep'
@@ -24,7 +22,7 @@ export default function(state = initialState, action) {
         scenarioSetupStep: newSetupStep
       };
     }
-    else if(action.title ==='Tear Down' && !action.isTestCase)
+    else if(action.title ==='Tear Down' && action.isTestCase ==='false')
     {
     const {scenarioTearDownStep} = {...state};
     var newTearDownStep = scenarioTearDownStep.concat({

@@ -9,11 +9,10 @@ const initialState = {
 
 //change to es6
 export default function(state = initialState, action) {
-  
   switch(action.type) {
     case TESTCASE_SETUPTEARDOWN_HEIGHT: {
       const {testCases} = {...state};
-      if(action.isTestCase && action.title==='Setup'){
+      if(action.isTestCase==='true' && action.title==='Setup'){
         testCases[action.index].testCaseSetupHeight = action.height;
         return {
           ...state,
