@@ -71,7 +71,6 @@ class scenario extends React.Component {
   }
 
   render() {
-    console.log(this.props.testCases);
     const {showScenarioSetup,showScenarioTearDown,showScenarioTestCase,addTestCase} = this.props;
 
     return(

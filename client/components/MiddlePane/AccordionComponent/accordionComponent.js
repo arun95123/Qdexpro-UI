@@ -16,9 +16,9 @@ class accordionComponent extends Component{
   }
 
   stepAdd(){
-    const{addStep,isTestCase, title}=this.props;
+    const{addStep,isTestCase, title, index}=this.props;
     this.setState({expanded : true});
-    addStep(isTestCase, title);
+    addStep(isTestCase, title, index);
   }
 
   toggleClick(){

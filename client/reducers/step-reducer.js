@@ -1,6 +1,7 @@
 import {
   ADD_STEP
 } from '../actions/types'
+import testcaseReducer from './testcase-reducer'
 
 const initialState = {
   scenarioSetupStep: [],
@@ -27,12 +28,11 @@ export default function(state = initialState, action) {
     const {scenarioTearDownStep} = {...state};
     var newTearDownStep = scenarioTearDownStep.concat({
       name: 'TearDownStep'
-
     });
     return{
       ...state,
       scenarioTearDownStep: newTearDownStep
-    };
+     };
     }
       break;
    }

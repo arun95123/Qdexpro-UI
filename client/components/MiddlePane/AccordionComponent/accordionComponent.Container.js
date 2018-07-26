@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addStep: (isTestCase, title) => dispatch(addStep(isTestCase, title))
+    addStep: (isTestCase, title, index) => dispatch(addStep(isTestCase, title, index))
   };
 };
 
