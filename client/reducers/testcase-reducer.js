@@ -48,17 +48,14 @@ export default function(state = initialState, action) {
     case ADD_STEP:{
       if (action.title ==='Setup' && action.isTestCase)
       {
-        const {testCases} = {...state};
-        const {testCaseSetupStep} = {...testCases};
-        console.log(testCaseSetupStep);
-        var newSetupStep =  testCases[action.index].testCaseSetupStep.concat({
-          name: 'TestCaseSetupStep'
-          });
-        console.log('newStep',newSetupStep)
-       return{
+        var {testCases} = {...state};
+        var test = testCases[action.index].testCaseSetupStep.concat({name: 'TestCaseSetupStep'});
+        testCases[action.index].testCaseSetupStep = test
+        console.log(testCases);
+        return{
          ...state,
-         testCases: newSetupStep
-       };
+         testCases: testCases
+        };
       }
       else if (action.title ==='Tear Down' && action.isTestCase)
       {
