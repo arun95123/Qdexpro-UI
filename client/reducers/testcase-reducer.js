@@ -46,25 +46,24 @@ export default function(state = initialState, action) {
       break;
     }
     case ADD_STEP:{
-      if (action.title ==='Setup' && action.isTestCase)
+      if (action.title ==='Setup' && action.isTestCase==='true')
       {
         var {testCases} = {...state};
         var test = testCases[action.index].testCaseSetupStep.concat({name: 'TestCaseSetupStep'});
         testCases[action.index].testCaseSetupStep = test
-        console.log(testCases);
         return{
          ...state,
          testCases: testCases
         };
       }
-      else if (action.title ==='Tear Down' && action.isTestCase)
+      else if (action.title ==='Tear Down' && action.isTestCase==='true')
       {
-        var newTearDownStep =  testCases[action.index].testCaseTearDownStep.concat({
-          name: 'TestCaseSetupStep'
-          });
+        var {testCases} = {...state};
+        var newTearDownStep =  testCases[action.index].testCaseTearDownStep.concat({name: 'TestCaseSetupStep'});
+        testCases[action.index].testCaseTearDownStep = newTearDownStep;
         return{
           ...state,
-          testCases: newTearDownStep
+          testCases: testCases
       };
       }
       break;

@@ -9,7 +9,7 @@ class setupTearDown extends Component{
   }
 
   showStep(){
-    const {scenarioSetupStep, scenarioTearDownStep,isTestCase,title} = this.props;
+    const {scenarioSetupStep, scenarioTearDownStep,isTestCase,title, index, testCases, testCaseSetupStep} = this.props;
 
     if(isTestCase==='false' && title==='Setup')
     {
@@ -26,7 +26,20 @@ class setupTearDown extends Component{
       }
       return <div>{tearDownStepItems}</div>;
     }
-    else return null
+    else if(isTestCase==='true' && title==='Setup'){
+      let testCaseSetupStepItems = [];
+      for (var i = 0; i <= testCases[index].testCaseSetupStep.length; i++){
+        testCaseSetupStepItems.push(<Step key={i} count={i+1} />);
+      }
+      return <div>{testCaseSetupStepItems}</div>;
+    }
+    else if(isTestCase==='true' && title==='Tear Down'){
+      let testCaseTearDownStepItems = [];
+      for (var i = 0; i <= testCases[index].testCaseTearDownStep.length; i++){
+        testCaseTearDownStepItems.push(<Step key={i} count={i+1} />);
+      }
+      return <div>{testCaseTearDownStepItems}</div>;
+    }
   }
 
   render(){
