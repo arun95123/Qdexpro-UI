@@ -1,6 +1,7 @@
 import React from 'react'
 import './testCase.Style.scss'
 import SetupTearDown from '../SetupTearDown'
+import Step from '../Step'
 
 class testCaseAccordion extends React.Component {
   constructor(props){
@@ -15,6 +16,7 @@ class testCaseAccordion extends React.Component {
     this.getImage = this.getImage.bind(this);
     this.toggleClick = this.toggleClick.bind(this);
     this.setEndOfContenteditable = this.setEndOfContenteditable.bind(this);
+    this.stepAdd = this.stepAdd.bind(this);
   }
 
   componentDidUpdate(){
@@ -36,6 +38,17 @@ class testCaseAccordion extends React.Component {
     }else{
       return null;
      }
+  }
+
+  showTestCaseStep(testCases, count){
+    if(testCases[count - 1].testCaseTestStep.length != 0){
+      let stepItems = [];
+      for (var i = 0; i <= testCases.testCaseTestStep.length - 1; i++){
+        stepItems.push(<Step key={i} count={i+1} />);
+      }
+      return <div>{stepItems} <hr /></div>;
+    }
+    else return null;
   }
 
   showTestCaseTearDown(){
@@ -110,9 +123,14 @@ class testCaseAccordion extends React.Component {
       return showTestCaseTearDown ? 'disabled item' : 'item';
   }
 
+  stepAdd(){
+    const{count, addTestCaseStep}=this.props;
+    addTestCaseStep(count - 1);
+  }
+
 
   render(){
-    const {key, count} = this.props;
+    const {key, count, addTestCaseStep, testCases} = this.props;
     return(
       <div className='testcase-content'>
         <div className='testcase-content--header'>
@@ -127,7 +145,7 @@ class testCaseAccordion extends React.Component {
             <i className="dropdown icon"></i>
             <div className="menu">
               <div className={this.disableSetup(this.state.showTestCaseSetup)} data-value="0" onClick={this.createTestSetup}>Setup</div>
-              <div className="item" data-value="1" onClick={this.createTestStep}>Test Step</div>
+              <div className="item" data-value="1" onClick={this.stepAdd}>Test Step</div>
               <div className={this.disableTearDown(this.state.showTestCaseTearDown)} data-value="2" onClick={this.createTestTearDown}>Tear Down</div>
             </div>
           </div>
@@ -135,6 +153,7 @@ class testCaseAccordion extends React.Component {
         </div>
         <div className='testcase-content--body' ref={(elem) => elem ? this.setHeight(this.state.expanded, elem) : null}>
           {this.showTestCaseSetup()}
+          {this.showTestCaseStep(testCases, count)}
           {this.showTestCaseTearDown()}
         </div>
       </div>

@@ -1,7 +1,8 @@
 import {
   TESTCASE_SETUPTEARDOWN_HEIGHT,
   ADD_TESTCASE,
-  ADD_STEP
+  ADD_STEP,
+  ADD_TESTCASETESTSTEP
 } from '../actions/types'
 
 
@@ -37,7 +38,8 @@ export default function(state = initialState, action) {
         testCaseSetupHeight: 0,
         testCaseTearDownHeight: 0,
         testCaseSetupStep: [],
-        testCaseTearDownStep: []
+        testCaseTearDownStep: [],
+        testCaseTestStep: []
       });
       return{
         ...state,
@@ -64,12 +66,23 @@ export default function(state = initialState, action) {
         var newTearDownStep = newTestCases[action.index].testCaseTearDownStep.concat({name: 'TestCaseTearDownStep'});
         newTestCases[action.index].testCaseTearDownStep = newTearDownStep
         return{
-         ...state,
-         testCases : newTestCases
+          ...state,
+          testCases : newTestCases
+          };
+        }
+      break;
+     }
+    case ADD_TESTCASETESTSTEP:{
+      const {testCases} = {...state};
+      var newTestCases = testCases.slice();
+      var newTestCaseStep = newTestCases[action.index].testCaseTestStep.concat({name: 'TestCaseTestStep'});
+      newTestCases[action.index].testCaseTestStep = newTestCaseStep
+      return{
+        ...state,
+        testCases : newTestCases
         };
       }
-      break;
-    }
+    break;
   }
   return state;
 }
