@@ -30,7 +30,7 @@ class accordionComponent extends Component{
     return(
       <div className='accordion-component'>
         <div className='accordion-component--header'>
-          <i className={this.getImage(this.state.expanded)} onClick={this.toggleclick}/>
+          <i className={this.getImage(this.state.expanded)} onClick={this.toggleClick}/>
           {title}
           <p className='accordion-component--plus' onClick={this.stepAdd}><i className="plus circle icon" /></p>
         </div>
