@@ -43,7 +43,7 @@ class testCaseAccordion extends React.Component {
   showTestCaseStep(testCases, count){
     if(testCases[count - 1].testCaseTestStep.length != 0){
       let stepItems = [];
-      for (var i = 0; i <= testCases.testCaseTestStep.length - 1; i++){
+      for (var i = 0; i <= testCases[count - 1].testCaseTestStep.length - 1; i++){
         stepItems.push(<Step key={i} count={i+1} />);
       }
       return <div>{stepItems} <hr /></div>;
@@ -125,6 +125,7 @@ class testCaseAccordion extends React.Component {
 
   stepAdd(){
     const{count, addTestCaseStep}=this.props;
+    this.setState({expanded: true});
     addTestCaseStep(count - 1);
   }
 

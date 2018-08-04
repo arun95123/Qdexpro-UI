@@ -2,7 +2,7 @@ import {
   TESTCASE_SETUPTEARDOWN_HEIGHT,
   ADD_TESTCASE,
   ADD_STEP,
-  ADD_TESTCASETESTSTEP
+  ADD_TESTCASESTEP
 } from '../actions/types'
 
 
@@ -72,7 +72,7 @@ export default function(state = initialState, action) {
         }
       break;
      }
-    case ADD_TESTCASETESTSTEP:{
+    case ADD_TESTCASESTEP:{
       const {testCases} = {...state};
       var newTestCases = testCases.slice();
       var newTestCaseStep = newTestCases[action.index].testCaseTestStep.concat({name: 'TestCaseTestStep'});
