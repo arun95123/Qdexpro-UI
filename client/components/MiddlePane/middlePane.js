@@ -13,11 +13,7 @@ class middlePane extends React.Component {
     this.showTearDown = this.showTearDown.bind(this);
     this.showTestCase = this.showTestCase.bind(this);
   }
-
-  componentDidUpdate(){
-     $('.ui.dropdown').dropdown();
-  }
-
+  
   showSetup(scenarioSetup){
     if(scenarioSetup){
       return(

@@ -1,5 +1,6 @@
 import React from 'react'
 import './scenario.Style.scss'
+import { Dropdown } from 'semantic-ui-react'
 
 class scenario extends React.Component {
   constructor(props){
@@ -80,15 +81,13 @@ class scenario extends React.Component {
               <i className={this.changeIcon()} onClick={this.edit} />
           </p>
           <button className='scenario-content--button'>
-          <div className="ui dropdown">
-             Add
-            <i className="dropdown icon"></i>
-            <div className="menu">
-                <div className={this.disableSetup()} data-value="0" onClick={showScenarioSetup}>Setup</div>
-                <div className="item" data-value="1" onClick={addTestCase}>Test Case</div>
-                <div className={this.disableTearDown()} data-value="2" onClick={showScenarioTearDown}>Tear Down</div>
-            </div>
-          </div>
+            <Dropdown text="Add">
+              <Dropdown.Menu>
+                <Dropdown.Item text="Setup" className={this.disableSetup()} key="1" onClick={showScenarioSetup}/>
+                <Dropdown.Item text="TestCase" className="item" key="2" onClick={addTestCase}/>
+                <Dropdown.Item text="Tear Down" className={this.disableTearDown()} key="3" onClick={showScenarioTearDown}/>
+              </Dropdown.Menu>
+            </Dropdown>
           </button>
       </div>
     );

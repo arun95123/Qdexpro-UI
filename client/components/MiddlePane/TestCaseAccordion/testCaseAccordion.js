@@ -1,6 +1,7 @@
 import React from 'react'
 import './testCase.Style.scss'
 import SetupTearDown from '../SetupTearDown'
+import { Dropdown } from 'semantic-ui-react'
 import Step from '../Step'
 
 class testCaseAccordion extends React.Component {
@@ -140,16 +141,14 @@ class testCaseAccordion extends React.Component {
           <p className='testcase-content--header--edit'>
             <i className={this.changeIcon()} onClick={this.edit} />
           </p>
-          <button className='testcase-content--header--button'>
-          <div className="ui dropdown">
-            Add
-            <i className="dropdown icon"></i>
-            <div className="menu">
-              <div className={this.disableSetup(this.state.showTestCaseSetup)} data-value="0" onClick={this.createTestSetup}>Setup</div>
-              <div className="item" data-value="1" onClick={this.stepAdd}>Test Step</div>
-              <div className={this.disableTearDown(this.state.showTestCaseTearDown)} data-value="2" onClick={this.createTestTearDown}>Tear Down</div>
-            </div>
-          </div>
+          <button className='scenario-content--button'>
+            <Dropdown text="Add">
+              <Dropdown.Menu>
+                <Dropdown.Item text="Setup" className={this.disableSetup(this.state.showTestCaseSetup)} key="1" onClick={this.createTestSetup}/>
+                <Dropdown.Item text="TestCase" className="item" key="2" onClick={this.stepAdd}/>
+                <Dropdown.Item text="Tear Down" className={this.disableTearDown(this.state.showTestCaseTearDown)} key="3" onClick={this.createTestTearDown}/>
+              </Dropdown.Menu>
+            </Dropdown>
           </button>
         </div>
         <div className='testcase-content--body' ref={(elem) => elem ? this.setHeight(this.state.expanded, elem) : null}>
