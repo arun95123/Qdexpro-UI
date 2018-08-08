@@ -22,7 +22,7 @@ export default function(state = initialState, action) {
           testCases: testCases
         };
       }
-      else if(action.isTestCase && action.title==='TearDown'){
+      else if(action.isTestCase==='true' && action.title==='TearDown'){
         testCases[action.index].testCaseTearDownHeight = action.height;
         return {
           ...state,
@@ -59,7 +59,7 @@ export default function(state = initialState, action) {
          testCases : newTestCases
         };
       }
-      else if (action.title ==='Tear Down' && action.isTestCase==='true')
+      else if (action.title ==='TearDown' && action.isTestCase==='true')
       {
         const {testCases} = {...state};
         var newTestCases = testCases.slice();

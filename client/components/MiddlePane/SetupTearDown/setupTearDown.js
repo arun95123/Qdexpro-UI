@@ -19,7 +19,7 @@ class setupTearDown extends Component{
       }
       return <div>{setupStepItems}</div>;
     }
-    else if(isTestCase==='false' && title==='Tear Down'){
+    else if(isTestCase==='false' && title==='TearDown'){
       let tearDownStepItems = [];
       for (var i = 0; i <= scenarioTearDownStep.length; i++){
         tearDownStepItems.push(<Step key={i} count={i+1} />);
@@ -33,7 +33,7 @@ class setupTearDown extends Component{
       }
       return <div>{testCaseSetupStepItems}</div>;
     }
-    else if(isTestCase==='true' && title==='Tear Down'){
+    else if(isTestCase==='true' && title==='TearDown'){
       let testCaseTearDownStepItems = [];
       for (var i = 0; i <= testCases[index].testCaseTearDownStep.length; i++){
         testCaseTearDownStepItems.push(<Step key={i} count={i+1} />);

@@ -57,7 +57,7 @@ class testCaseAccordion extends React.Component {
       const {count} = this.props;
       return(
         <div className='testcase--setup-teardown'>
-          <SetupTearDown index={count-1} title='Tear Down' isTestCase= 'true'  />
+          <SetupTearDown index={count-1} title='TearDown' isTestCase= 'true'  />
           <hr/>
         </div>
       );

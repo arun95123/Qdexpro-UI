@@ -23,7 +23,7 @@ export default function(state = initialState, action) {
         scenarioSetupStep: newSetupStep
       };
     }
-    else if(action.title ==='Tear Down' && action.isTestCase ==='false')
+    else if(action.title ==='TearDown' && action.isTestCase ==='false')
     {
     const {scenarioTearDownStep} = {...state};
     var newTearDownStep = scenarioTearDownStep.concat({

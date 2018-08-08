@@ -13,7 +13,7 @@ class middlePane extends React.Component {
     this.showTearDown = this.showTearDown.bind(this);
     this.showTestCase = this.showTestCase.bind(this);
   }
-  
+
   showSetup(scenarioSetup){
     if(scenarioSetup){
       return(
@@ -35,7 +35,7 @@ class middlePane extends React.Component {
       return(
         <div>
           <SetupTearDown
-            title= 'Tear Down'
+            title= 'TearDown'
             isTestCase= 'false'
              />
           <hr />
