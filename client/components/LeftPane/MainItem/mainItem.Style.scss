@@ -3,31 +3,18 @@
   cursor: pointer;
   position : relative;
 
-  &--content {
+  &--content{
     margin : 0;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: bold;
     color: #cce3ff;
-  }
-  &--triangle--down{
-    position: absolute;
-    right: 20px;
-    top: 25px;
-    width: 0;
-    height: 0;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-top: 7px solid #cce3ff;
-  }
-  &--triangle--right{
-    position: absolute;
-    right: 20px;
-    top: 22px;
-    width: 0;
-    height: 0;
-    border-top: 7px solid transparent;
-    border-left: 7px solid #cce3ff;
-    border-bottom: 7px solid transparent;
+    display: flex;
+    justify-content: space-between;
+
+    &--icon{
+      align-self: center;
+      color: #cce3ff;
+    }
   }
 }
 

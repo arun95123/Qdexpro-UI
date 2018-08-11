@@ -1,11 +1,10 @@
 .middle-pane{
-  border-radius: 10px;
+  width: 88%;
+  height: 52.5rem;
+  margin-top: 4.2rem;
+  position: fixed;
+  padding:1rem;
   background: #c5c5c5;
-  padding: 20px;
-  margin-top : 3%;
-  margin-left :7%;
-  width: 75%;
-  height: 48rem;
 
   &--content {
     font-style: oblique;

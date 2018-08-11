@@ -5,6 +5,7 @@ import Step from '../Step'
 class setupTearDown extends Component{
   constructor(){
     super();
+    this.state= {expanded: false,step : 1};
     this.showStep = this.showStep.bind(this);
   }
 
@@ -43,12 +44,11 @@ class setupTearDown extends Component{
   }
 
   render(){
-    const {title, isTestCase, index} = this.props;
+    const {title, isTestCase, index,addStep} = this.props;
     return(
     <AccordionComponent
        title={title}
        isTestCase = {isTestCase}
-       toggleClick = {this.toggleClick}
        index={index}>
         {this.showStep()}
     </AccordionComponent>

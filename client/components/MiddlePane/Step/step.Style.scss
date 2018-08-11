@@ -1,0 +1,41 @@
+.step{
+  padding:0;
+  &--content {
+    font-style: oblique;
+    font-size: 17px;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+
+    &--subcontent{
+      padding : 5px;
+      padding-top:0;
+      padding-right : 0;
+      padding-bottom: 0;
+      margin-left:2%;
+    }
+    &--text{
+      margin-right: auto;
+      margin-bottom: 0;
+      cursor: alias;
+    }
+    &--caret--right {
+      align-self: center;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.ui.modal>.content{
+    display: block;
+    width: 95%;
+    padding: 0rem;
+    background-color: inherit;
+}
+
+.ui.modal > .header:not(.ui){
+    width: 112%;
+    padding: 0.5rem;
+    background: #283747;
+    color: white;
+}

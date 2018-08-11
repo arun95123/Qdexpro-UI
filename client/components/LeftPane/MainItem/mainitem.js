@@ -1,14 +1,15 @@
 import React from 'react';
 import './mainItem.Style.scss'
+import {Icon} from 'semantic-ui-react'
 
 const renderArrow = (status) => {
   if (status) {
       return (
-              <div className='main-item--triangle--down'/>
+        <Icon className='main-item--content--icon' name='caret down' />
       );
   } else {
       return (
-              <div className='main-item--triangle--right'/>
+        <Icon className='main-item--content--icon' name='caret right' />
       );
   }
 }
@@ -16,8 +17,10 @@ const renderArrow = (status) => {
 const mainItem = ({label, onClick,status}) => {
   return (
       <div onClick={onClick} className='main-item'>
-        <p className='main-item--content'>{label}</p>
-        {renderArrow(status)}
+        <div className='main-item--content'>
+          <div>{label}</div>
+          <div>{renderArrow(status)}</div>
+        </div>
       </div>
   );
 };

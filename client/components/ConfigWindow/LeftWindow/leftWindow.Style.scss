@@ -1,0 +1,48 @@
+.left-window{
+  display: flex;
+  justify-content: flex-start;
+  padding:5px;
+  padding-right: 0;
+
+ &--form{
+     display: flex;
+     flex-direction: column;
+     width: 90%;
+      &--content{
+
+        display : flex;
+        justify-content: flex-start;
+
+        &--text{
+          align-self: center;
+          margin-bottom: 0;
+        }
+
+        &--textbox{
+          margin-left: auto;
+        }
+
+        &--dropdown{
+          width: 52%;
+          margin-left: auto;
+        }
+      }
+   }
+   &--arrow{
+    margin-left: auto;
+   }
+}
+
+.expanded-width{
+  width: 40%;
+  .left-window--form{
+       display : flex;
+   }
+}
+
+.collapsed-width{
+  width: 2.5%;
+  .left-window--form{
+      display : none;
+  }
+}

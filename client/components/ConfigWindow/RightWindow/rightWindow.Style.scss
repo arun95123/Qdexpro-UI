@@ -1,0 +1,10 @@
+.rightWindow{
+  border-radius: 10px;
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 5px;
+
+    textarea {
+      resize: none;
+    }
+}

@@ -1,15 +1,19 @@
 .left-pane{
   position : fixed;
-  width : 11%;
+  width : 12%;
   height : 100%;
-  background-color:#566573;
+  background-color:#283747;
   border-color: black;
   border-bottom-width: thin;
-  box-shadow: 7px 7px 5px #aaaaaa;
 
-  &--logo{
-    height : 75px;
-    width : 100%;
+  &--header{
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    color: #cce3ff;
+
+    &--text{
+    margin-bottom: 0;
+    }
   }
 }
-

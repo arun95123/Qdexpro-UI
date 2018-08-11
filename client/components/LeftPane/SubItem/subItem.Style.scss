@@ -1,10 +1,15 @@
 .sub-item {
-  margin-left: 1rem;
-  padding: 0.5rem;
+  padding-left: 1rem;
   cursor: pointer;
 
   &--content {
     font-size: 1rem;
-    color: #ffffff;
+    margin : 0;
+    font-weight: bold;
+    color: #cce3ff;
   }
+}
+
+.sub-item:hover {
+  background-color: #283747;
 }

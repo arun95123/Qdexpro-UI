@@ -1,5 +1,5 @@
 import {
-  SHOW_SCENARIO_SETUP,SHOW_SCENARIO_TEARDOWN
+  SHOW_SCENARIO_SETUP,SHOW_SCENARIO_TEARDOWN,ADD_STEP
 } from './types'
 
 export const showScenarioSetup = () => {
