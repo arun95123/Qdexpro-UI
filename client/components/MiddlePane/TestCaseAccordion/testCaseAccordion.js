@@ -145,7 +145,7 @@ class testCaseAccordion extends React.Component {
             <Dropdown text="Add">
               <Dropdown.Menu>
                 <Dropdown.Item text="Setup" className={this.disableSetup(this.state.showTestCaseSetup)} key="1" onClick={this.createTestSetup}/>
-                <Dropdown.Item text="TestCase" className="item" key="2" onClick={this.stepAdd}/>
+                <Dropdown.Item text="Test Step" className="item" key="2" onClick={this.stepAdd}/>
                 <Dropdown.Item text="Tear Down" className={this.disableTearDown(this.state.showTestCaseTearDown)} key="3" onClick={this.createTestTearDown}/>
               </Dropdown.Menu>
             </Dropdown>
