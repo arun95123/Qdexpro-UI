@@ -29,7 +29,6 @@ export default function(state = initialState, action) {
     }
     case ADD_STEP: {
       const {scenarioSetupSteps,scenarioTearDownSteps} = {...state};
-      console.log("show")
       if(action.isTestCase===false && action.title==='Setup'){
         var newScenarioSetupSteps = scenarioSetupStep.concat({
           name: 'scenarioSetupStep'

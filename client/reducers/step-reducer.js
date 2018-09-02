@@ -41,8 +41,8 @@ export default function(state = initialState, action) {
      if(action.title ==='Setup' && action.isTestCase ==='false' )
      {
      const {scenarioSetupStep} = {...state};
-     var newSetupStep = scenarioSetupStep.splice(action.index,1);
-      console.log(scenarioSetupStep)
+     var newSetupStep = scenarioSetupStep.slice();
+     newSetupStep.splice(action.index,1);
      return{
        ...state,
        scenarioSetupStep: newSetupStep
@@ -51,7 +51,8 @@ export default function(state = initialState, action) {
    else if(action.title ==='TearDown' && action.isTestCase ==='false')
    {
    const {scenarioTearDownStep} = {...state};
-   var newTearDownStep = scenarioTearDownStep.splice(action.index,1);
+   var newTearDownStep = scenarioTearDownStep.slice();
+   newTearDownStep.splice(action.index,1);
    return{
      ...state,
      scenarioTearDownStep: newTearDownStep
