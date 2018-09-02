@@ -1,10 +1,19 @@
 import {
-  ADD_STEP
+  ADD_STEP,REMOVE_STEP
 } from './types'
 
 export const addStep = (isTestCase, title, index) => {
   return{
     type: ADD_STEP,
+    isTestCase: isTestCase,
+    title: title,
+    index: index
+  }
+};
+
+export const removeStep = (isTestCase, title, index) => {
+  return{
+    type: REMOVE_STEP,
     isTestCase: isTestCase,
     title: title,
     index: index
