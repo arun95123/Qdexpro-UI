@@ -1,19 +1,34 @@
-import React from 'react'
+import React,{Component} from 'react'
 import './step.Style.scss'
-import {Modal} from 'semantic-ui-react'
+import {Modal,Icon} from 'semantic-ui-react'
 import ConfigWindow from '../../ConfigWindow'
 
-const step =({count}) =>(
-  <div className='step--content step--content--subcontent'>
-    <p className='step--content--caret--right'>
-      <i className="angle right icon"></i></p>
-  <Modal trigger={<p className='step--content--text'>Step {count}</p>}>
-  <Modal.Header>Step {count} Configuration</Modal.Header>
-  <Modal.Content>
-    <ConfigWindow />
-  </Modal.Content>
-  </Modal>
-  </div>
-  );
+class step extends Component{
+  constructor(){
+    super();
+    this.remove=this.remove.bind(this);
+  }
 
+remove(){
+  const {isTestCase, title, index,removeStep}=this.props;
+  removeStep(isTestCase,title,index);
+}
+
+render(){
+  const {count}=this.props;
+  return(
+   <div className='step--content step--content--subcontent'>
+     <p className='step--content--caret--right'>
+       <i className="angle right icon"></i></p>
+   <Modal trigger={<p className='step--content--text'>Step {count}</p>}>
+   <Modal.Header>Step {count} Configuration</Modal.Header>
+   <Modal.Content>
+     <ConfigWindow />
+   </Modal.Content>
+   </Modal>
+   <Icon name="trash" onClick={this.remove}></Icon>
+   </div>
+)
+ }
+}
 export default step;

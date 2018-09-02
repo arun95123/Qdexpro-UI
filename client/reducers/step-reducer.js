@@ -1,5 +1,5 @@
 import {
-  ADD_STEP
+  ADD_STEP,REMOVE_STEP
 } from '../actions/types'
 import testcaseReducer from './testcase-reducer'
 
@@ -35,6 +35,29 @@ export default function(state = initialState, action) {
      };
     }
       break;
+   }
+   case REMOVE_STEP:
+   {
+     if(action.title ==='Setup' && action.isTestCase ==='false' )
+     {
+     const {scenarioSetupStep} = {...state};
+     var newSetupStep = scenarioSetupStep.splice(action.index,1);
+      console.log(scenarioSetupStep)
+     return{
+       ...state,
+       scenarioSetupStep: newSetupStep
+     };
+   }
+   else if(action.title ==='TearDown' && action.isTestCase ==='false')
+   {
+   const {scenarioTearDownStep} = {...state};
+   var newTearDownStep = scenarioTearDownStep.splice(action.index,1);
+   return{
+     ...state,
+     scenarioTearDownStep: newTearDownStep
+    };
+   }
+     break;
    }
   }
   return state;
