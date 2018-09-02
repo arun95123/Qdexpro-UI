@@ -36,6 +36,30 @@ export default function(state = initialState, action) {
     }
       break;
    }
+   case REMOVE_STEP:
+   {
+     if(action.title ==='Setup' && action.isTestCase ==='false' )
+     {
+     const {scenarioSetupStep} = {...state};
+     var newSetupStep = scenarioSetupStep.slice();
+     newSetupStep.splice(action.index,1);
+     return{
+       ...state,
+       scenarioSetupStep: newSetupStep
+     };
+   }
+   else if(action.title ==='TearDown' && action.isTestCase ==='false')
+   {
+   const {scenarioTearDownStep} = {...state};
+   var newTearDownStep = scenarioTearDownStep.slice();
+   newTearDownStep.splice(action.index,1);
+   return{
+     ...state,
+     scenarioTearDownStep: newTearDownStep
+    };
+   }
+     break;
+   }
   }
   return state;
 }
