@@ -17,7 +17,7 @@ app.set('view engine', '.html');
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json())
-app.use('/',router);
+app.use('/api/',router);
 
 app.get('/*', function response(req, res) {
   res.render('home');

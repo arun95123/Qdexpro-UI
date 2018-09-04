@@ -2,11 +2,11 @@ const express = require('express');
 const router=express.Router();
 const axios = require('axios');
 
-const gameData = 'http://localhost:3000/game_data';
+const scenarioData = 'http://localhost:2323/check';
 
-router.get('/game_data',(req,res) => {
+router.get('/scenario',(req,res) => {
   return (
-    axios.get(gameData)
+    axios.get(scenarioData)
       .then(response => res.json(response.data))
       .catch(err => console.log('Error in request'))
   )

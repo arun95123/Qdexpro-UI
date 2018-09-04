@@ -16,7 +16,10 @@ class Scenario extends React.Component {
   renderSubItems(){
     if(this.state.clicked){
       return(
-        <SubItem label={'Add Scenario'} />
+        <div>
+          <SubItem label={'Add Scenario'} />
+          <SubItem label={'Scenario 1'} />
+        </div>
       );
     } else{
       null
