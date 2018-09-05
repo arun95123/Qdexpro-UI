@@ -7,7 +7,8 @@ import {
   SHOW_TESTCASE_SETUP,
   SHOW_TESTCASE_TEARDOWN,
   REMOVE_SETUP_TEARDOWN,
-  REMOVE_STEP
+  REMOVE_STEP,
+  UPDATE_SCENARIO
 } from '../actions/types'
 
 
@@ -18,6 +19,13 @@ const initialState = {
 //change to es6
 export default function(state = initialState, action) {
   switch(action.type) {
+    case UPDATE_SCENARIO: {
+      return {
+        ...state,
+      }
+      break;
+    }
+
     case TESTCASE_SETUPTEARDOWN_HEIGHT: {
       const {testCases} = {...state};
       if(action.isTestCase==='true' && action.title==='Setup'){

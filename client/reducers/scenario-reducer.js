@@ -1,5 +1,5 @@
 import {
-  SHOW_SCENARIO_SETUP,SHOW_SCENARIO_TEARDOWN,SHOW_SCENARIO_TESTCASE,ADD_STEP,REMOVE_SETUP_TEARDOWN
+  SHOW_SCENARIO_SETUP,SHOW_SCENARIO_TEARDOWN,SHOW_SCENARIO_TESTCASE,ADD_STEP,REMOVE_SETUP_TEARDOWN,UPDATE_SCENARIO
 } from '../actions/types'
 
 const initialState = {
@@ -10,6 +10,26 @@ const initialState = {
 //change to es6
 export default function(state = initialState, action) {
   switch(action.type) {
+    case UPDATE_SCENARIO: {
+      let scenarioSetup = false;
+      let scenarioTearDown = false;
+      let scenarioSetupSteps = [];
+      let scenarioTearDownSteps= [];
+      if(action.data.setup) {
+        scenarioSetup = true;
+        scenarioSetupSteps = action.data.setup.steps;
+      }
+      if(action.data.tearDown) {
+        scenarioTearDown = true;
+        scenarioTearDownSteps = action.data.tearDown.steps;
+      }
+      return {
+        ...state,
+        scenarioSetup: scenarioSetup,
+        scenarioTearDown: scenarioTearDown,
+      };
+      break;
+    }
     case SHOW_SCENARIO_SETUP: {
       return {
         ...state,
@@ -24,6 +44,7 @@ export default function(state = initialState, action) {
       };
       break;
     }
+<<<<<<< HEAD
     case REMOVE_SETUP_TEARDOWN: {
       if(action.title==='Setup' &&  action.isTestCase=== 'false'){
         return {
@@ -39,6 +60,8 @@ export default function(state = initialState, action) {
       }
     }
       break;
+=======
+>>>>>>> Adding Inital Setup and Teardown to state
   }
-      return state;
+  return state;
 }

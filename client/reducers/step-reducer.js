@@ -1,5 +1,5 @@
 import {
-  ADD_STEP,REMOVE_STEP
+  ADD_STEP,REMOVE_STEP,UPDATE_SCENARIO
 } from '../actions/types'
 import testcaseReducer from './testcase-reducer'
 
@@ -11,12 +11,24 @@ const initialState = {
 //change to es6
 export default function(state = initialState, action) {
   switch(action.type) {
+    case UPDATE_SCENARIO: {
+      let updatedSetupSteps = action.data.setup.steps;
+      let updatedTeardownSteps = action.data.tearDown.steps;
+      console.log('^^^^',updatedSetupSteps)
+      return{
+        ...state,
+        scenarioSetupStep: updatedSetupSteps,
+        scenarioTearDownStep: updatedTeardownSteps
+      }
+      break;
+    }
+
     case ADD_STEP: {
       if(action.title ==='Setup' && action.isTestCase ==='false' )
       {
       const {scenarioSetupStep} = {...state};
       var newSetupStep = scenarioSetupStep.concat({
-        name: 'SetupStep'
+        stepName: 'SetupStep'
       });
       return{
         ...state,
@@ -27,7 +39,7 @@ export default function(state = initialState, action) {
     {
     const {scenarioTearDownStep} = {...state};
     var newTearDownStep = scenarioTearDownStep.concat({
-      name: 'TearDownStep'
+      stepName: 'TearDownStep'
     });
     return{
       ...state,
