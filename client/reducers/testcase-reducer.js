@@ -20,8 +20,21 @@ const initialState = {
 export default function(state = initialState, action) {
   switch(action.type) {
     case UPDATE_SCENARIO: {
+      let updatedtestCaseSetupStep=action.data.testCases[0].setup.steps;
+      let updatedtestCaseTearDownStep=action.data.testCases[0].tearDown.steps;
+      let updatedtestCaseTeststep=action.data.testCases[0].steps;
+      var newTestCases=[{
+        name: 'testCase',
+        testCaseSetupHeight: 0,
+        testCaseTearDownHeight: 0,
+        testCaseSetupStep: updatedtestCaseSetupStep,
+        testCaseTearDownStep: updatedtestCaseTearDownStep,
+        testCaseTestStep: updatedtestCaseTeststep
+      
+      }];
       return {
         ...state,
+      testCases: newTestCases
       }
       break;
     }
