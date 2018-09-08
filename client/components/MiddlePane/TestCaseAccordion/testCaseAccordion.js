@@ -11,7 +11,6 @@ class testCaseAccordion extends React.Component {
     this.textId='';
     this.edit = this.edit.bind(this);
     this.createTestSetup = this.createTestSetup.bind(this);
-    this.createTestStep = this.createTestStep.bind(this);
     this.createTestTearDown = this.createTestTearDown.bind(this);
     this.changeIcon = this.changeIcon.bind(this);
     this.getImage = this.getImage.bind(this);
@@ -28,9 +27,9 @@ class testCaseAccordion extends React.Component {
     }
   }
 
-  showTestCaseSetup(testcases,count){
-    if(testcases[count-1].showTestCaseSetup){
-      const {count} = this.props;
+  showTestCaseSetup(){
+    const {count,testCases} = this.props;
+    if(testCases[count-1].showTestCaseSetup){
       return(
         <div className='testcase--setup-teardown'>
           <SetupTearDown index={count-1} title='Setup' isTestCase= 'true' />
@@ -54,9 +53,10 @@ class testCaseAccordion extends React.Component {
     else return null;
   }
 
-  showTestCaseTearDown(testcases,count){
-    if(testcases[count-1].showTestCaseTearDown){
-      const {count} = this.props;
+  showTestCaseTearDown(){
+    const {count,testCases} = this.props;
+    if(testCases[count-1].showTestCaseTearDown){
+
       return(
         <div className='testcase--setup-teardown'>
           <SetupTearDown index={count-1} title='TearDown' isTestCase= 'true'  />
@@ -69,19 +69,17 @@ class testCaseAccordion extends React.Component {
   }
 
   createTestSetup(){
-    const {showTestCaseSetup,count} =this.props;
-    this.setState({expanded: true});
-    showTestCaseSetup(count-1);
-  }
-
-  createTestStep(){
-    console.log('clicked')
+   this.setState({expanded: true});
+   var title='Setup';
+   const {count,showTestCaseSetupTearDown}=this.props;
+   showTestCaseSetupTearDown(title, count-1);
   }
 
   createTestTearDown(){
-    const {showTestCaseTearDown,count} =this.props;
     this.setState({expanded: true});
-    showTestCaseTearDown(count-1);
+    var title='TearDown';
+    const {count,showTestCaseSetupTearDown}=this.props;
+    showTestCaseSetupTearDown(title, count-1);
  }
 
   edit(){

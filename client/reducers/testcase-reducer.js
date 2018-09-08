@@ -8,7 +8,8 @@ import {
   SHOW_TESTCASE_TEARDOWN,
   REMOVE_SETUP_TEARDOWN,
   REMOVE_STEP,
-  UPDATE_SCENARIO
+  UPDATE_SCENARIO,
+  SHOW_TESTCASE_SETUPTEARDOWN
 } from '../actions/types'
 
 
@@ -19,9 +20,19 @@ const initialState = {
 //change to es6
 export default function(state = initialState, action) {
   switch(action.type) {
-    case UPDATE_SCENARIO: {
-      let updatedtestCaseSetupStep=action.data.testCases[0].setup.steps;
-      let updatedtestCaseTearDownStep=action.data.testCases[0].tearDown.steps;
+   case UPDATE_SCENARIO: {
+     let tearDown=false;
+     let setup=false;
+     let updatedtestCaseSetupStep=[];
+     let updatedtestCaseTearDownStep=[]
+     if(action.data.testCases[0].setup){
+       updatedtestCaseSetupStep=action.data.testCases[0].setup.steps;
+       setup=true;
+     }
+     if(action.data.testCases[0].tearDown){
+       updatedtestCaseTearDownStep=action.data.testCases[0].tearDown.steps;
+       tearDown=true;
+     }
       let updatedtestCaseTeststep=action.data.testCases[0].steps;
       var newTestCases=[{
         name: 'testCase',
@@ -29,8 +40,9 @@ export default function(state = initialState, action) {
         testCaseTearDownHeight: 0,
         testCaseSetupStep: updatedtestCaseSetupStep,
         testCaseTearDownStep: updatedtestCaseTearDownStep,
+        showTestCaseSetup: setup,
+        showTestCaseTearDown: tearDown,
         testCaseTestStep: updatedtestCaseTeststep
-      
       }];
       return {
         ...state,
@@ -57,6 +69,7 @@ export default function(state = initialState, action) {
       }
       break;
     }
+<<<<<<< HEAD
 
     case SHOW_TESTCASE_SETUP: {
       const {testCases} = {...state};
@@ -78,6 +91,31 @@ export default function(state = initialState, action) {
       break;
     }
 
+=======
+    case SHOW_TESTCASE_SETUPTEARDOWN:{
+      if (action.data ==='Setup')
+      {
+        const {testCases} = {...state};
+        var newTestCases = testCases.slice();
+        newTestCases[action.index].showTestCaseSetup= true;
+        return{
+         ...state,
+         testCases : newTestCases
+        };
+      }
+      else if (action.data ==='TearDown')
+      {
+        const {testCases} = {...state};
+        var newTestCases = testCases.slice();
+        newTestCases[action.index].showTestCaseTearDown= true;
+        return{
+         ...state,
+         testCases : newTestCases
+        };
+      }
+      break;
+    }
+>>>>>>> working api-testcase
     case ADD_TESTCASE: {
       const {testCases} = {...state};
       var newTestCases = testCases.concat({
@@ -88,7 +126,9 @@ export default function(state = initialState, action) {
         testCaseTearDownHeight: 0,
         testCaseSetupStep: [],
         testCaseTearDownStep: [],
-        testCaseTestStep: []
+        testCaseTestStep: [],
+        showTestCaseSetup: false,
+        showTestCaseTearDown: false
       });
       return{
         ...state,

@@ -12,7 +12,8 @@ const mapDispatchToProps = (dispatch) => {
     addTestCaseStep: (index) => dispatch(addTestCaseStep(index)),
     removeTestCase: (index) => dispatch(removeTestCase(index)),
     showTestCaseSetup: (index) => dispatch(showTestCaseSetup(index)),
-    showTestCaseTearDown: (index) => dispatch(showTestCaseTearDown(index))
+    showTestCaseTearDown: (index) => dispatch(showTestCaseTearDown(index)),
+    showTestCaseSetupTearDown: (data,index) => dispatch(showTestCaseSetupTearDown(data,index))
   };
 };
 
