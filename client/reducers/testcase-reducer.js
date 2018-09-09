@@ -21,20 +21,22 @@ const initialState = {
 export default function(state = initialState, action) {
   switch(action.type) {
    case UPDATE_SCENARIO: {
-     let tearDown=false;
-     let setup=false;
-     let updatedtestCaseSetupStep=[];
-     let updatedtestCaseTearDownStep=[]
-     if(action.data.testCases[0].setup){
-       updatedtestCaseSetupStep=action.data.testCases[0].setup.steps;
-       setup=true;
-     }
-     if(action.data.testCases[0].tearDown){
-       updatedtestCaseTearDownStep=action.data.testCases[0].tearDown.steps;
-       tearDown=true;
-     }
+      let tearDown=false;
+      let setup=false;
+      let updatedtestCaseSetupStep=[];
+      let updatedtestCaseTearDownStep=[];
+      if(action.data.testCases[0].setup){
+        updatedtestCaseSetupStep=action.data.testCases[0].setup.steps;
+        setup=true;
+      }
+      if(action.data.testCases[0].tearDown){
+        updatedtestCaseTearDownStep=action.data.testCases[0].tearDown.steps;
+        tearDown=true;
+      }
       let updatedtestCaseTeststep=action.data.testCases[0].steps;
-      var newTestCases=[{
+      const {testCases} = {...state};
+      var newTestCases = testCases.slice();
+      newTestCases=[{
         name: 'testCase',
         testCaseSetupHeight: 0,
         testCaseTearDownHeight: 0,
@@ -43,34 +45,31 @@ export default function(state = initialState, action) {
         showTestCaseSetup: setup,
         showTestCaseTearDown: tearDown,
         testCaseTestStep: updatedtestCaseTeststep
-      }];
+      }]
       return {
         ...state,
-      testCases: newTestCases
-      }
+        testCases: newTestCases
+      };
       break;
     }
-
-    case TESTCASE_SETUPTEARDOWN_HEIGHT: {
-      const {testCases} = {...state};
-      if(action.isTestCase==='true' && action.title==='Setup'){
-        testCases[action.index].testCaseSetupHeight = action.height;
-        return {
-          ...state,
-          testCases: testCases
-        };
+      case TESTCASE_SETUPTEARDOWN_HEIGHT: {
+        const {testCases} = {...state};
+        if(action.isTestCase==='true' && action.title==='Setup'){
+          testCases[action.index].testCaseSetupHeight = action.height;
+          return {
+            ...state,
+            testCases: testCases
+          };
+        }
+        else if(action.isTestCase==='true' && action.title==='TearDown'){
+          testCases[action.index].testCaseTearDownHeight = action.height;
+          return {
+            ...state,
+            testCases: testCases
+          };
+        }
+        break;
       }
-      else if(action.isTestCase==='true' && action.title==='TearDown'){
-        testCases[action.index].testCaseTearDownHeight = action.height;
-        return {
-          ...state,
-          testCases: testCases
-        };
-      }
-      break;
-    }
-<<<<<<< HEAD
-
     case SHOW_TESTCASE_SETUP: {
       const {testCases} = {...state};
       testCases[action.index].showTestCaseSetup =true;
@@ -91,26 +90,23 @@ export default function(state = initialState, action) {
       break;
     }
 
-=======
     case SHOW_TESTCASE_SETUPTEARDOWN:{
       if (action.data ==='Setup')
       {
         const {testCases} = {...state};
-        var newTestCases = testCases.slice();
-        newTestCases[action.index].showTestCaseSetup= true;
+        testCases[action.index].showTestCaseSetup = true;
         return{
          ...state,
-         testCases : newTestCases
+         testCases : testCases
         };
       }
       else if (action.data ==='TearDown')
       {
         const {testCases} = {...state};
-        var newTestCases = testCases.slice();
-        newTestCases[action.index].showTestCaseTearDown= true;
+        testCases[action.index].showTestCaseTearDown = true;
         return{
          ...state,
-         testCases : newTestCases
+         testCases : testCases
         };
       }
       break;
@@ -238,8 +234,8 @@ export default function(state = initialState, action) {
         ...state,
         testCases : newTestCases
         };
-      }
-    break;
+      break;
+    }
   }
   return state;
 }

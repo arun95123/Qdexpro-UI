@@ -5,8 +5,7 @@ const mapStateToProps = (state) => {
   return {
     scenarioSetupStep: state.stepReducer.scenarioSetupStep,
     scenarioTearDownStep: state.stepReducer.scenarioTearDownStep,
-    testCases: state.testcaseReducer.testCases,
-    testCaseSetupStep: state.testcaseReducer.testCases.testCaseSetupStep
+    testCases: state.testcaseReducer.testCases
   };
 };
 

@@ -14,6 +14,11 @@ class middlePane extends React.Component {
     this.showTestCase = this.showTestCase.bind(this);
   }
 
+  componentDidMount(){
+    const{getScenario} = this.props;
+    getScenario();
+  }
+
   showSetup(scenarioSetup){
     if(scenarioSetup){
       return(
@@ -49,7 +54,7 @@ class middlePane extends React.Component {
   showTestCase(testCases){
   if(testCases.length != 0){
     let testCaseItems = [];
-    for (var i = 0; i <= testCases.length - 1; i++){
+    for (var i = 0; i <= testCases.length-1; i++){
       testCaseItems.push(<TestCase key={i} count={i+1} />);
     }
     return <div>{testCaseItems} <hr /></div>;
@@ -59,8 +64,6 @@ class middlePane extends React.Component {
 
   render() {
     const {scenarioSetup,scenarioTearDown,testCases,getScenario} = this.props;
-
-    getScenario();
     return(
       <div className='middle-pane'>
           <Scenario />
