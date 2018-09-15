@@ -21,31 +21,34 @@ const initialState = {
 export default function(state = initialState, action) {
   switch(action.type) {
    case UPDATE_SCENARIO: {
-      let tearDown=false;
-      let setup=false;
-      let updatedtestCaseSetupStep=[];
-      let updatedtestCaseTearDownStep=[];
-      if(action.data.testCases[0].setup){
-        updatedtestCaseSetupStep=action.data.testCases[0].setup.steps;
-        setup=true;
+     var newTestCases = [];
+     var i;
+     for(i=0; i<action.data.testCases.length; i++)
+      {
+        let tearDown=false;
+        let setup=false;
+        let updatedtestCaseSetupStep=[];
+        let updatedtestCaseTearDownStep=[];
+        if(action.data.testCases[i].setup){
+          updatedtestCaseSetupStep=action.data.testCases[i].setup.steps;
+          setup=true;
+        }
+        if(action.data.testCases[i].tearDown){
+          updatedtestCaseTearDownStep=action.data.testCases[i].tearDown.steps;
+          tearDown=true;
+        }
+        let updatedtestCaseTeststep=action.data.testCases[i].steps;
+        newTestCases.push({
+          name: 'testCase',
+          testCaseSetupHeight: 0,
+          testCaseTearDownHeight: 0,
+          testCaseSetupStep: updatedtestCaseSetupStep,
+          testCaseTearDownStep: updatedtestCaseTearDownStep,
+          showTestCaseSetup: setup,
+          showTestCaseTearDown: tearDown,
+          testCaseTestStep: updatedtestCaseTeststep
+        })
       }
-      if(action.data.testCases[0].tearDown){
-        updatedtestCaseTearDownStep=action.data.testCases[0].tearDown.steps;
-        tearDown=true;
-      }
-      let updatedtestCaseTeststep=action.data.testCases[0].steps;
-      const {testCases} = {...state};
-      var newTestCases = testCases.slice();
-      newTestCases=[{
-        name: 'testCase',
-        testCaseSetupHeight: 0,
-        testCaseTearDownHeight: 0,
-        testCaseSetupStep: updatedtestCaseSetupStep,
-        testCaseTearDownStep: updatedtestCaseTearDownStep,
-        showTestCaseSetup: setup,
-        showTestCaseTearDown: tearDown,
-        testCaseTestStep: updatedtestCaseTeststep
-      }]
       return {
         ...state,
         testCases: newTestCases
