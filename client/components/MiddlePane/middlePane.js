@@ -63,7 +63,7 @@ class middlePane extends React.Component {
 }
 
   render() {
-    const {scenarioSetup,scenarioTearDown,testCases,getScenario} = this.props;
+    const {scenarioSetup,scenarioTearDown,testCases,getScenario,saveScenario} = this.props;
     return(
       <div className='middle-pane'>
           <Scenario />
@@ -71,6 +71,7 @@ class middlePane extends React.Component {
           {this.showSetup(scenarioSetup)}
           {this.showTestCase(testCases)}
           {this.showTearDown(scenarioTearDown)}
+          <button onClick={saveScenario}>Create</button>
       </div>
     );
   }

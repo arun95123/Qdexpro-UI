@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { getScenario } from '../../actions'
+import { getScenario,saveScenario } from '../../actions'
 
 const mapStateToProps = (state) => {
   return {
@@ -11,7 +11,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getScenario: () => dispatch(getScenario())
+    getScenario: () => dispatch(getScenario()),
+    saveScenario: () => dispatch(saveScenario())
   };
 };
 

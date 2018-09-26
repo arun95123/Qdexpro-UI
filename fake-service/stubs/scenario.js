@@ -54,22 +54,18 @@ module.exports.getScenarioStub = () => {
         },
         {
           setup: {
-            setupId: '1',
-            setupName: 'Setup 1',
+            setupId: '2',
+            setupName: 'Setup 2',
             steps: [
               {
-                stepId: '1',
-                stepName: 'Step 1'
+                stepId: '2',
+                stepName: 'Step 2'
               }
             ]
           },
           steps: [
             {
               stepId: '2',
-              stepName: 'Step 1'
-            },
-            {
-              stepId: '3',
               stepName: 'Step 2'
             }
           ]
