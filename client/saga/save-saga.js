@@ -5,11 +5,11 @@ import { getScenarioData } from '../api/scenario';
 export const saveScenario = function* () {
   try {
     const state = yield select();
-    console.log(state)
+    console.log(state);
     var requestObj = {};
     var setup = {};
     var tearDown = {};
-    var testCases =[];
+    var testCases = [];
     if(state.scenarioReducer.scenarioSetup)
     {
       setup.steps = state.stepReducer.scenarioSetupStep;
@@ -22,16 +22,26 @@ export const saveScenario = function* () {
     {
       for(var i=0;i<state.testcaseReducer.testCases.length;i++)
       {
+        let setup = {};
+        let tearDown = {};
+        let steps = [];
         if(state.testcaseReducer.testCases[i].showTestCaseSetup)
         {
-          testCases[i].setup.steps=state.testcaseReducer.testCases[i].testCaseSetupStep;
-          console.log("****")
+           setup.steps = state.testcaseReducer.testCases[i].testCaseSetupStep;
         }
         if(state.testcaseReducer.testCases[i].showTestCaseTearDown)
         {
-          testCases[i].tearDown.steps=state.testcaseReducer.testCases[i].testCaseTearDownStep;
+          tearDown.steps = state.testcaseReducer.testCases[i].testCaseTearDownStep;
         }
-
+        if(state.testcaseReducer.testCases[i].testCaseTestStep)
+        {
+          steps = state.testcaseReducer.testCases[i].testCaseTestStep;
+        }
+        testCases.push({
+          setup,
+          tearDown,
+          steps
+        })
       }
     }
     requestObj = {setup,tearDown,testCases};
