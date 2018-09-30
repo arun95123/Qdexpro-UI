@@ -1,6 +1,6 @@
 import {takeEvery,select, put, call} from 'redux-saga/effects';
 import {GET_SCENARIO,SAVE_SCENARIO} from '../actions/types';
-import { getScenarioData } from '../api/scenario';
+import { postScenarioData } from '../api/scenario';
 
 export const saveScenario = function* () {
   try {
@@ -46,6 +46,7 @@ export const saveScenario = function* () {
     }
     requestObj = {setup,tearDown,testCases};
     console.log(requestObj);
+    yield call(postScenarioData,requestObj);
   }
   catch(error){
     //HANDLE ERROR HERE
