@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import AccordionBlock from '../AccordionBlock'
 import './accordionComponent.Style.scss'
+import {Icon } from 'semantic-ui-react'
 
 class accordionComponent extends Component{
   constructor(){
@@ -9,6 +10,7 @@ class accordionComponent extends Component{
     this.getImage = this.getImage.bind(this);
     this.stepAdd=this.stepAdd.bind(this);
     this.toggleClick = this.toggleClick.bind(this);
+    this.removeSetupTearDown=this.removeSetupTearDown.bind(this);
   }
 
   getImage(expanded){
@@ -25,6 +27,11 @@ class accordionComponent extends Component{
     this.setState({expanded: !this.state.expanded});
   }
 
+  removeSetupTearDown(){
+    const{title,removeSetupTearDown}=this.props;
+    removeSetupTearDown(title);
+  }
+
   render(){
     const {title, children, isTestCase, stepClick, index, addStep} = this.props;
     return(
@@ -33,6 +40,7 @@ class accordionComponent extends Component{
           <i className={this.getImage(this.state.expanded)} onClick={this.toggleClick}/>
           {title}
           <p className='accordion-component--plus' onClick={this.stepAdd}><i className="plus circle icon" /></p>
+          <Icon name="trash" onClick={this.removeSetupTearDown} />
         </div>
         <AccordionBlock
           expanded= {this.state.expanded}

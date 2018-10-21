@@ -1,6 +1,6 @@
 import React from 'react'
 import './scenario.Style.scss'
-import { Dropdown } from 'semantic-ui-react'
+import { Dropdown,Icon } from 'semantic-ui-react'
 
 class scenario extends React.Component {
   constructor(props){
