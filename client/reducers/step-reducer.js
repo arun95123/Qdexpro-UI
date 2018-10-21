@@ -1,5 +1,5 @@
 import {
-  ADD_STEP,REMOVE_STEP
+  ADD_STEP,REMOVE_STEP,REMOVE_SETUP_TEARDOWN
 } from '../actions/types'
 import testcaseReducer from './testcase-reducer'
 
@@ -35,6 +35,20 @@ export default function(state = initialState, action) {
      };
     }
       break;
+   }
+   case REMOVE_SETUP_TEARDOWN:
+   {
+     if(action.title==='Setup')
+     {
+       const {scenarioSetupStep} = {...state};
+       console.log(scenarioSetupStep);
+       return{
+         ...state,
+         scenarioSetupStep:[]
+       }
+     }
+
+     break;
    }
    case REMOVE_STEP:
    {

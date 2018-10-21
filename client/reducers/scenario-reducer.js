@@ -1,13 +1,11 @@
 import {
-  SHOW_SCENARIO_SETUP,SHOW_SCENARIO_TEARDOWN,SHOW_SCENARIO_TESTCASE,ADD_STEP
+  SHOW_SCENARIO_SETUP,SHOW_SCENARIO_TEARDOWN,SHOW_SCENARIO_TESTCASE,ADD_STEP,REMOVE_SETUP_TEARDOWN
 } from '../actions/types'
 
 const initialState = {
   scenarioSetup: false,
   scenarioTearDown: false,
   scenarioTestCase: 0,
-  scenarioSetupSteps: [],
-  scenarioTearDownSteps: []
 };
 
 //change to es6
@@ -27,28 +25,22 @@ export default function(state = initialState, action) {
       };
       break;
     }
-    case ADD_STEP: {
-      const {scenarioSetupSteps,scenarioTearDownSteps} = {...state};
-      if(action.isTestCase===false && action.title==='Setup'){
-        var newScenarioSetupSteps = scenarioSetupStep.concat({
-          name: 'scenarioSetupStep'
-          });
-        return {
-
-          ...state,
-          scenarioSetupSteps: newScenarioSetupSteps
-        };
-      }
-      else if(action.isTestCase===false && action.title==='TearDown'){
-        var newScenarioTearDownSteps = scenarioTearDownSteps.concat({
-          name: 'scenarioTearDownStep'
-          });
+    case REMOVE_SETUP_TEARDOWN: {
+      console.log(action.title);
+    if(action.title==='Setup') {
         return {
           ...state,
-          scenarioTearDownStep: newScenarioTearDownSteps
-        };
+          scenarioSetup: false
+        }
       }
+      if(action.title==='TearDown') {
+          return {
+            ...state,
+            scenarioTearDown: false
+          }
+        }
     }
-  }
+      break;
+      }
       return state;
 }

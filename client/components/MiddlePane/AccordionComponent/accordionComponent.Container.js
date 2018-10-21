@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addStep} from '../../../actions'
+import { addStep,removeSetupTearDown} from '../../../actions'
 
 const mapStateToProps = (state) => {
   return {
@@ -10,7 +10,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addStep: (isTestCase, title, index) => dispatch(addStep(isTestCase, title, index))
+    addStep: (isTestCase, title, index) => dispatch(addStep(isTestCase, title, index)),
+    removeSetupTearDown: (title) => dispatch(removeSetupTearDown(title))
   };
 };
 
