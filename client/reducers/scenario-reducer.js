@@ -26,21 +26,20 @@ export default function(state = initialState, action) {
       break;
     }
     case REMOVE_SETUP_TEARDOWN: {
-      console.log(action.title);
-    if(action.title==='Setup') {
+      if(action.title==='Setup'){
         return {
           ...state,
           scenarioSetup: false
         }
       }
-      if(action.title==='TearDown') {
-          return {
-            ...state,
-            scenarioTearDown: false
-          }
+      if(action.title==='TearDown'){
+        return {
+          ...state,
+          scenarioTearDown: false
         }
+      }
     }
       break;
-      }
+  }
       return state;
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import './testCase.Style.scss'
 import SetupTearDown from '../SetupTearDown'
-import { Dropdown } from 'semantic-ui-react'
+import { Dropdown,Icon } from 'semantic-ui-react'
 import Step from '../Step'
 
 class testCaseAccordion extends React.Component {
@@ -18,6 +18,7 @@ class testCaseAccordion extends React.Component {
     this.toggleClick = this.toggleClick.bind(this);
     this.setEndOfContenteditable = this.setEndOfContenteditable.bind(this);
     this.stepAdd = this.stepAdd.bind(this);
+    this.removeTestCase = this.removeTestCase.bind(this);
   }
 
   componentDidUpdate(){
@@ -130,6 +131,10 @@ class testCaseAccordion extends React.Component {
     addTestCaseStep(count - 1);
   }
 
+ removeTestCase(){
+   const{count, removeTestCase}=this.props;
+   removeTestCase(count - 1);
+ }
 
   render(){
     const {key, count, addTestCaseStep, testCases} = this.props;
@@ -150,6 +155,7 @@ class testCaseAccordion extends React.Component {
               </Dropdown.Menu>
             </Dropdown>
           </button>
+          <Icon name="trash" onClick={this.removeTestCase} />
         </div>
         <div className='testcase-content--body' ref={(elem) => elem ? this.setHeight(this.state.expanded, elem) : null}>
           {this.showTestCaseSetup()}

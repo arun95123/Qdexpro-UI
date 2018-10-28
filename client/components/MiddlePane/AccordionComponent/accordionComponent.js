@@ -39,8 +39,8 @@ class accordionComponent extends Component{
         <div className='accordion-component--header'>
           <i className={this.getImage(this.state.expanded)} onClick={this.toggleClick}/>
           {title}
-          <p className='accordion-component--plus' onClick={this.stepAdd}><i className="plus circle icon" /></p>
-          <Icon name="trash" onClick={this.removeSetupTearDown} />
+          <p className='accordion-component--plus' onClick={this.stepAdd}><Icon name="plus circle" /></p>
+          <Icon className='accordion-component--trash' name="trash" onClick={this.removeSetupTearDown} />
         </div>
         <AccordionBlock
           expanded= {this.state.expanded}

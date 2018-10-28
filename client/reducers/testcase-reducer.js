@@ -2,7 +2,8 @@ import {
   TESTCASE_SETUPTEARDOWN_HEIGHT,
   ADD_TESTCASE,
   ADD_STEP,
-  ADD_TESTCASESTEP
+  ADD_TESTCASESTEP,
+  REMOVE_TESTCASE
 } from '../actions/types'
 
 
@@ -46,6 +47,18 @@ export default function(state = initialState, action) {
         testCases: newTestCases
       };
       break;
+    }
+    case REMOVE_TESTCASE: {
+      const {testCases} = {...state};
+      var newTestCases = testCases.slice();
+      newTestCases.splice(action.index,1);
+      console.log(testCases);
+      console.log(action.index);
+      console.log(newTestCases);
+      return{
+        ...state,
+        testCases: newTestCases
+      }
     }
     case ADD_STEP:{
       if (action.title ==='Setup' && action.isTestCase==='true')

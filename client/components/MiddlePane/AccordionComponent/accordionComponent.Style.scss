@@ -7,9 +7,13 @@
   }
   &--plus{
     margin-left:auto;
+    margin-bottom: 0;
+  }
+  &--trash{
+    align-self: center;
   }
 }
 
 .Icon{
-  padding-top: 5px;
+  padding-top: 10px;
 }
