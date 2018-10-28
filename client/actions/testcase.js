@@ -1,7 +1,8 @@
 import {
   TESTCASE_SETUPTEARDOWN_HEIGHT,
   ADD_TESTCASE,
-  ADD_TESTCASESTEP
+  ADD_TESTCASESTEP,
+  REMOVE_TESTCASE
 } from './types'
 
 export const testCaseSetupteardownHeight = (isTestCase, title, height, index) => {
@@ -23,6 +24,13 @@ export const addTestCase = () => {
 export const addTestCaseStep = (index) => {
   return{
     type: ADD_TESTCASESTEP,
+    index: index
+  }
+}
+
+export const removeTestCase = (index) => {
+  return{
+    type: REMOVE_TESTCASE,
     index: index
   }
 }

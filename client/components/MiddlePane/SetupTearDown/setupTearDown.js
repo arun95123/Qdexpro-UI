@@ -11,32 +11,31 @@ class setupTearDown extends Component{
 
   showStep(){
     const {scenarioSetupStep, scenarioTearDownStep,isTestCase,title, index, testCases, testCaseSetupStep} = this.props;
-
     if(isTestCase==='false' && title==='Setup')
     {
       let setupStepItems = [];
-      for (var i = 0; i <= scenarioSetupStep.length; i++){
+      for (var i = 0; i < scenarioSetupStep.length; i++){
         setupStepItems.push(<Step isTestCase={isTestCase} title={title} index={index} key={i} count={i+1} />);
       }
       return <div>{setupStepItems}</div>;
     }
     else if(isTestCase==='false' && title==='TearDown'){
       let tearDownStepItems = [];
-      for (var i = 0; i <= scenarioTearDownStep.length; i++){
+      for (var i = 0; i < scenarioTearDownStep.length; i++){
         tearDownStepItems.push(<Step isTestCase={isTestCase} title={title} index={index} key={i} count={i+1} />);
       }
       return <div>{tearDownStepItems}</div>;
     }
     else if(isTestCase==='true' && title==='Setup'){
       let testCaseSetupStepItems = [];
-      for (var i = 0; i <= testCases[index].testCaseSetupStep.length; i++){
+      for (var i = 0; i < testCases[index].testCaseSetupStep.length; i++){
         testCaseSetupStepItems.push(<Step isTestCase={isTestCase} title={title} index={index} key={i} count={i+1} />);
       }
       return <div>{testCaseSetupStepItems}</div>;
     }
     else if(isTestCase==='true' && title==='TearDown'){
       let testCaseTearDownStepItems = [];
-      for (var i = 0; i <= testCases[index].testCaseTearDownStep.length; i++){
+      for (var i = 0; i < testCases[index].testCaseTearDownStep.length; i++){
         testCaseTearDownStepItems.push(<Step isTestCase={isTestCase} title={title} index={index} key={i} count={i+1} />);
       }
       return <div>{testCaseTearDownStepItems}</div>;

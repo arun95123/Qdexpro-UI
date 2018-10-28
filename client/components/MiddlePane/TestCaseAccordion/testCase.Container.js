@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { addTestCaseStep} from '../../../actions'
+import { addTestCaseStep,removeTestCase } from '../../../actions'
 
 const mapStateToProps = (state) => {
   return {
@@ -9,7 +9,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addTestCaseStep: (index) => dispatch(addTestCaseStep(index))
+    addTestCaseStep: (index) => dispatch(addTestCaseStep(index)),
+    removeTestCase: (index) => dispatch(removeTestCase(index))
   };
 };
 
