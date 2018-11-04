@@ -3,7 +3,7 @@ const router=express.Router();
 const axios = require('axios');
 
 const scenarioData = 'http://localhost:2323/check';
-const saveScenario = 'http://localhost:2323/postScenario'
+const saveScenario = 'http://qdexproapp-env.phkgkyj2e2.us-east-2.elasticbeanstalk.com/insertScenarioDetails'
 
 router.get('/scenario',(req,res) => {
   return (

@@ -8,43 +8,44 @@ export const saveScenario = function* () {
     console.log(state);
     var requestObj = {};
     var setup = {};
-    var tearDown = {};
-    var testCases = [];
+    var teardown = {};
+    var testCase = [];
     if(state.scenarioReducer.scenarioSetup)
     {
-      setup.steps = state.stepReducer.scenarioSetupStep;
+      setup.step = state.stepReducer.scenarioSetupStep;
     }
     if(state.scenarioReducer.scenarioSetup)
     {
-      tearDown.steps = state.stepReducer.scenarioTearDownStep;
+      teardown.step = state.stepReducer.scenarioTearDownStep;
     }
     if(state.testcaseReducer.testCases)
     {
       for(var i=0;i<state.testcaseReducer.testCases.length;i++)
       {
         let setup = {};
-        let tearDown = {};
-        let steps = [];
+        let teardown = {};
+        let step = [];
         if(state.testcaseReducer.testCases[i].showTestCaseSetup)
         {
-           setup.steps = state.testcaseReducer.testCases[i].testCaseSetupStep;
+           setup.step = state.testcaseReducer.testCases[i].testCaseSetupStep;
         }
         if(state.testcaseReducer.testCases[i].showTestCaseTearDown)
         {
-          tearDown.steps = state.testcaseReducer.testCases[i].testCaseTearDownStep;
+          teardown.step = state.testcaseReducer.testCases[i].testCaseTearDownStep;
         }
         if(state.testcaseReducer.testCases[i].testCaseTestStep)
         {
-          steps = state.testcaseReducer.testCases[i].testCaseTestStep;
+          step = state.testcaseReducer.testCases[i].testCaseTestStep;
         }
-        testCases.push({
+        testCase.push({
+          testCaseName: state.testcaseReducer.testCases[i].name,
           setup,
-          tearDown,
-          steps
+          teardown,
+          step
         })
       }
     }
-    requestObj = {setup,tearDown,testCases};
+    requestObj = {scenarioName:'login',setup,teardown,testCase};
     console.log(requestObj);
     yield call(postScenarioData,requestObj);
   }

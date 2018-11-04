@@ -27,8 +27,12 @@ export default function(state = initialState, action) {
       if(action.title ==='Setup' && action.isTestCase ==='false' )
       {
       const {scenarioSetupStep} = {...state};
+      var len = scenarioSetupStep.length;
       var newSetupStep = scenarioSetupStep.concat({
-        stepName: 'SetupStep'
+        stepName: 'SetupStep'+len,
+        idType: '3',
+        controlType: 'Button',
+        waitTime: '2'
       });
       return{
         ...state,
@@ -38,8 +42,12 @@ export default function(state = initialState, action) {
     else if(action.title ==='TearDown' && action.isTestCase ==='false')
     {
     const {scenarioTearDownStep} = {...state};
+    var len = scenarioTearDownStep.length;
     var newTearDownStep = scenarioTearDownStep.concat({
-      stepName: 'TearDownStep'
+      stepName: 'TearDownStep'+len,
+      idType: '3',
+      controlType: 'Button',
+      waitTime: '2'
     });
     return{
       ...state,

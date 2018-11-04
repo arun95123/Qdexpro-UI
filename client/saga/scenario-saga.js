@@ -1,7 +1,6 @@
 import {takeEvery, put, call} from 'redux-saga/effects';
 import {GET_SCENARIO} from '../actions/types';
 import { getScenarioData } from '../api/scenario';
-import { updateScenario } from '../actions';
 
 export const getScenario = function* () {
   try {

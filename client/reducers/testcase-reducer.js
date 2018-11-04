@@ -117,8 +117,9 @@ export default function(state = initialState, action) {
 >>>>>>> working api-testcase
     case ADD_TESTCASE: {
       const {testCases} = {...state};
+      var len = testCases.length;
       var newTestCases = testCases.concat({
-        name: 'testCase',
+        name: 'testCase'+len,
         testCaseSetupHeight: 0,
         showTestCaseSetup: false,
         showTestCaseTearDown: false,
@@ -208,7 +209,13 @@ export default function(state = initialState, action) {
       {
         const {testCases} = {...state};
         var newTestCases = testCases.slice();
-        var newSetupStep = newTestCases[action.index].testCaseSetupStep.concat({name: 'TestCaseSetupStep'});
+        var len = newTestCases[action.index].testCaseSetupStep.length;
+        var newSetupStep = newTestCases[action.index].testCaseSetupStep.concat({
+          stepName: 'TestCaseSetupStep'+len,
+          idType: '3',
+          controlType: 'Button',
+          waitTime: '2'
+        });
         newTestCases[action.index].testCaseSetupStep = newSetupStep
         return{
          ...state,
@@ -219,7 +226,13 @@ export default function(state = initialState, action) {
       {
         const {testCases} = {...state};
         var newTestCases = testCases.slice();
-        var newTearDownStep = newTestCases[action.index].testCaseTearDownStep.concat({name: 'TestCaseTearDownStep'});
+        var len = newTestCases[action.index].testCaseTearDownStep.length;
+        var newTearDownStep = newTestCases[action.index].testCaseTearDownStep.concat({
+          stepName: 'TestCaseTearDownStep'+len,
+          idType: '3',
+          controlType: 'Button',
+          waitTime: '2'
+        });
         newTestCases[action.index].testCaseTearDownStep = newTearDownStep
         return{
           ...state,
@@ -231,7 +244,13 @@ export default function(state = initialState, action) {
     case ADD_TESTCASESTEP:{
       const {testCases} = {...state};
       var newTestCases = testCases.slice();
-      var newTestCaseStep = newTestCases[action.index].testCaseTestStep.concat({name: 'TestCaseTestStep'});
+      var len = newTestCases[action.index].testCaseTestStep.length;
+      var newTestCaseStep = newTestCases[action.index].testCaseTestStep.concat({
+        stepName: 'TestCaseStep'+len,
+        idType: '3',
+        controlType: 'Button',
+        waitTime: '2'
+      });
       newTestCases[action.index].testCaseTestStep = newTestCaseStep
       return{
         ...state,
