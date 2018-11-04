@@ -7,7 +7,7 @@ import Step from '../Step'
 class testCaseAccordion extends React.Component {
   constructor(props){
     super(props);
-    this.state = {editing: "false",expanded: false, showTestCaseSetup: false, showTestCaseTearDown: false};
+    this.state = {editing: "false",expanded: false};
     this.textId='';
     this.edit = this.edit.bind(this);
     this.createTestSetup = this.createTestSetup.bind(this);
@@ -28,8 +28,8 @@ class testCaseAccordion extends React.Component {
     }
   }
 
-  showTestCaseSetup(){
-    if(this.state.showTestCaseSetup){
+  showTestCaseSetup(testcases,count){
+    if(testcases[count-1].showTestCaseSetup){
       const {count} = this.props;
       return(
         <div className='testcase--setup-teardown'>
@@ -43,6 +43,7 @@ class testCaseAccordion extends React.Component {
   }
 
   showTestCaseStep(testCases, count){
+
     if(testCases[count - 1].testCaseTestStep.length != 0){
       let stepItems = [];
       for (var i = 0; i <= testCases[count - 1].testCaseTestStep.length - 1; i++){
@@ -53,8 +54,8 @@ class testCaseAccordion extends React.Component {
     else return null;
   }
 
-  showTestCaseTearDown(){
-    if(this.state.showTestCaseTearDown){
+  showTestCaseTearDown(testcases,count){
+    if(testcases[count-1].showTestCaseTearDown){
       const {count} = this.props;
       return(
         <div className='testcase--setup-teardown'>
@@ -68,7 +69,9 @@ class testCaseAccordion extends React.Component {
   }
 
   createTestSetup(){
-   this.setState({expanded: true, showTestCaseSetup: true});
+    const {showTestCaseSetup,count} =this.props;
+    this.setState({expanded: true});
+    showTestCaseSetup(count-1);
   }
 
   createTestStep(){
@@ -76,7 +79,9 @@ class testCaseAccordion extends React.Component {
   }
 
   createTestTearDown(){
-    this.setState({expanded: true, showTestCaseTearDown: true});
+    const {showTestCaseTearDown,count} =this.props;
+    this.setState({expanded: true});
+    showTestCaseTearDown(count-1);
  }
 
   edit(){
@@ -158,9 +163,9 @@ class testCaseAccordion extends React.Component {
           <Icon name="trash" onClick={this.removeTestCase} />
         </div>
         <div className='testcase-content--body' ref={(elem) => elem ? this.setHeight(this.state.expanded, elem) : null}>
-          {this.showTestCaseSetup()}
           {this.showTestCaseStep(testCases, count)}
-          {this.showTestCaseTearDown()}
+          {this.showTestCaseSetup(testCases, count)}
+          {this.showTestCaseTearDown(testCases, count)}
         </div>
       </div>
     );

@@ -2,7 +2,9 @@ import {
   TESTCASE_SETUPTEARDOWN_HEIGHT,
   ADD_TESTCASE,
   ADD_TESTCASESTEP,
-  REMOVE_TESTCASE
+  REMOVE_TESTCASE,
+  SHOW_TESTCASE_SETUP,
+  SHOW_TESTCASE_TEARDOWN
 } from './types'
 
 export const testCaseSetupteardownHeight = (isTestCase, title, height, index) => {
@@ -13,6 +15,20 @@ export const testCaseSetupteardownHeight = (isTestCase, title, height, index) =>
     height: height,
     index: index
   };
+}
+
+export const showTestCaseSetup = (index) => {
+  return{
+    type: SHOW_TESTCASE_SETUP,
+    index: index
+  }
+}
+
+export const showTestCaseTearDown = (index) => {
+  return{
+    type: SHOW_TESTCASE_TEARDOWN,
+    index: index
+  }
 }
 
 export const addTestCase = () => {

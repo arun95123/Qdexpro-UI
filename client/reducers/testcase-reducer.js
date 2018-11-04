@@ -3,7 +3,9 @@ import {
   ADD_TESTCASE,
   ADD_STEP,
   ADD_TESTCASESTEP,
-  REMOVE_TESTCASE
+  REMOVE_TESTCASE,
+  SHOW_TESTCASE_SETUP,
+  SHOW_TESTCASE_TEARDOWN
 } from '../actions/types'
 
 
@@ -32,11 +34,35 @@ export default function(state = initialState, action) {
       }
       break;
     }
+
+    case SHOW_TESTCASE_SETUP: {
+      console.log(action.index);
+      const {testCases} = {...state};
+      testCases[action.index].showTestCaseSetup =true;
+      return {
+        ...state,
+        testCases : testCases
+      };
+      break;
+    }
+
+    case SHOW_TESTCASE_TEARDOWN: {
+      console.log(action.index);
+      const {testCases} = {...state};
+      testCases[action.index].showTestCaseTearDown = true;
+      return {
+        ...state,
+        testCases : testCases
+      };
+      break;
+    }
     case ADD_TESTCASE: {
       const {testCases} = {...state};
       var newTestCases = testCases.concat({
         name: 'testCase',
         testCaseSetupHeight: 0,
+        showTestCaseSetup: false,
+        showTestCaseTearDown: false,
         testCaseTearDownHeight: 0,
         testCaseSetupStep: [],
         testCaseTearDownStep: [],
@@ -44,7 +70,7 @@ export default function(state = initialState, action) {
       });
       return{
         ...state,
-        testCases: newTestCases
+        testCases: newTestCases,
       };
       break;
     }
