@@ -14,9 +14,11 @@ export const showScenarioTearDown = () => {
   };
 };
 
-export const removeSetupTearDown = (title) => {
+export const removeSetupTearDown = (title,isTestCase,index) => {
   return {
     type: REMOVE_SETUP_TEARDOWN,
-    title: title
+    title: title,
+    isTestCase: isTestCase,
+    index: index
   };
 }

@@ -10,8 +10,8 @@ class step extends Component{
   }
 
 remove(){
-  const {isTestCase, title, index,removeStep}=this.props;
-  removeStep(isTestCase,title,index);
+  const {isTestCase, title,index,count,removeStep}=this.props;
+  removeStep(isTestCase,title,count-1,index);
 }
 
 render(){

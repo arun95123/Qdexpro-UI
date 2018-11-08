@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    removeStep: (isTestCase, title, index) => dispatch(removeStep(isTestCase, title, index))
+    removeStep: (isTestCase, title, index,testCaseindex) => dispatch(removeStep(isTestCase, title, index,testCaseindex))
   };
 };
 

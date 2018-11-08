@@ -47,7 +47,7 @@ class testCaseAccordion extends React.Component {
     if(testCases[count - 1].testCaseTestStep.length != 0){
       let stepItems = [];
       for (var i = 0; i <= testCases[count - 1].testCaseTestStep.length - 1; i++){
-        stepItems.push(<Step key={i} count={i+1} />);
+        stepItems.push(<Step title="Testcase" index={count-1} key={i} count={i+1} />);
       }
       return <div>{stepItems} <hr /></div>;
     }
@@ -123,11 +123,13 @@ class testCaseAccordion extends React.Component {
   }
 
   disableSetup(showTestCaseSetup){
-      return showTestCaseSetup ? 'disabled item' : 'item';
+      const{testCases,count}=this.props;
+      return testCases[count-1].showTestCaseSetup ? 'disabled item' : 'item';
   }
 
   disableTearDown(showTestCaseTearDown){
-      return showTestCaseTearDown ? 'disabled item' : 'item';
+    const{testCases,count}=this.props;
+    return testCases[count-1].showTestCaseTearDown ? 'disabled item' : 'item';
   }
 
   stepAdd(){
@@ -163,8 +165,8 @@ class testCaseAccordion extends React.Component {
           <Icon name="trash" onClick={this.removeTestCase} />
         </div>
         <div className='testcase-content--body' ref={(elem) => elem ? this.setHeight(this.state.expanded, elem) : null}>
-          {this.showTestCaseStep(testCases, count)}
           {this.showTestCaseSetup(testCases, count)}
+          {this.showTestCaseStep(testCases, count)}
           {this.showTestCaseTearDown(testCases, count)}
         </div>
       </div>

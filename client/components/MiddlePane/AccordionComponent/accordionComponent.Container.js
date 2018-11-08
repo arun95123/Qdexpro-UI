@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addStep: (isTestCase, title, index) => dispatch(addStep(isTestCase, title, index)),
-    removeSetupTearDown: (title) => dispatch(removeSetupTearDown(title))
+    removeSetupTearDown: (title,isTestCase,index) => dispatch(removeSetupTearDown(title,isTestCase,index))
   };
 };
 
