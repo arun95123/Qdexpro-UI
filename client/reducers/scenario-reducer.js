@@ -4,8 +4,7 @@ import {
 
 const initialState = {
   scenarioSetup: false,
-  scenarioTearDown: false,
-  scenarioTestCase: 0,
+  scenarioTearDown: false
 };
 
 //change to es6
@@ -26,13 +25,13 @@ export default function(state = initialState, action) {
       break;
     }
     case REMOVE_SETUP_TEARDOWN: {
-      if(action.title==='Setup'){
+      if(action.title==='Setup' &&  action.isTestCase=== 'false'){
         return {
           ...state,
           scenarioSetup: false
         }
       }
-      if(action.title==='TearDown'){
+      if(action.title==='TearDown' &&  action.isTestCase=== 'false'){
         return {
           ...state,
           scenarioTearDown: false

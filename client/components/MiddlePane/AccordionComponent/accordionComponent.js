@@ -28,8 +28,8 @@ class accordionComponent extends Component{
   }
 
   removeSetupTearDown(){
-    const{title,removeSetupTearDown}=this.props;
-    removeSetupTearDown(title);
+    const{title,isTestCase,removeSetupTearDown,index}=this.props;
+    removeSetupTearDown(title,isTestCase,index);
   }
 
   render(){

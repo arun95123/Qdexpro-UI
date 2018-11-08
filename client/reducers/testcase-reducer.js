@@ -5,7 +5,9 @@ import {
   ADD_TESTCASESTEP,
   REMOVE_TESTCASE,
   SHOW_TESTCASE_SETUP,
-  SHOW_TESTCASE_TEARDOWN
+  SHOW_TESTCASE_TEARDOWN,
+  REMOVE_SETUP_TEARDOWN,
+  REMOVE_STEP
 } from '../actions/types'
 
 
@@ -36,7 +38,6 @@ export default function(state = initialState, action) {
     }
 
     case SHOW_TESTCASE_SETUP: {
-      console.log(action.index);
       const {testCases} = {...state};
       testCases[action.index].showTestCaseSetup =true;
       return {
@@ -47,7 +48,6 @@ export default function(state = initialState, action) {
     }
 
     case SHOW_TESTCASE_TEARDOWN: {
-      console.log(action.index);
       const {testCases} = {...state};
       testCases[action.index].showTestCaseTearDown = true;
       return {
@@ -56,6 +56,7 @@ export default function(state = initialState, action) {
       };
       break;
     }
+
     case ADD_TESTCASE: {
       const {testCases} = {...state};
       var newTestCases = testCases.concat({
@@ -78,13 +79,68 @@ export default function(state = initialState, action) {
       const {testCases} = {...state};
       var newTestCases = testCases.slice();
       newTestCases.splice(action.index,1);
-      console.log(testCases);
-      console.log(action.index);
-      console.log(newTestCases);
       return{
         ...state,
         testCases: newTestCases
       }
+      break;
+    }
+    case REMOVE_STEP: {
+
+      if(action.title==='Testcase')
+      {
+      const {testCases} = {...state};
+      var newTestCases = testCases.slice();
+      newTestCases[action.testCaseindex].testCaseTestStep.splice(action.index,1);
+      return{
+        ...state,
+        testCases: newTestCases
+        }
+      }
+      else if(action.title==='Setup' && action.isTestCase==='true')
+      {
+      const {testCases} = {...state};
+      var newTestCases = testCases.slice();
+      newTestCases[action.testCaseindex].testCaseSetupStep.splice(action.index,1);
+      return{
+        ...state,
+        testCases: newTestCases
+        }
+      }
+      else if(action.title==='TearDown' && action.isTestCase==='true')
+      {
+      const {testCases} = {...state};
+      var newTestCases = testCases.slice();
+      newTestCases[action.testCaseindex].testCaseTearDownStep.splice(action.index,1);
+      return{
+        ...state,
+        testCases: newTestCases
+        }
+      }
+      break;
+    }
+    case REMOVE_SETUP_TEARDOWN: {
+      if(action.title==='Setup' && action.isTestCase=== 'true' ){
+        const {testCases} = {...state};
+        var newTestCases = testCases.slice();
+        newTestCases[action.index].showTestCaseSetup= false,
+        newTestCases[action.index].testCaseSetupStep= []
+        return {
+          ...state,
+        testCases: newTestCases
+        }
+      }
+      if(action.title==='TearDown' && action.isTestCase=== 'true'){
+        const {testCases} = {...state};
+        var newTestCases = testCases.slice();
+        newTestCases[action.index].showTestCaseTearDown= false,
+        newTestCases[action.index].testCaseTearDownStep= []
+        return {
+          ...state,
+          testCases: newTestCases
+        }
+      }
+      break;
     }
     case ADD_STEP:{
       if (action.title ==='Setup' && action.isTestCase==='true')

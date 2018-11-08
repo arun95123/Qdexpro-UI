@@ -11,11 +11,12 @@ export const addStep = (isTestCase, title, index) => {
   }
 };
 
-export const removeStep = (isTestCase, title, index) => {
+export const removeStep = (isTestCase, title, index,testCaseindex) => {
   return{
     type: REMOVE_STEP,
     isTestCase: isTestCase,
     title: title,
-    index: index
+    index: index,
+    testCaseindex: testCaseindex
   }
 };
