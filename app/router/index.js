@@ -16,8 +16,11 @@ router.get('/scenario',(req,res) => {
 router.post('/saveScenario', (req,res) => {
   return (
     axios.post(saveScenario,req.body)
-      .then(response => console.log('post request to service'))
-      .catch(err => console.log('Error in request'))
+      .then(response => {
+        console.log('post request to service')
+        return response;
+      })
+      .catch(err => console.log('Error in request',err))
     )
 });
 

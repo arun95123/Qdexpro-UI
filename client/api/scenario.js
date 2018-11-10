@@ -8,10 +8,10 @@ export const getScenarioData = () => {
 
 export const postScenarioData = (data) => {
   return axios.post('http://localhost:4444/api/saveScenario', data)
-    .then(function (response) {
-      console.log(response);
+    .then(response => {
+      return response;
     })
-    .catch(function (error) {
-      console.log(error);
+    .catch(error => {
+      console.log('Error in api',error);
     });
 }
