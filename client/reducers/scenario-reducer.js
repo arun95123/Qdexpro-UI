@@ -44,7 +44,6 @@ export default function(state = initialState, action) {
       };
       break;
     }
-<<<<<<< HEAD
     case REMOVE_SETUP_TEARDOWN: {
       if(action.title==='Setup' &&  action.isTestCase=== 'false'){
         return {
@@ -60,8 +59,6 @@ export default function(state = initialState, action) {
       }
     }
       break;
-=======
->>>>>>> Adding Inital Setup and Teardown to state
   }
   return state;
 }

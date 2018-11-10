@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { addTestCaseStep,removeTestCase,showTestCaseSetup,showTestCaseTearDown } from '../../../actions'
+import { addTestCaseStep,removeTestCase,showTestCaseSetup,showTestCaseTearDown,showTestCaseSetupTearDown } from '../../../actions'
 
 const mapStateToProps = (state) => {
   return {

@@ -114,12 +114,11 @@ export default function(state = initialState, action) {
       }
       break;
     }
->>>>>>> working api-testcase
     case ADD_TESTCASE: {
       const {testCases} = {...state};
       var len = testCases.length;
       var newTestCases = testCases.concat({
-        name: 'testCase'+len,
+        name: 'testCase'+ len,
         testCaseSetupHeight: 0,
         showTestCaseSetup: false,
         showTestCaseTearDown: false,
