@@ -86,13 +86,14 @@ export default function(state = initialState, action) {
       break;
     }
     case REMOVE_STEP: {
-
+      console.log("**");
       if(action.title==='Testcase')
       {
       const {testCases} = {...state};
       var newTestCases = testCases.slice();
       newTestCases[action.testCaseindex].testCaseTestStep.splice(action.index,1);
       return{
+
         ...state,
         testCases: newTestCases
         }
