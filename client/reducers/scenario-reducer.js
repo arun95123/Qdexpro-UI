@@ -57,8 +57,8 @@ export default function(state = initialState, action) {
           scenarioTearDown: false
         }
       }
-    }
       break;
+    }
   }
   return state;
 }

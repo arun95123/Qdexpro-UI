@@ -1,5 +1,5 @@
 import {
-  ADD_STEP,REMOVE_STEP,UPDATE_SCENARIO
+  ADD_STEP,REMOVE_STEP,UPDATE_SCENARIO,REMOVE_SETUP_TEARDOWN
 } from '../actions/types'
 import testcaseReducer from './testcase-reducer'
 
@@ -56,8 +56,7 @@ export default function(state = initialState, action) {
     }
       break;
    }
-   case REMOVE_STEP:
-   {
+   case REMOVE_STEP: {
      if(action.title ==='Setup' && action.isTestCase ==='false' )
      {
        console.log(action.index)
@@ -67,18 +66,33 @@ export default function(state = initialState, action) {
      return{
        ...state,
        scenarioSetupStep: newSetupStep
-     };
-   }
-   else if(action.title ==='TearDown' && action.isTestCase ==='false')
-   {
-   const {scenarioTearDownStep} = {...state};
-   var newTearDownStep = scenarioTearDownStep.slice();
-   newTearDownStep.splice(action.index,1);
-   return{
-     ...state,
-     scenarioTearDownStep: newTearDownStep
-    };
-   }
+        };
+     }
+     else if(action.title ==='TearDown' && action.isTestCase ==='false')
+     {
+     const {scenarioTearDownStep} = {...state};
+     var newTearDownStep = scenarioTearDownStep.slice();
+     newTearDownStep.splice(action.index,1);
+     return {
+       ...state,
+       scenarioTearDownStep: newTearDownStep
+        };
+     }
+       break;
+    }
+   case REMOVE_SETUP_TEARDOWN: {
+     if(action.title==='Setup' &&  action.isTestCase=== 'false'){
+       return {
+         ...state,
+         scenarioSetupStep: []
+       }
+     }
+     if(action.title==='TearDown' &&  action.isTestCase=== 'false'){
+       return {
+         ...state,
+         scenarioTearDownStep: []
+       }
+     }
      break;
    }
   }
