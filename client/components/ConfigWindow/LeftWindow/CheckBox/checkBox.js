@@ -1,7 +1,7 @@
 import React from 'react'
 import '../leftWindow.Style.scss'
 import { Dropdown,Radio } from 'semantic-ui-react'
-import { actionOptions,waitTypeOptions } from './CheckBox.dropDownOptions'
+import { actionOptions,waitTypeOptions } from './checkBox.dropDownOptions'
 
 class CheckBox extends React.Component{
   constructor(){

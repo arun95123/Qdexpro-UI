@@ -1,7 +1,7 @@
 import React from 'react'
 import '../leftWindow.Style.scss'
 import { Dropdown,Radio } from 'semantic-ui-react'
-import { actionOptions,waitTypeOptions,ByTypeOptions} from './ComboBox.dropDownOptions'
+import { actionOptions,waitTypeOptions,ByTypeOptions} from './comboBox.dropDownOptions'
 
 class ComboBox extends React.Component{
   constructor(){
