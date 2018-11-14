@@ -12,9 +12,11 @@
     "test": "",
     "start": "node server",
     "fakeservice": "node fake-service/start.js",
-    "build": "rimraf dist && webpack --config ./webpack.config.js --watch --progress --profile --colors",
+    "build:watch": "rimraf dist && webpack --config ./webpack.config.js --watch --progress --profile --colors",
+    "build": "rimraf dist && webpack --config ./webpack.config.js --progress --profile --colors",
     "start:all": "run-p fakeservice start",
-    "start:dev": "run-p build start:all",
+    "start:dev": "run-p build:watch start:all",
+    "start:prod": "npm run build && npm run start",
     "eslint": "eslint .",
     "jscs": "jscs ."
   },
