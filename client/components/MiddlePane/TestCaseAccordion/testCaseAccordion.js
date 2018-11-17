@@ -18,6 +18,7 @@ class testCaseAccordion extends React.Component {
     this.setEndOfContenteditable = this.setEndOfContenteditable.bind(this);
     this.stepAdd = this.stepAdd.bind(this);
     this.removeTestCase = this.removeTestCase.bind(this);
+    this.changeTestCaseBodyStyle = this.changeTestCaseBodyStyle.bind(this);
   }
 
   componentDidUpdate(){
@@ -60,7 +61,6 @@ class testCaseAccordion extends React.Component {
       return(
         <div className='testcase--setup-teardown'>
           <SetupTearDown index={count-1} title='TearDown' isTestCase= 'true'  />
-          <hr/>
         </div>
       );
     }else{
@@ -141,6 +141,11 @@ class testCaseAccordion extends React.Component {
    removeTestCase(count - 1);
  }
 
+ changeTestCaseBodyStyle()
+ {
+   return this.state.expanded ? 'testcase-content--body-expanded' : 'testcase-content--body'
+ }
+
   render(){
     const {key, count, addTestCaseStep, testCases} = this.props;
     return(
@@ -162,7 +167,7 @@ class testCaseAccordion extends React.Component {
           </button>
           <Icon name="trash" onClick={this.removeTestCase} />
         </div>
-        <div className='testcase-content--body' ref={(elem) => elem ? this.setHeight(this.state.expanded, elem) : null}>
+        <div className={this.changeTestCaseBodyStyle()} ref={(elem) => elem ? this.setHeight(this.state.expanded, elem) : null}>
           {this.showTestCaseSetup(testCases, count)}
           {this.showTestCaseStep(testCases, count)}
           {this.showTestCaseTearDown(testCases, count)}

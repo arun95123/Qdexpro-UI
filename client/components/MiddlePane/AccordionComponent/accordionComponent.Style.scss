@@ -1,8 +1,15 @@
 .accordion-component {
+  background-color: #e1e1e1;
+  border-radius: 5px;
+  border: solid;
+  border-color: #929292;
+  padding:5px;
+
   &--header {
     display: flex;
     flex-flow: row wrap;
     font-style: oblique;
+    font-weight: bold;
     font-size: 17px;
   }
   &--plus{

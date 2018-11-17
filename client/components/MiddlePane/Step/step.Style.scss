@@ -1,5 +1,4 @@
 .step{
-  padding:0;
   &--content {
     font-style: oblique;
     font-size: 17px;
@@ -8,11 +7,7 @@
     justify-content: flex-end;
 
     &--subcontent{
-      padding : 5px;
-      padding-top:0;
-      padding-right : 0;
-      padding-bottom: 0;
-      margin-left:2%;
+      padding : 3px;
     }
     &--text{
       margin-right: auto;
@@ -22,6 +17,9 @@
     &--caret--right {
       align-self: center;
       margin-bottom: 0;
+    }
+    &--trash{
+      align-self: center;
     }
   }
 }

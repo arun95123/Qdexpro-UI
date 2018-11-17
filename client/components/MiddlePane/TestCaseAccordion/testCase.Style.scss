@@ -1,12 +1,18 @@
 .testcase-content{
   display: flex;
   flex-flow: column;
+  padding: 5px;
+  border-radius: 5px;
+  border: solid;
+  border-color: #929292;
+  background-color: #efefef;
 
   &--header{
     font-style: oblique;
     font-size: 17px;
     display: flex;
     flex-flow: row;
+    font-weight: bold;
 
     &--title{
       margin-right: auto;
@@ -36,11 +42,9 @@
 
   &--body{
     overflow: hidden;
-    transition: 0.2s;
-    padding-top: 10px;
   }
-}
-
-.testcase--setup-teardown{
-  margin-left: 2%;
+  &--body-expanded{
+    padding: 10px;
+    transition: 0.2s;
+  }
 }

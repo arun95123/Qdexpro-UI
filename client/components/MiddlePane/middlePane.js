@@ -27,7 +27,7 @@ class middlePane extends React.Component {
             title= 'Setup'
             isTestCase= 'false'
           />
-          <hr />
+        <hr />
         </div>
       );
     }else{

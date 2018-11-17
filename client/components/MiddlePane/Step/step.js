@@ -26,7 +26,7 @@ render(){
      <ConfigWindow />
    </Modal.Content>
    </Modal>
-   <Icon name="trash" onClick={this.remove}></Icon>
+   <Icon className='step--content--trash' name="trash" color= 'red' onClick={this.remove}></Icon>
    </div>
 )
  }
