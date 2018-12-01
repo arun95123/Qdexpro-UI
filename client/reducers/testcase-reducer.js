@@ -9,7 +9,8 @@ import {
   REMOVE_SETUP_TEARDOWN,
   REMOVE_STEP,
   UPDATE_SCENARIO,
-  SHOW_TESTCASE_SETUPTEARDOWN
+  SHOW_TESTCASE_SETUPTEARDOWN,
+  SAVE_TESTCASE_NAME
 } from '../actions/types'
 
 
@@ -73,6 +74,18 @@ export default function(state = initialState, action) {
         }
         break;
       }
+
+      case SAVE_TESTCASE_NAME: {
+        const{testCases}={...state};
+        testCases[action.index].name= action.name;
+        console.log(testCases[action.index].name)
+        return{
+          ...state,
+          testCases: testCases
+        };
+        break;
+      }
+
     case SHOW_TESTCASE_SETUP: {
       const {testCases} = {...state};
       testCases[action.index].showTestCaseSetup =true;

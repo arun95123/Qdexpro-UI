@@ -5,7 +5,8 @@ import {
   REMOVE_TESTCASE,
   SHOW_TESTCASE_SETUP,
   SHOW_TESTCASE_TEARDOWN,
-  SHOW_TESTCASE_SETUPTEARDOWN
+  SHOW_TESTCASE_SETUPTEARDOWN,
+  SAVE_TESTCASE_NAME
 } from './types'
 
 export const testCaseSetupteardownHeight = (isTestCase, title, height, index) => {
@@ -21,6 +22,15 @@ export const testCaseSetupteardownHeight = (isTestCase, title, height, index) =>
 export const showTestCaseSetup = (index) => {
   return{
     type: SHOW_TESTCASE_SETUP,
+    index: index
+  }
+}
+
+
+export const saveTestcaseName = (name,index) => {
+  return {
+    type: SAVE_TESTCASE_NAME,
+    name: name,
     index: index
   }
 }

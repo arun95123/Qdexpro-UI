@@ -1,10 +1,11 @@
 import {
-  SHOW_SCENARIO_SETUP,SHOW_SCENARIO_TEARDOWN,SHOW_SCENARIO_TESTCASE,ADD_STEP,REMOVE_SETUP_TEARDOWN,UPDATE_SCENARIO
+  SHOW_SCENARIO_SETUP,SHOW_SCENARIO_TEARDOWN,SHOW_SCENARIO_TESTCASE,ADD_STEP,REMOVE_SETUP_TEARDOWN,UPDATE_SCENARIO,SAVE_SCENARIO_NAME
 } from '../actions/types'
 
 const initialState = {
   scenarioSetup: false,
-  scenarioTearDown: false
+  scenarioTearDown: false,
+  scenarioName: 'Scenario'
 };
 
 //change to es6
@@ -29,6 +30,14 @@ export default function(state = initialState, action) {
         scenarioTearDown: scenarioTearDown,
       };
       break;
+    }
+    case SAVE_SCENARIO_NAME: {
+      const{scenarioName}={...state};
+      console.log(scenarioName);
+      return{
+        ...state,
+        scenarioName: action.name
+      }
     }
     case SHOW_SCENARIO_SETUP: {
       return {

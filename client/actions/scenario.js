@@ -1,5 +1,5 @@
 import {
-  SHOW_SCENARIO_SETUP,SHOW_SCENARIO_TEARDOWN,ADD_STEP,REMOVE_SETUP_TEARDOWN
+  SHOW_SCENARIO_SETUP,SHOW_SCENARIO_TEARDOWN,ADD_STEP,REMOVE_SETUP_TEARDOWN,SAVE_SCENARIO_NAME
 } from './types'
 
 export const showScenarioSetup = () => {
@@ -21,4 +21,11 @@ export const removeSetupTearDown = (title,isTestCase,index) => {
     isTestCase: isTestCase,
     index: index
   };
+}
+
+export const saveScenarioName = (name) => {
+  return {
+    type: SAVE_SCENARIO_NAME,
+    name: name
+  }
 }

@@ -83,8 +83,10 @@ class testCaseAccordion extends React.Component {
  }
 
   edit(){
+    const{saveTestcaseName,count}=this.props;
     if(this.state.editing === "true"){
       this.setState({editing: "false"});
+      saveTestcaseName(this.textId.innerHTML,count-1);
     }else{
       this.setState({editing: "true"});
     }

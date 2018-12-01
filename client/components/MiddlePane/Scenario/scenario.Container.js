@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { showScenarioSetup,showScenarioTearDown,addTestCase,addStep } from '../../../actions'
+import { showScenarioSetup,showScenarioTearDown,addTestCase,addStep,saveScenarioName } from '../../../actions'
 
 const mapStateToProps = (state) => {
   return {
@@ -17,7 +17,8 @@ const mapDispatchToProps = (dispatch) => {
     showScenarioSetup: () => dispatch(showScenarioSetup()),
     showScenarioTearDown: () => dispatch(showScenarioTearDown()),
     addTestCase: () => dispatch(addTestCase()),
-    addStep:() => dispatch(addStep())
+    addStep:() => dispatch(addStep()),
+    saveScenarioName:(name)=> dispatch(saveScenarioName(name))
   };
 };
 

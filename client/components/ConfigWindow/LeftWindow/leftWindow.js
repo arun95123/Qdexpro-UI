@@ -97,6 +97,10 @@ class leftWindow extends React.Component{
     else return null;
   }
 
+  handleChange=(event)=>{
+    console.log(event.target.value);
+  }
+
   getImage(expanded){
     return expanded ? 'arrow right icon' : 'arrow left icon';
   }

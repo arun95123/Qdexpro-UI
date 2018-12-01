@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { addTestCaseStep,removeTestCase,showTestCaseSetup,showTestCaseTearDown,showTestCaseSetupTearDown } from '../../../actions'
+import { addTestCaseStep,removeTestCase,showTestCaseSetup,showTestCaseTearDown,showTestCaseSetupTearDown,saveTestcaseName } from '../../../actions'
 
 const mapStateToProps = (state) => {
   return {
@@ -13,7 +13,8 @@ const mapDispatchToProps = (dispatch) => {
     removeTestCase: (index) => dispatch(removeTestCase(index)),
     showTestCaseSetup: (index) => dispatch(showTestCaseSetup(index)),
     showTestCaseTearDown: (index) => dispatch(showTestCaseTearDown(index)),
-    showTestCaseSetupTearDown: (data,index) => dispatch(showTestCaseSetupTearDown(data,index))
+    showTestCaseSetupTearDown: (data,index) => dispatch(showTestCaseSetupTearDown(data,index)),
+    saveTestcaseName:(name,index)=> dispatch(saveTestcaseName(name,index))
   };
 };
 

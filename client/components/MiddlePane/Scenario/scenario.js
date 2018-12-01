@@ -36,8 +36,10 @@ class scenario extends React.Component {
  }
 
   edit(){
+    const {saveScenarioName}=this.props;
     if(this.state.editing === "true"){
-      this.setState({editing: "false"});
+      this.setState({editing: "false",});
+      saveScenarioName(this.textId.innerHTML);
     }else{
       this.setState({editing: "true"});
     }

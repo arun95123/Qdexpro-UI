@@ -45,7 +45,7 @@ export const saveScenario = function* () {
         })
       }
     }
-    requestObj = {scenarioName:'login',setup,teardown,testCase};
+    requestObj = {scenarioName:state.scenarioReducer.scenarioName,setup,teardown,testCase};
     console.log(requestObj);
     yield call(postScenarioData,requestObj);
   }
