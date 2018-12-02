@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { expandTextArea } from '../../../actions'
+import { expandTextArea,saveStep } from '../../../actions'
 
 const mapStateToProps = (state) => {
   return {
@@ -9,7 +9,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    expandTextArea: () => dispatch(expandTextArea())
+    expandTextArea: () => dispatch(expandTextArea()),
+    saveStep: (name,data) => dispatch(saveStep(name,data))
   };
 };
 
