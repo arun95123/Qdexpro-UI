@@ -1,5 +1,5 @@
 import {
-  TEXTAREA_EXPAND,SAVE_STEP
+  TEXTAREA_EXPAND
 } from './types'
 
 export const expandTextArea = () => {
@@ -7,11 +7,3 @@ export const expandTextArea = () => {
     type: TEXTAREA_EXPAND
   }
 };
-
-export const saveStep = (name,data) => {
-  return{
-    type: SAVE_STEP,
-    name: name,
-    data: data
-  }
-}

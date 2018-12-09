@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     expandTextArea: () => dispatch(expandTextArea()),
-    saveStep: (name,data) => dispatch(saveStep(name,data))
+    saveStep: (name,data,isTestCase,title,index) => dispatch(saveStep(name,data,isTestCase,title,index))
   };
 };
 

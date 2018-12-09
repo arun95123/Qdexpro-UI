@@ -16,9 +16,10 @@ class configWindow extends React.Component {
   }
 
   render(){
+    const {isTestCase,title,index} = this.props;
     return(
       <div className="configWindow">
-        <LeftWindow />
+        <LeftWindow isTestCase={isTestCase} title={title} index={index} />
         <RightWindow />
       </div>
     );

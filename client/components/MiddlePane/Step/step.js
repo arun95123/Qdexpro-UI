@@ -15,7 +15,7 @@ remove(){
 }
 
 render(){
-  const {count}=this.props;
+  const {count,isTestCase, title}=this.props;
   return(
    <div className='step--content step--content--subcontent'>
      <p className='step--content--caret--right'>
@@ -23,7 +23,7 @@ render(){
    <Modal trigger={<p className='step--content--text'>Step {count}</p>}>
    <Modal.Header>Step {count} Configuration</Modal.Header>
    <Modal.Content>
-     <ConfigWindow />
+     <ConfigWindow isTestCase={isTestCase} title={title} index={count-1}/>
    </Modal.Content>
    </Modal>
    <Icon name="trash" onClick={this.remove}></Icon>

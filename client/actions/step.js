@@ -1,5 +1,5 @@
 import {
-  ADD_STEP,REMOVE_STEP
+  ADD_STEP,REMOVE_STEP,SAVE_STEP
 } from './types'
 
 export const addStep = (isTestCase, title, index) => {
@@ -20,3 +20,14 @@ export const removeStep = (isTestCase, title, index,testCaseindex) => {
     testCaseindex: testCaseindex
   }
 };
+
+export const saveStep = (name,data,isTestCase,title,index) => {
+  return{
+    type: SAVE_STEP,
+    name: name,
+    data: data,
+    isTestCase: isTestCase,
+    title: title,
+    index: index
+  }
+}

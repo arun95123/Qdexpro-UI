@@ -1,5 +1,5 @@
 import {
-  ADD_STEP,REMOVE_STEP,UPDATE_SCENARIO,REMOVE_SETUP_TEARDOWN
+  ADD_STEP,REMOVE_STEP,UPDATE_SCENARIO,REMOVE_SETUP_TEARDOWN,SAVE_STEP
 } from '../actions/types'
 import testcaseReducer from './testcase-reducer'
 
@@ -92,6 +92,19 @@ export default function(state = initialState, action) {
          ...state,
          scenarioTearDownStep: []
        }
+     }
+     break;
+   }
+   case SAVE_STEP: {
+     if(action.isTestCase ==='false' && action.title ==='Setup')
+     {
+       const {scenarioSetupStep} = {...state};
+       console.log(scenarioSetupStep);
+       scenarioSetupStep[action.index][action.name] = action.data;
+       return {
+         ...state,
+         scenarioSetupStep : scenarioSetupStep
+       };
      }
      break;
    }

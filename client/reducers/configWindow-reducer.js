@@ -1,10 +1,9 @@
 import {
-  TEXTAREA_EXPAND,SAVE_STEP
+  TEXTAREA_EXPAND
 } from '../actions/types'
 
 const initialState = {
-  textAreaExpand: false,
-  stepConfig: {}
+  textAreaExpand: false
 };
 
 //change to es6
@@ -16,16 +15,6 @@ export default function(state = initialState, action) {
       return {
         ...state,
         textAreaExpand: newState
-      };
-      break;
-    }
-    case SAVE_STEP: {
-      const {stepConfig} = {...state};
-      console.log(stepConfig)
-      stepConfig[action.name] = action.data;
-      return {
-        ...state,
-        stepConfig : stepConfig
       };
       break;
     }

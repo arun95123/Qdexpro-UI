@@ -82,13 +82,13 @@ class leftWindow extends React.Component{
   }
 
   saveInputField(event, data){
-    const {saveStep} = this.props;
-    saveStep(event.target.name,event.target.value)
+    const {saveStep,isTestCase,title,index} = this.props;
+    saveStep(event.target.name,event.target.value,isTestCase,title,index)
   }
 
   saveDropDownField(event,data,name) {
-    const {saveStep} = this.props;
-    saveStep(name,data.value)
+    const {saveStep,isTestCase,title,index} = this.props;
+    saveStep(name,data.value,isTestCase,title,index);
   }
 
   render() {
@@ -99,7 +99,7 @@ class leftWindow extends React.Component{
         <div className='left-window--form'>
           <label className='left-window--form--content'>
             Name
-            <input type="text" name="name" className='left-window--form--content--textbox' onChange={this.saveInputField} />
+            <input type="text" name="stepName" className='left-window--form--content--textbox' onChange={this.saveInputField} />
           </label>
           <br />
           <label className='left-window--form--content'>
