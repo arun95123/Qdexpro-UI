@@ -28,7 +28,8 @@ class leftWindow extends React.Component{
 
   setAction(event, data, name){
     this.setState({control : data.value});
-    const {saveStep} = this.props;
+    const {saveStep,getScript} = this.props;
+    getScript();
     saveStep(name ,data.value);
   }
 

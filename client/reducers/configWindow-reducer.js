@@ -1,9 +1,10 @@
 import {
-  TEXTAREA_EXPAND
+  TEXTAREA_EXPAND,SHOW_SCRIPT
 } from '../actions/types'
 
 const initialState = {
-  textAreaExpand: false
+  textAreaExpand: false,
+  editorCode:''
 };
 
 //change to es6
@@ -15,6 +16,13 @@ export default function(state = initialState, action) {
       return {
         ...state,
         textAreaExpand: newState
+      };
+      break;
+    }
+    case SHOW_SCRIPT: {
+      return{
+        ...state,
+        editorCode: action.data.button
       };
       break;
     }

@@ -23,10 +23,12 @@ class rightWindow extends React.Component{
 
 
   showTextArea(expanded){
+    const {editorCode} = this.props;
       return (
         <AceEditor
           mode="java"
           theme="github"
+          value={editorCode}
           onChange={this.onChange}
           name="codeEditor"
           editorProps={{$blockScrolling: true}}

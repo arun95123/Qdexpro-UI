@@ -3,7 +3,8 @@ import { expandTextArea } from '../../../actions'
 
 const mapStateToProps = (state) => {
   return {
-    textAreaExpand: state.configWindowReducer.textAreaExpand
+    textAreaExpand: state.configWindowReducer.textAreaExpand,
+    editorCode: state.configWindowReducer.editorCode
   };
 };
 

@@ -3,7 +3,8 @@ const router=express.Router();
 const axios = require('axios');
 
 const scenarioData = 'http://localhost:2323/check';
-const saveScenario = 'http://qdexproapp-env.phkgkyj2e2.us-east-2.elasticbeanstalk.com/insertScenarioDetails'
+const saveScenario = 'http://qdexproapp-env.phkgkyj2e2.us-east-2.elasticbeanstalk.com/insertScenarioDetails';
+const seleniumScript = 'http://localhost:2323/script'
 
 router.get('/scenario',(req,res) => {
   return (
@@ -22,6 +23,17 @@ router.post('/saveScenario', (req,res) => {
       })
       .catch(err => console.log('Error in request',err))
     )
+});
+
+router.get('/step',(req,res) => {
+  return (
+    axios.get(seleniumScript)
+      .then(response => {
+        console.log('In Router',response.data);
+        res.json(response.data)
+      })
+      .catch(err => console.log('Error in request in Step'))
+  )
 });
 
 module.exports = router;

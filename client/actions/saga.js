@@ -1,4 +1,4 @@
-import { GET_SCENARIO, UPDATE_SCENARIO,SAVE_SCENARIO } from './types.js'
+import { GET_SCENARIO, UPDATE_SCENARIO,SAVE_SCENARIO,GET_SCRIPT,SHOW_SCRIPT } from './types.js'
 
 export const getScenario = () => {
   return{
@@ -18,3 +18,16 @@ export const saveScenario = () => {
     type: SAVE_SCENARIO
   }
 };
+
+export const getScript = () => {
+  return {
+    type: GET_SCRIPT
+  }
+}
+
+export const showScript = (data) => {
+  return{
+    type: SHOW_SCRIPT,
+    data: data
+  }
+}
