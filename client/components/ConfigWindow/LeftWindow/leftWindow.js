@@ -1,7 +1,7 @@
 import React from 'react'
 import './leftWindow.Style.scss'
 import { Dropdown } from 'semantic-ui-react'
-import {controlOptions,identifierOptions} from './dropDownOptions'
+import { Field, reduxForm } from 'redux-form';
 import TextBox from './TextBox'
 import Button from './Button'
 import ComboBox from './ComboBox'
@@ -12,6 +12,9 @@ import Frames from './Frames'
 import Windows from './Windows'
 import Context from './Context'
 
+const identifierOptions = ['xPath','id'];
+const controlOptions = ['Text Box','Button','Combo Box','Check Box','Radio Button','Table','Frames','Windows','Context'];
+
 class leftWindow extends React.Component{
   constructor(props){
     super(props);
@@ -20,17 +23,24 @@ class leftWindow extends React.Component{
     this.showAction = this.showAction.bind(this);
     this.saveInputField = this.saveInputField.bind(this);
     this.saveDropDownField = this.saveDropDownField.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleClick(event, data){
     console.log(data.value+' is clicked')
   }
 
-  setAction(event, data, name){
-    this.setState({control : data.value});
-    const {saveStep,getScript} = this.props;
+  handleSubmit(values){
+    const {saveStep,isTestCase,title,index} = this.props;
+    saveStep(values,isTestCase,title,index)
+  }
+
+
+  setAction(event, data){
+    console.log(data);
+    this.setState({control : data});
+    const {getScript} = this.props;
     getScript();
-    saveStep(name ,data.value);
   }
 
   //Change to Switch
@@ -92,38 +102,79 @@ class leftWindow extends React.Component{
     saveStep(name,data.value,isTestCase,title,index);
   }
 
+
+
   render() {
-    const {expandTextArea,textAreaExpand} = this.props;
-    console.log()
+    const {expandTextArea,textAreaExpand,reset,pristine,handleSubmit} = this.props;
     return(
       <div className={this.setleftWindowStyle(textAreaExpand)}>
-        <div className='left-window--form'>
-          <label className='left-window--form--content'>
-            Name
-            <input type="text" name="stepName" className='left-window--form--content--textbox' onChange={this.saveInputField} />
-          </label>
-          <br />
-          <label className='left-window--form--content'>
-            <p className='left-window--form--content--text'>Identifier-Type</p>
-            <div className='left-window--form--content--dropdown'>
-              <Dropdown placeholder='Select Identifier' fluid selection options={identifierOptions} onChange={(event,data) => this.saveDropDownField(event,data,'Identifier-Type')} />
+        <form className='left-window--form' onSubmit={handleSubmit}>
+          <div className='left-window--form--field'>
+            <label>
+              Name
+            </label>
+            <div>
+            <Field
+              className='left-window--form--field--input'
+              name="stepName"
+              type="text"
+              component="input"
+              placeholder="Enter Step Name"
+              />
             </div>
-          </label>
-          <br />
-          <label className='left-window--form--content'>
-            Identifier
-            <input type="text" name="identifier" className='left-window--form--content--textbox' onChange={this.saveInputField} />
-          </label>
-          <br />
-          <label className='left-window--form--content'>
-            <p className='left-window--form--content--text'>Control-Type</p>
-            <div className='left-window--form--content--dropdown'>
-              <Dropdown placeholder='Select Control' fluid selection options={controlOptions} onChange={(event,data) => this.setAction(event,data,'Control-Type')}  />
+          </div>
+          <div className='left-window--form--field'>
+            <label>
+              Identifier-Type
+            </label>
+            <div>
+              <Field className='left-window--form--field--dropdown' name="identfierType" component="select">
+                <option value="">Select Identifier Type...</option>
+                {identifierOptions.map(idOption => (
+                  <option value={idOption} key={idOption}>
+                    {idOption}
+                  </option>
+                ))}
+              </Field>
             </div>
-          </label>
-          <br />
+          </div>
+          <div className='left-window--form--field'>
+            <label>
+              Identifier
+            </label>
+            <div>
+            <Field
+              className='left-window--form--field--input'
+              name="identifier"
+              type="text"
+              component="input"
+              placeholder="Enter Identifier"
+              />
+            </div>
+          </div>
+          <div className='left-window--form--field'>
+            <label>
+              Control Type
+            </label>
+            <div>
+              <Field className='left-window--form--field--dropdown' name="controlType" component="select" onChange={this.setAction}>
+                <option value="">Select Control Type...</option>
+                {controlOptions.map(control => (
+                  <option value={control} key={control}>
+                    {control}
+                  </option>
+                ))}
+              </Field>
+            </div>
+          </div>
           {this.showAction()}
-        </div>
+          <div className='left-window--form--button'>
+            <button type="submit" disabled={pristine}>Submit</button>
+            <button type="button" disabled={pristine} onClick={reset}>
+              Undo Changes
+            </button>
+          </div>
+        </form>
         <p className='left-window--arrow'>
           <i className={this.getImage(textAreaExpand)} onClick={expandTextArea}></i>
         </p>
@@ -132,5 +183,8 @@ class leftWindow extends React.Component{
   }
 }
 
+leftWindow = reduxForm({
+  form: 'stepConfig',
+})(leftWindow);
 
 export default leftWindow;

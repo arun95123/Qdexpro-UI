@@ -100,7 +100,7 @@ export default function(state = initialState, action) {
      {
        const {scenarioSetupStep} = {...state};
        console.log(scenarioSetupStep);
-       scenarioSetupStep[action.index][action.name] = action.data;
+       scenarioSetupStep[action.index] = action.data;
        return {
          ...state,
          scenarioSetupStep : scenarioSetupStep

@@ -1,43 +1,51 @@
 .left-window{
+  padding:5px;
   display: flex;
   justify-content: flex-start;
-  padding:5px;
-  padding-right: 0;
+  line-height: 1.4em;
+  font-size: 14px;
 
- &--form{
-     display: flex;
-     flex-direction: column;
-     width: 90%;
-      &--content{
+  &--form{
+  width: 90%;
 
-        display : flex;
-        justify-content: flex-start;
+    &--field{
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      margin: 10px 5px;
 
-        &--text{
-          align-self: center;
-          margin-bottom: 0;
-        }
-
-        &--textbox{
-          margin-left: auto;
-        }
-
-        &--dropdown{
-          width: 52%;
-          margin-left: auto;
-        }
+      &--dropdown{
+        cursor: pointer;
+        border-radius: 0.28571429rem;
+        border: 1px solid rgba(34, 36, 38, 0.15);
+        min-width: 13.4em;
+        padding:5px;
       }
-   }
-   &--arrow{
-    margin-left: auto;
-   }
+
+      &--input{
+        border-radius: 0.28571429rem;
+        border: 1px solid rgba(34, 36, 38, 0.15);
+        min-width: 12.8em;
+        padding:5px;
+      }
+
+    }
+
+    &--button{
+      display: flex;
+      justify-content: space-around;
+      padding: 10px; 
+    }
+
+  }
+
+  &--arrow{
+  margin-left: auto;
+  }
 }
 
 .expanded-width{
   width: 40%;
-  .left-window--form{
-       display : flex;
-   }
 }
 
 .collapsed-width{

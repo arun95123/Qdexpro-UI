@@ -4,7 +4,7 @@ import {
 
 const initialState = {
   textAreaExpand: false,
-  editorCode:''
+  editorCode:'',
 };
 
 //change to es6

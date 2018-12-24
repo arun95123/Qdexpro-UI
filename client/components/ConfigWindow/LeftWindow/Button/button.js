@@ -1,7 +1,9 @@
 import React from 'react'
 import '../leftWindow.Style.scss'
-import { Dropdown,Radio } from 'semantic-ui-react'
-import { actionOptions,waitTypeOptions } from './button.dropDownOptions'
+import { Field } from 'redux-form';
+
+const actionTypes = ['Click','Double Click'];
+const waitTypes = ['Type 1', 'Type 2']
 
 class Button extends React.Component{
   constructor(){
@@ -15,32 +17,50 @@ class Button extends React.Component{
   render() {
     return(
       <div>
-      <label className='left-window--form--content'>
-        <p className='left-window--form--content--text'>Action</p>
-        <div className='left-window--form--content--dropdown'>
-        <Dropdown placeholder='Select Action' fluid selection options={actionOptions} onChange={this.handleClick} />
+        <div className='left-window--form--field'>
+          <label>
+            Action
+          </label>
+          <div>
+            <Field className='left-window--form--field--dropdown' name="actionType" component="select">
+              <option value="">Select Action Type...</option>
+              {actionTypes.map(option => (
+                <option value={option} key={option}>
+                  {option}
+                </option>
+              ))}
+            </Field>
+          </div>
         </div>
-      </label>
-      <br />
-      <label className='left-window--form--content'>
-        <p className='left-window--form--content--text'>Wait Type</p>
-        <div className='left-window--form--content--dropdown'>
-        <Dropdown placeholder='Select Wait Type' fluid selection options={waitTypeOptions} onChange={this.handleClick} />
+        <div className='left-window--form--field'>
+          <label>
+            Wait Type
+          </label>
+          <div>
+            <Field className='left-window--form--field--dropdown' name="waitType" component="select">
+              <option value="">Select Wait Type...</option>
+              {waitTypes.map(option => (
+                <option value={option} key={option}>
+                  {option}
+                </option>
+              ))}
+            </Field>
+          </div>
         </div>
-      </label>
-      <br />
-      <label className='left-window--form--content'>
-        Wait Time(secs)
-        <input type="text" name="name" className='left-window--form--content--textbox'/>
-      </label>
-      <br />
-      <label className='left-window--form--content'>
-        <p className='left-window--form--content--text'>Use Actions</p>
-        <div className='left-window--form--content--textbox'>
-        <Radio toggle />
+        <div className='left-window--form--field'>
+          <label>
+            Wait Time(Secs)
+          </label>
+          <div>
+          <Field
+            className='left-window--form--field--input'
+            name="waitTime"
+            type="text"
+            component="input"
+            placeholder="Enter Wait Time"
+            />
+          </div>
         </div>
-      </label>
-      <br />
       </div>
     )
   }

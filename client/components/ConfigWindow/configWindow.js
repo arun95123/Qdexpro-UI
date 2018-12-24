@@ -2,27 +2,17 @@ import React from 'react'
 import './configWindow.Style.scss'
 import LeftWindow from './LeftWindow'
 import RightWindow from './RightWindow'
+import showResults from './showResults'
 
-class configWindow extends React.Component {
-  constructor(props){
-  super(props);
-  }
-
-  showLeftWindow(expanded){
-    if(expanded){
-      return null
-    }
-    else return
-  }
-
-  render(){
-    const {isTestCase,title,index} = this.props;
-    return(
-      <div className="configWindow">
-        <LeftWindow isTestCase={isTestCase} title={title} index={index} />
-        <RightWindow />
-      </div>
-    );
-  }
+const submit = values => {
+  console.log(values);
 }
+
+const configWindow = (isTestCase,title,index) => (
+  <div className="configWindow">
+    <LeftWindow isTestCase={isTestCase} title={title} index={index} onSubmit={submit}/>
+    <RightWindow />
+  </div>
+)
+
 export default configWindow;

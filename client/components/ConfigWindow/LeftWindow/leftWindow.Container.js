@@ -3,14 +3,15 @@ import { expandTextArea,saveStep,getScript } from '../../../actions'
 
 const mapStateToProps = (state) => {
   return {
-    textAreaExpand: state.configWindowReducer.textAreaExpand
+    textAreaExpand: state.configWindowReducer.textAreaExpand,
+    initialValues: state.configWindowReducer.stepConfig
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     expandTextArea: () => dispatch(expandTextArea()),
-    saveStep: (name,data,isTestCase,title,index) => dispatch(saveStep(name,data,isTestCase,title,index)),
+    saveStep: (data,isTestCase,title,index) => dispatch(saveStep(data,isTestCase,title,index)),
     getScript: () => dispatch(getScript())
   };
 };
