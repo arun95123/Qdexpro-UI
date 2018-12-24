@@ -21,10 +21,9 @@ export const removeStep = (isTestCase, title, index,testCaseindex) => {
   }
 };
 
-export const saveStep = (name,data,isTestCase,title,index) => {
+export const saveStep = (data,isTestCase,title,index) => {
   return{
     type: SAVE_STEP,
-    name: name,
     data: data,
     isTestCase: isTestCase,
     title: title,

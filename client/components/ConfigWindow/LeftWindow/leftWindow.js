@@ -26,6 +26,20 @@ class leftWindow extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount(){
+    const {index,scenarioSetupStep,loadData} = this.props;
+    if(scenarioSetupStep[index].stepName)
+    {
+      this.setState({control : scenarioSetupStep[index].controlType});
+      loadData(scenarioSetupStep[index]);
+    }
+  }
+
+  componentWillUnmount(){
+    const {loadData} = this.props;
+    loadData(null);
+  }
+
   handleClick(event, data){
     console.log(data.value+' is clicked')
   }

@@ -1,5 +1,5 @@
 import {
-  TEXTAREA_EXPAND,SHOW_SCRIPT
+  TEXTAREA_EXPAND,SHOW_SCRIPT,LOAD_STEPDATA
 } from '../actions/types'
 
 const initialState = {
@@ -23,6 +23,13 @@ export default function(state = initialState, action) {
       return{
         ...state,
         editorCode: action.data.button
+      };
+      break;
+    }
+    case LOAD_STEPDATA: {
+      return{
+        ...state,
+        stepConfig: action.data
       };
       break;
     }

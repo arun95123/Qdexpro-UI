@@ -26,34 +26,28 @@ export default function(state = initialState, action) {
     case ADD_STEP: {
       if(action.title ==='Setup' && action.isTestCase ==='false' )
       {
-      const {scenarioSetupStep} = {...state};
-      var len = scenarioSetupStep.length;
-      var newSetupStep = scenarioSetupStep.concat({
-        stepName: 'SetupStep'+len,
-        idType: '3',
-        controlType: 'Button',
-        waitTime: '2'
-      });
-      return{
-        ...state,
-        scenarioSetupStep: newSetupStep
-      };
-    }
-    else if(action.title ==='TearDown' && action.isTestCase ==='false')
-    {
-    const {scenarioTearDownStep} = {...state};
-    var len = scenarioTearDownStep.length;
-    var newTearDownStep = scenarioTearDownStep.concat({
-      stepName: 'TearDownStep'+len,
-      idType: '3',
-      controlType: 'Button',
-      waitTime: '2'
-    });
-    return{
-      ...state,
-      scenarioTearDownStep: newTearDownStep
-     };
-    }
+        const {scenarioSetupStep} = {...state};
+        var len = scenarioSetupStep.length;
+        var newSetupStep = scenarioSetupStep.concat({
+          name: 'SetupStep'
+        });
+        return{
+          ...state,
+          scenarioSetupStep: newSetupStep
+        };
+      }
+      else if(action.title ==='TearDown' && action.isTestCase ==='false')
+      {
+        const {scenarioTearDownStep} = {...state};
+        var len = scenarioTearDownStep.length;
+        var newTearDownStep = scenarioTearDownStep.concat({
+          name: 'TearDownStep'
+        });
+        return{
+          ...state,
+          scenarioTearDownStep: newTearDownStep
+        };
+      }
       break;
    }
    case REMOVE_STEP: {
