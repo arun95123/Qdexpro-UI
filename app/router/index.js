@@ -27,7 +27,7 @@ router.post('/saveScenario', (req,res) => {
 
 router.get('/step',(req,res) => {
   return (
-    axios.get(seleniumScript)
+    axios.get(seleniumScript,{params:req.query})
       .then(response => {
         console.log('In Router',response.data);
         res.json(response.data)

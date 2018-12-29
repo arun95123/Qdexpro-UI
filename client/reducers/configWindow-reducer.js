@@ -22,7 +22,7 @@ export default function(state = initialState, action) {
     case SHOW_SCRIPT: {
       return{
         ...state,
-        editorCode: action.data.button
+        editorCode: action.data.control
       };
       break;
     }

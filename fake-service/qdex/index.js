@@ -9,8 +9,7 @@ app.get('/check',(req,res) => {
 });
 
 app.get('/script',(req,res) => {
-  console.log('In Fake Service');
-  res.status(200).send(getSeleniumScript());
+  res.status(200).send(getSeleniumScript(req.query.control));
 });
 
 app.post('/postScenario',(req,res) => {

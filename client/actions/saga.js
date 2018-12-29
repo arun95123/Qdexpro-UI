@@ -19,9 +19,10 @@ export const saveScenario = () => {
   }
 };
 
-export const getScript = () => {
+export const getScript = (data) => {
   return {
-    type: GET_SCRIPT
+    type: GET_SCRIPT,
+    data: data
   }
 }
 

@@ -13,7 +13,7 @@ import Windows from './Windows'
 import Context from './Context'
 
 const identifierOptions = ['xPath','id'];
-const controlOptions = ['Text Box','Button','Combo Box','Check Box','Radio Button','Table','Frames','Windows','Context'];
+const controlOptions = ['TextBox','Button','Combo Box','Check Box','Radio Button','Table','Frames','Windows','Context'];
 
 class leftWindow extends React.Component{
   constructor(props){
@@ -51,15 +51,14 @@ class leftWindow extends React.Component{
 
 
   setAction(event, data){
-    console.log(data);
     this.setState({control : data});
     const {getScript} = this.props;
-    getScript();
+    getScript(data);
   }
 
   //Change to Switch
   showAction(){
-    if (this.state.control == "Text Box")
+    if (this.state.control == "TextBox")
     {
       return(<TextBox />)
     }

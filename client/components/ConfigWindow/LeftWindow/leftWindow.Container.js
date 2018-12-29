@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     expandTextArea: () => dispatch(expandTextArea()),
     saveStep: (data,isTestCase,title,index) => dispatch(saveStep(data,isTestCase,title,index)),
-    getScript: () => dispatch(getScript()),
+    getScript: (data) => dispatch(getScript(data)),
     loadData: (data) => dispatch(loadData(data))
   };
 };

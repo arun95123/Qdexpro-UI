@@ -3,9 +3,10 @@ import {GET_SCRIPT} from '../actions/types';
 import { getSeleniumScript } from '../api/step';
 import {showScript} from '../actions'
 
-export const getStepScript = function* () {
+export const getStepScript = function* (action) {
   try {
-    const seleniumScript = yield call(getSeleniumScript);
+    console.log(action.data);
+    const seleniumScript = yield call(getSeleniumScript,action.data);
     console.log(seleniumScript);
     yield put(showScript(seleniumScript));
   }
