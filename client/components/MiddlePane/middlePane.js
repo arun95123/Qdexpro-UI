@@ -12,6 +12,7 @@ class middlePane extends React.Component {
     this.showSetup = this.showSetup.bind(this);
     this.showTearDown = this.showTearDown.bind(this);
     this.showTestCase = this.showTestCase.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
   componentDidMount(){
@@ -60,7 +61,12 @@ class middlePane extends React.Component {
     return <div>{testCaseItems} <hr /></div>;
   }
   else return null;
-}
+ }
+
+ reset(){
+   const {resetMiddlePane} = this.props;
+   resetMiddlePane();
+ }
 
   render() {
     const {scenarioSetup,scenarioTearDown,testCases,getScenario,saveScenario} = this.props;
@@ -72,6 +78,8 @@ class middlePane extends React.Component {
           {this.showTestCase(testCases)}
           {this.showTearDown(scenarioTearDown)}
           <button onClick={saveScenario}>Create</button>
+          <button onClick={this.reset}>Reset</button>
+          <button>Run Reports</button>
       </div>
     );
   }

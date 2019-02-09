@@ -1,5 +1,5 @@
 import {
-  SHOW_SCENARIO_SETUP,SHOW_SCENARIO_TEARDOWN,SHOW_SCENARIO_TESTCASE,ADD_STEP,REMOVE_SETUP_TEARDOWN,UPDATE_SCENARIO,SAVE_SCENARIO_NAME
+  SHOW_SCENARIO_SETUP,SHOW_SCENARIO_TEARDOWN,SHOW_SCENARIO_TESTCASE,ADD_STEP,REMOVE_SETUP_TEARDOWN,UPDATE_SCENARIO,SAVE_SCENARIO_NAME,RESET_MIDDLEPANE
 } from '../actions/types'
 
 const initialState = {
@@ -11,6 +11,14 @@ const initialState = {
 //change to es6
 export default function(state = initialState, action) {
   switch(action.type) {
+    case RESET_MIDDLEPANE: {
+      return{
+        ...state,
+        scenarioSetup: false,
+        scenarioTearDown: false
+      };
+      break;
+    }
     case UPDATE_SCENARIO: {
       let scenarioSetup = false;
       let scenarioTearDown = false;

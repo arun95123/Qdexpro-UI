@@ -10,7 +10,8 @@ import {
   REMOVE_STEP,
   UPDATE_SCENARIO,
   SHOW_TESTCASE_SETUPTEARDOWN,
-  SAVE_TESTCASE_NAME
+  SAVE_TESTCASE_NAME,
+  RESET_MIDDLEPANE
 } from '../actions/types'
 
 
@@ -21,6 +22,13 @@ const initialState = {
 //change to es6
 export default function(state = initialState, action) {
   switch(action.type) {
+    case RESET_MIDDLEPANE : {
+      return {
+        ...state,
+       testCases: []
+     };
+      break;
+    }
    case UPDATE_SCENARIO: {
      var newTestCases = [];
      var i;

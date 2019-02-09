@@ -1,5 +1,5 @@
 import {
-  SHOW_SCENARIO_SETUP,SHOW_SCENARIO_TEARDOWN,ADD_STEP,REMOVE_SETUP_TEARDOWN,SAVE_SCENARIO_NAME
+  SHOW_SCENARIO_SETUP,SHOW_SCENARIO_TEARDOWN,ADD_STEP,REMOVE_SETUP_TEARDOWN,SAVE_SCENARIO_NAME,RESET_MIDDLEPANE
 } from './types'
 
 export const showScenarioSetup = () => {
@@ -27,5 +27,11 @@ export const saveScenarioName = (name) => {
   return {
     type: SAVE_SCENARIO_NAME,
     name: name
+  }
+}
+
+export const resetMiddlePane = () => {
+  return {
+    type : RESET_MIDDLEPANE
   }
 }
