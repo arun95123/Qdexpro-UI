@@ -1,3 +1,32 @@
+.button-set
+{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.buttons
+{
+  bottom: 1px;
+  height: 22px;
+  margin:15px;
+  border-radius: 8px;
+  width: 8%;
+  font-size: 12px;
+  color: #cce3fc;
+  border: solid 1px #283747;
+  background-color: #283747;
+  outline:0;
+
+
+  &:active,&:hover{
+    border: solid 1px #006399;
+    background-color: #006399;
+    cursor: pointer;
+  }
+
+}
+
 .middle-pane{
   width: 88%;
   height: 48rem;

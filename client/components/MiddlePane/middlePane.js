@@ -77,9 +77,11 @@ class middlePane extends React.Component {
           {this.showSetup(scenarioSetup)}
           {this.showTestCase(testCases)}
           {this.showTearDown(scenarioTearDown)}
-          <button onClick={saveScenario}>Create</button>
-          <button onClick={this.reset}>Reset</button>
-          <button>Run Reports</button>
+          <div className="button-set">
+            <button className="buttons" onClick={saveScenario}>Create</button>
+            <button className="buttons" onClick={this.reset}>Reset</button>
+            <button className="buttons" onClick="">Run</button>
+          </div>
       </div>
     );
   }
