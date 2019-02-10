@@ -1,53 +1,56 @@
-import React from 'react';
+import React,{Component} from 'react'
 import './classMapper.Style.scss'
-import { Icon,Table,Dropdown } from 'semantic-ui-react'
+import { Input,Icon,Table,Dropdown,Button } from 'semantic-ui-react'
 
-const ClassMapper = () => {
-  return(
-    <div className='classMapper'>
-      <div>
-        <div>
-        <h5>Add control type
-        <Icon name="plus" />
-        </h5>
+const classOptions = [
+  {
+    text: 'TextBoxMain',
+    value: 'TextBoxMain'},
+  {
+    text: 'ButtonMain',
+    value: 'buttonMain'},
+  {
+    text: 'TableMain',
+    value: 'TableMain'}
+]
+
+class ClassMapper extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {control: 1};
+    this.handleClick = this.handleClick.bind(this);
+    this.showControl = this.showControl.bind(this);
+  }
+
+  handleClick(event, data){
+    this.setState({control:this.state.control+1});
+  }
+
+  showControl(){
+    let controlItems = [];
+    for (var i = 0; i < this.state.control; i++){
+      controlItems.push(
+        <div className='classMapper--content'>
+          <Input placeholder='Enter Control Type' />
+          <div className='classMapper--dropdown'><Dropdown placeholder='Select Class' fluid selection options={classOptions} /></div>
         </div>
-      <Table celled striped>
-        <Table.Body>
-          <Table.Row>
-          <Table.Cell collapsing>
-           Textbox
-        </Table.Cell>
-        <Table.Cell collapsing>
-          <Dropdown text="TextBox classes">
-            <Dropdown.Menu>
-              <Dropdown.Item text="tex"/>
-              <Dropdown.Item text="class"/>
-              <Dropdown.Item text="you"/>
-            </Dropdown.Menu>
-          </Dropdown>
-        </Table.Cell>
-        </Table.Row>
-        <Table.Row>
-        <Table.Cell collapsing>
-         Check Box
-      </Table.Cell>
-      <Table.Cell collapsing>
-        <Dropdown text="Check Box" />
-      </Table.Cell>
-      </Table.Row>
-      <Table.Row>
-      <Table.Cell collapsing>
-       Button
-    </Table.Cell>
-    <Table.Cell collapsing>
-      <Dropdown text="Button classes" />
-    </Table.Cell>
-    </Table.Row>
-        </Table.Body>
-      </Table>
+      );
+    }
+    return <div>{controlItems}</div>;
+  }
+
+  render() {
+    console.log(this.state.control)
+    return(
+      <div className='classMapper'>
+        {this.showControl()}
+        <div className='classMapper--button'>
+        <Button onClick={this.handleClick} color='facebook'>Add Control</Button>
+        <Button color='green'>Save</Button>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default ClassMapper

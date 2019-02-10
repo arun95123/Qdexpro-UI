@@ -1,6 +1,6 @@
 import React from 'react'
 import './middlePane.Style.scss'
-import {Modal} from 'semantic-ui-react'
+import {Modal,Button,Icon} from 'semantic-ui-react'
 import AccordionComponent from './AccordionComponent'
 import SetupTearDown from './SetupTearDown'
 import Step from './Step'
@@ -68,7 +68,11 @@ class middlePane extends React.Component {
     const {scenarioSetup,scenarioTearDown,testCases,getScenario,saveScenario} = this.props;
     return(
       <div className='middle-pane'>
-          <Modal trigger={<h2>AI Mapper</h2>}>
+          <Modal trigger={
+            <Button size='mini' color='instagram' icon labelPosition='right'>
+            <Icon name='cogs' />
+            AI Mapper
+            </Button>}>
           <Modal.Header>AI Mapper</Modal.Header>
           <Modal.Content>
           <ClassMapper />
