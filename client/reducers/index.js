@@ -3,6 +3,7 @@ import scenarioReducer from './scenario-reducer'
 import testcaseReducer from './testcase-reducer'
 import stepReducer from './step-reducer'
 import configWindowReducer from './configWindow-reducer'
+import classMapperReducer from './classMapper-reducer'
 import { reducer as reduxFormReducer } from 'redux-form';
 
 export const reducers = {
@@ -10,6 +11,7 @@ export const reducers = {
   testcaseReducer: testcaseReducer,
   stepReducer: stepReducer,
   configWindowReducer: configWindowReducer,
+  classMapperReducer: classMapperReducer,
   form: reduxFormReducer,
 };
 

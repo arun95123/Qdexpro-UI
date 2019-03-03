@@ -5,7 +5,8 @@ const mapStateToProps = (state) => {
   return {
     textAreaExpand: state.configWindowReducer.textAreaExpand,
     scenarioSetupStep: state.stepReducer.scenarioSetupStep,
-    initialValues:state.configWindowReducer.stepConfig
+    initialValues:state.configWindowReducer.stepConfig,
+    mappingList:state.classMapperReducer.mappingList
   };
 };
 

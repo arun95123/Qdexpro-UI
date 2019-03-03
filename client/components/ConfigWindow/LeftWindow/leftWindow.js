@@ -122,7 +122,8 @@ class leftWindow extends React.Component{
 
 
   render() {
-    const {expandTextArea,textAreaExpand,reset,pristine,handleSubmit} = this.props;
+    const {expandTextArea,textAreaExpand,reset,pristine,handleSubmit,mappingList} = this.props;
+    console.log(mappingList);
     return(
       <div className={this.setleftWindowStyle(textAreaExpand)}>
         <form className='left-window--form' onSubmit={handleSubmit}>
@@ -176,7 +177,7 @@ class leftWindow extends React.Component{
             <div>
               <Field className='left-window--form--field--dropdown' name="controlType" component="select" onChange={this.setAction}>
                 <option value="">Select Control Type...</option>
-                {controlOptions.map(control => (
+                {mappingList.map(control => (
                   <option value={control} key={control}>
                     {control}
                   </option>
