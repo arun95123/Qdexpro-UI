@@ -14,7 +14,7 @@ const classOptions = [
     value: 'TableMain'}
 ]
 
-class ClassMapper extends React.Component{
+class classMapper extends React.Component{
   constructor(props){
     super(props);
     this.state = {control: 1,
@@ -43,6 +43,8 @@ class ClassMapper extends React.Component{
   }
 
   changeIndex(e,data,key){
+    const {saveMapping} = this.props;
+    let field = 'dropDown';
     let temp = this.state.classOptions;
     //setting index for the current element and clearing it for the previous element
     for (let i=0;i<this.state.classOptions.length;i++){
@@ -58,6 +60,7 @@ class ClassMapper extends React.Component{
       }
     }
     this.setState({classOptions:temp});
+    saveMapping(field,key,data.value);
   }
 
   showDropDownText(key){
@@ -73,12 +76,18 @@ class ClassMapper extends React.Component{
     }
   }
 
+  saveInput(e,data,index){
+    const {saveMapping} = this.props;
+    let field = 'input';
+    saveMapping(field,index,data.value);
+  }
+
   showControl(){
     let controlItems = [];
     for (let i = 0; i < this.state.control; i++){
       controlItems.push(
         <div className='classMapper--content'>
-          <Input placeholder='Enter Control Type' />
+          <Input placeholder='Enter Control Type' onChange={(e,data)=>this.saveInput(e,data,i)}/>
           <div className='classMapper--dropdown'>
             <Dropdown
               text = {this.showDropDownText(i)}
@@ -105,4 +114,4 @@ class ClassMapper extends React.Component{
   }
 }
 
-export default ClassMapper
+export default classMapper
