@@ -5,7 +5,7 @@ import { Dropdown,Icon } from 'semantic-ui-react'
 class scenario extends React.Component {
   constructor(props){
     super(props);
-    this.state = {editing: "false"};
+    this.state = {editing: "true"};
     this.textId='';
     this.edit = this.edit.bind(this);
     this.createSetup = this.createSetup.bind(this);
@@ -13,6 +13,7 @@ class scenario extends React.Component {
     this.createTearDown = this.createTearDown.bind(this);
     this.changeIcon = this.changeIcon.bind(this);
     this.setEndOfContenteditable = this.setEndOfContenteditable.bind(this);
+    this.keyPress = this.keyPress.bind(this);
   }
 
   componentDidUpdate(){
@@ -37,9 +38,15 @@ class scenario extends React.Component {
 
   edit(){
     const {saveScenarioName}=this.props;
+    var newText = this.textId.innerHTML.replace(/&nbsp;/gi, '').replace(/<div><br><\/div>/gi, '').replace(/<p><br><\/p>/gi, '');
     if(this.state.editing === "true"){
-      this.setState({editing: "false",});
-      saveScenarioName(this.textId.innerHTML);
+      this.setState({editing: "false"});
+      if(this.textId.innerHTML === ''){
+        alert("Scenario Name Cannot Be Empty!");
+        newText = 'Scenario';
+      }
+      this.textId.innerHTML = newText;
+      saveScenarioName(newText.trim());
     }else{
       this.setState({editing: "true"});
     }
@@ -62,6 +69,12 @@ class scenario extends React.Component {
       return scenarioTearDown ? 'disabled item' : 'item';
   }
 
+  keyPress(event){
+    if(event.charCode == 13||this.textId.innerHTML.length > 20) {
+      event.preventDefault()
+    }
+  }
+
   setEndOfContenteditable(contentEditableElement){
     var range,selection;
 
@@ -78,7 +91,7 @@ class scenario extends React.Component {
 
     return(
       <div className='scenario-content'>
-          <p className='scenario-content--header' contentEditable={this.state.editing} ref={(elem) => {this.textId = elem;}}>Scenario</p>
+          <p className='scenario-content--header' onKeyPress={this.keyPress} contentEditable={this.state.editing} ref={(elem) => {this.textId = elem;}}>Scenario</p>
           <p className='scenario-content--edit'>
               <i className={this.changeIcon()} onClick={this.edit} />
           </p>
