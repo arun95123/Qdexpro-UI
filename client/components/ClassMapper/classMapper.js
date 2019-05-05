@@ -18,6 +18,7 @@ class classMapper extends React.Component{
   constructor(props){
     super(props);
     this.state = {control: 1,
+      controlType : [],
       classOptions:[
       {
         text: 'TextBoxMain',
@@ -36,6 +37,8 @@ class classMapper extends React.Component{
     this.showControl = this.showControl.bind(this);
     this.changeIndex = this.changeIndex.bind(this);
     this.showDropDownText = this.showDropDownText.bind(this);
+    this.removeMapping = this.removeMapping.bind(this);
+    this.showInput = this.showInput.bind(this);
   }
 
   handleClick(event, data){
@@ -77,9 +80,41 @@ class classMapper extends React.Component{
   }
 
   saveInput(e,data,index){
+    let temp = this.state.controlType;
+    temp[index]=data.value;
+    this.setState({controlType:temp});
     const {saveMapping} = this.props;
     let field = 'input';
     saveMapping(field,index,data.value);
+  }
+
+  removeMapping(i){
+    this.setState({control:this.state.control-1});
+    //remove Input Field
+    let tempType = this.state.controlType;
+    let tempOptions= this.state.classOptions;
+    tempType.splice(i,1);
+    console.log(this.state.controlType);
+    this.setState({controlType:tempType});
+    //remove Dropdown Field
+    for (let j=0;i<this.state.classOptions.length;j++){
+      if(tempOptions[j].index === i)
+      {
+        tempOptions[j].index = 'null';
+      }
+      else if(tempOptions[j].index>i)
+      {
+        tempOptions[j].index = tempOptions[j].index-1;
+      }
+    }
+    this.setState({classOptions:tempOptions})
+  }
+
+  showInput(i){
+    if(this.state.controlType[i]){
+      return <Input placeholder='Enter Control Type' value={this.state.controlType[i]} onChange={(e,data)=>this.saveInput(e,data,i)}/>
+    }
+    else return <Input placeholder='Enter Control Type' value='' onChange={(e,data)=>this.saveInput(e,data,i)}/>;
   }
 
   showControl(){
@@ -87,7 +122,7 @@ class classMapper extends React.Component{
     for (let i = 0; i < this.state.control; i++){
       controlItems.push(
         <div className='classMapper--content'>
-          <Input placeholder='Enter Control Type' onChange={(e,data)=>this.saveInput(e,data,i)}/>
+        {this.showInput(i)}
           <div className='classMapper--dropdown'>
             <Dropdown
               text = {this.showDropDownText(i)}
@@ -95,6 +130,7 @@ class classMapper extends React.Component{
               selection
               options={this.state.classOptions}
               onChange={(e,data)=>this.changeIndex(e,data,i)}/></div>
+              <Icon name="remove circle" size='large' onClick={()=>this.removeMapping(i)}/>
         </div>
       );
     }
