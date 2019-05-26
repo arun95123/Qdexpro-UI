@@ -8,8 +8,7 @@ class classMapper extends React.Component {
     this.state = {
       control: 0,
       classOption: [],
-      controlType: [],
-      disableSave: "false"
+      controlType: []
     };
     this.handleClick = this.handleClick.bind(this);
     this.showControl = this.showControl.bind(this);
@@ -27,7 +26,6 @@ class classMapper extends React.Component {
     this.setState({
       controlType: ctrlType,
       control: this.props.control
-      // classOption: clsOpt
     });
     for (let i = 0; i < clsOpt.length; i++) {
       clsOpt[i] = { ...this.props.classOptions[i] };
@@ -37,9 +35,6 @@ class classMapper extends React.Component {
 
   handleClick(event, data) {
     this.setState({ control: this.state.control + 1 });
-    if (this.state.control >= this.state.classOption.length - 1) {
-      this.setState({ disableSave: "true" });
-    }
   }
 
   changeIndex(e, data, key) {
@@ -82,9 +77,6 @@ class classMapper extends React.Component {
   }
 
   removeMapping(i) {
-    if (this.state.control + 1 != this.state.classOption.length) {
-      this.setState({ disableSave: "false" });
-    }
     this.setState({ control: this.state.control - 1 });
     //remove Input Field
     let tempType = this.state.controlType;
@@ -130,7 +122,6 @@ class classMapper extends React.Component {
           {this.showInput(i)}
           <div className="classMapper--dropdown">
             <Dropdown
-              // text={this.showDropDownText(i)}
               value={this.showDropDownText(i)}
               selection
               placeholder="Select class"
@@ -159,7 +150,6 @@ class classMapper extends React.Component {
   };
 
   showSave = () => {
-    // if (this.state.disableSave === "true")
     if (this.state.control >= this.state.classOption.length) {
       return (
         <Button onClick={this.handleClick} disabled color="facebook">
