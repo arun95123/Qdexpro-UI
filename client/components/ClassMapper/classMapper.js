@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import "./classMapper.Style.scss";
-import { Input, Icon, Table, Dropdown, Button } from "semantic-ui-react";
+import {
+  Input,
+  Icon,
+  Table,
+  Dropdown,
+  Button,
+  Message
+} from "semantic-ui-react";
 
 class classMapper extends React.Component {
   constructor(props) {
@@ -8,7 +15,12 @@ class classMapper extends React.Component {
     this.state = {
       control: 0,
       classOption: [],
-      controlType: []
+      controlType: [],
+      errorMsg: false,
+      succMsg: false,
+      dismissMsgErr: true,
+      dismissMsgSucc: true,
+      saveEnable: false
     };
     this.handleClick = this.handleClick.bind(this);
     this.showControl = this.showControl.bind(this);
@@ -16,7 +28,7 @@ class classMapper extends React.Component {
     this.showDropDownText = this.showDropDownText.bind(this);
     this.removeMapping = this.removeMapping.bind(this);
     this.showInput = this.showInput.bind(this);
-    this.showSave = this.showSave.bind(this);
+    this.showAdd = this.showAdd.bind(this);
     this.saveText1 = this.saveText1.bind(this);
   }
 
@@ -33,8 +45,11 @@ class classMapper extends React.Component {
     this.setState({ classOption: clsOpt });
   }
 
+  componentWillUnmount() {}
+
   handleClick(event, data) {
     this.setState({ control: this.state.control + 1 });
+    this.setState({ saveEnable: true });
   }
 
   changeIndex(e, data, key) {
@@ -53,6 +68,7 @@ class classMapper extends React.Component {
       }
     }
     this.setState({ classOption: temp });
+    this.setState({ saveEnable: true });
     // saveMapping(field, key, data.value);
   }
 
@@ -71,6 +87,7 @@ class classMapper extends React.Component {
     let temp = this.state.controlType;
     temp[index] = data.value;
     this.setState({ controlType: temp });
+    this.setState({ saveEnable: true });
     // const { saveMapping } = this.props;
     // let field = "input";
     // saveMapping(field, index, data.value);
@@ -93,6 +110,7 @@ class classMapper extends React.Component {
       }
     }
     this.setState({ classOption: tempOptions });
+    this.setState({ saveEnable: true });
   }
 
   showInput(i) {
@@ -142,14 +160,48 @@ class classMapper extends React.Component {
 
   saveText1 = () => {
     const { saveText } = this.props;
-    saveText(
-      this.state.control,
-      this.state.controlType,
-      this.state.classOption
-    );
+    let checkString = true;
+    let checkDropDn = true;
+    let counterDn = 0;
+    let counterStr = 0;
+    //Counting valid control string
+    for (let x = 0; x < this.state.controlType.length; x++) {
+      if (this.state.controlType[x] != "") {
+        counterStr += 1;
+      }
+    }
+    //Counting valid dropdown
+    for (let x = 0; x < this.state.classOption.length; x++) {
+      if (this.state.classOption[x].index != "null") {
+        counterDn += 1;
+      }
+    }
+    //Checking valid entries with total controls
+    if (this.state.control != counterDn) {
+      checkDropDn = false;
+    }
+    if (this.state.control != counterStr) {
+      checkString = false;
+    }
+    //If both the checks are passed, save to redux
+    if (checkString == true && checkDropDn == true) {
+      this.setState({ succMsg: true });
+      this.setState({ errorMsg: false });
+      this.setState({ dismissMsgSucc: true });
+      this.setState({ saveEnable: false });
+      saveText(
+        this.state.control,
+        this.state.controlType,
+        this.state.classOption
+      );
+    } else {
+      this.setState({ errorMsg: true });
+      this.setState({ succMsg: false });
+      this.setState({ dismissMsgErr: true });
+    }
   };
 
-  showSave = () => {
+  showAdd = () => {
     if (this.state.control >= this.state.classOption.length) {
       return (
         <Button onClick={this.handleClick} disabled color="facebook">
@@ -165,15 +217,69 @@ class classMapper extends React.Component {
     }
   };
 
+  displayError = () => {
+    if (this.state.errorMsg && this.state.dismissMsgErr) {
+      return (
+        <Message
+          onDismiss={this.handleDismissErr}
+          header="Error!"
+          content="Changes cannot be saved with empty values!"
+          error
+        />
+      );
+    }
+  };
+
+  handleDismissErr = () => {
+    this.setState({
+      dismissMsgErr: false
+    });
+  };
+
+  displaySuccess = () => {
+    if (this.state.succMsg && this.state.dismissMsgSucc) {
+      return (
+        <Message
+          onDismiss={this.handleDismissSucc}
+          header="Success!"
+          content="Changes saved successfully"
+          positive
+        />
+      );
+    }
+  };
+
+  handleDismissSucc = () => {
+    this.setState({
+      dismissMsgSucc: false
+    });
+  };
+
+  showSave = () => {
+    if (this.state.saveEnable) {
+      return (
+        <Button color="green" onClick={this.saveText1}>
+          Save
+        </Button>
+      );
+    } else {
+      return (
+        <Button color="green" onClick={this.saveText1} disabled>
+          Save
+        </Button>
+      );
+    }
+  };
+
   render() {
     return (
       <div className="classMapper">
+        {this.displayError()}
+        {this.displaySuccess()}
         {this.showControl()}
         <div className="classMapper--button">
+          {this.showAdd()}
           {this.showSave()}
-          <Button color="green" onClick={this.saveText1}>
-            Save
-          </Button>
         </div>
       </div>
     );

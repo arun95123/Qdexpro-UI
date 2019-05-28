@@ -1,9 +1,9 @@
-.middle-pane{
+.middle-pane {
   width: 88%;
   height: 48rem;
   margin-top: 4.2rem;
   position: fixed;
-  padding:1rem;
+  padding: 1rem;
   background: #c5c5c5;
   overflow-y: scroll;
 
@@ -14,25 +14,25 @@
     display: flex;
     justify-content: flex-end;
 
-    &--subcontent{
-      padding : 5px;
-      padding-top:0;
-      padding-right : 0;
+    &--subcontent {
+      padding: 5px;
+      padding-top: 0;
+      padding-right: 0;
       padding-bottom: 0;
-      margin-left:2%;
+      margin-left: 2%;
     }
-    &--subcontent2{
-      padding : 5px;
-      padding-right : 0;
+    &--subcontent2 {
+      padding: 5px;
+      padding-right: 0;
       padding-bottom: 0;
-      margin-left:4%;
+      margin-left: 4%;
     }
-    &--text{
+    &--text {
       margin-right: auto;
       margin-bottom: 0;
     }
-    &--plus{
-      margin-left:auto;
+    &--plus {
+      margin-left: auto;
     }
     &--button {
       border-radius: 8px;
