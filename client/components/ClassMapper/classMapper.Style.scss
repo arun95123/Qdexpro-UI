@@ -1,32 +1,32 @@
-.classMapper{
-  display: flex;
-  flex-direction: column;
-  background: #c5c5c5;
-  padding: 20px;
-  width: 118%;
-  min-height: 500px;
+// .classMapper{
+//   display: flex;
+//   flex-direction: column;
+//   background: #c5c5c5;
+//   padding: 20px;
+//   width: 118%;
+//   min-height: 500px;
 
-// .Table.Cell{
-//   padding: 100px;
+// // .Table.Cell{
+// //   padding: 100px;
+// // }
+//   &--content{
+//     padding:10px;
+//     display: flex;
+//     justify-content: space-around;
+//   }
+
+//   &--dropdown{
+//     width:25%;
+//   }
+
+//   &--button{
+//     display: flex;
+//     justify-content: center;
+//     padding:10px;
+//   }
+
 // }
-  &--content{
-    padding:10px;
-    display: flex;
-    justify-content: space-around;
-  }
 
-  &--dropdown{
-    width:25%;
-  }
-
-  &--button{
-    display: flex;
-    justify-content: center;
-    padding:10px;
-  }
-
-}
-
-.ui.button{
-  width:15%;
-}
+// .ui.button{
+//   width:15%;
+// }

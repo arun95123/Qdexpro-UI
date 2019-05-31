@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 import "./classMapper.Style.scss";
-import { Input, Icon, Table, Dropdown, Button } from "semantic-ui-react";
+import {} from "semantic-ui-react";
+import {
+  Input,
+  Icon,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  Button
+} from "reactstrap";
 
 class classMapper extends React.Component {
   constructor(props) {
@@ -10,6 +19,7 @@ class classMapper extends React.Component {
       classOption: [],
       controlType: []
     };
+    this.toggle = this.toggle.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.showControl = this.showControl.bind(this);
     this.changeIndex = this.changeIndex.bind(this);
@@ -37,9 +47,7 @@ class classMapper extends React.Component {
     this.setState({ control: this.state.control + 1 });
   }
 
-  changeIndex(e, data, key) {
-    // const { saveMapping } = this.props;
-    // let field = "dropDown";
+  changeIndex(e, key) {
     let temp = this.state.classOption;
     //setting index for the current element and clearing it for the previous element
     for (let i = 0; i < this.state.classOption.length; i++) {
@@ -48,28 +56,28 @@ class classMapper extends React.Component {
       }
     }
     for (let i = 0; i < this.state.classOption.length; i++) {
-      if (temp[i].value === data.value) {
+      if (temp[i].value === e.target.value) {
         temp[i].index = key;
       }
     }
+    console.log(temp);
     this.setState({ classOption: temp });
-    // saveMapping(field, key, data.value);
   }
 
-  showDropDownText(key) {
-    let temp = this.state.classOption;
-    for (let i = 0; i < this.state.classOption.length; i++) {
-      if (temp[i].index === key) {
-        return temp[i].text;
-      } else if (i === this.state.classOption.length - 1) {
-        return "";
-      }
-    }
-  }
+  // showDropDownText(key) {
+  //   let temp = this.state.classOption;
+  //   for (let i = 0; i < this.state.classOption.length; i++) {
+  //     if (temp[i].index === key) {
+  //       return temp[i].text;
+  //     } else if (i === this.state.classOption.length - 1) {
+  //       return "Select Class";
+  //     }
+  //   }
+  // }
 
-  saveInput(e, data, index) {
+  saveInput(e, index) {
     let temp = this.state.controlType;
-    temp[index] = data.value;
+    temp[index] = e.target.value;
     this.setState({ controlType: temp });
     // const { saveMapping } = this.props;
     // let field = "input";
@@ -98,42 +106,63 @@ class classMapper extends React.Component {
   showInput(i) {
     if (this.state.controlType[i]) {
       return (
-        <Input
-          placeholder="Enter Control Type"
-          value={this.state.controlType[i]}
-          onChange={(e, data) => this.saveInput(e, data, i)}
-        />
+        <div className="">
+          <Input
+            type="text"
+            value={this.state.controlType[i]}
+            placeholder="Enter Control Type"
+            onChange={e => this.saveInput(e, i)}
+          />
+        </div>
       );
     } else
       return (
-        <Input
-          placeholder="Enter Control Type"
-          value=""
-          onChange={(e, data) => this.saveInput(e, data, i)}
-        />
+        <div className="">
+          <Input
+            type="text"
+            value=""
+            placeholder="Enter Control Type"
+            onChange={e => this.saveInput(e, i)}
+          />
+        </div>
       );
   }
+
+  populateDropdown = index => {
+    let drdn = [];
+    drdn.push(<option />);
+    for (let i = 0; i < this.state.classOption.length; i++) {
+      if (this.state.classOption[i].index == index) {
+        drdn.push(
+          <option selected key={i}>
+            {this.state.classOption[i].value}
+          </option>
+        );
+      } else {
+        drdn.push(<option key={i}>{this.state.classOption[i].value}</option>);
+      }
+    }
+    return drdn;
+  };
 
   showControl() {
     let controlItems = [];
     for (let i = 0; i < this.state.control; i++) {
       controlItems.push(
-        <div className="classMapper--content" key={i}>
+        <div className="d-flex justify-content-around row m-2" key={i}>
           {this.showInput(i)}
-          <div className="classMapper--dropdown">
-            <Dropdown
-              value={this.showDropDownText(i)}
-              selection
-              placeholder="Select class"
-              options={this.state.classOption}
-              onChange={(e, data) => this.changeIndex(e, data, i)}
-            />
+          <div>
+            <select
+              className="form-control"
+              id="sel1"
+              onChange={e => this.changeIndex(e, i)}
+            >
+              {this.populateDropdown(i)}
+            </select>
           </div>
-          <Icon
-            name="remove circle"
-            size="large"
-            onClick={() => this.removeMapping(i)}
-          />
+          <Button className="" onClick={() => this.removeMapping(i)}>
+            &ndash;
+          </Button>
         </div>
       );
     }
@@ -152,13 +181,13 @@ class classMapper extends React.Component {
   showSave = () => {
     if (this.state.control >= this.state.classOption.length) {
       return (
-        <Button onClick={this.handleClick} disabled color="facebook">
+        <Button className="m-1" onClick={this.handleClick} disabled>
           Add Control
         </Button>
       );
     } else {
       return (
-        <Button onClick={this.handleClick} color="facebook">
+        <Button className="m-1" onClick={this.handleClick}>
           Add Control
         </Button>
       );
@@ -167,11 +196,11 @@ class classMapper extends React.Component {
 
   render() {
     return (
-      <div className="classMapper">
+      <div>
         {this.showControl()}
-        <div className="classMapper--button">
+        <div className="d-flex justify-content-center">
           {this.showSave()}
-          <Button color="green" onClick={this.saveText1}>
+          <Button className="m-1" onClick={this.saveText1}>
             Save
           </Button>
         </div>
