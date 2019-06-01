@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./classMapper.Style.scss";
 import {} from "semantic-ui-react";
 import {
   Input,

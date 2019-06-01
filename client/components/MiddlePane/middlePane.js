@@ -1,6 +1,5 @@
 import React from "react";
 import "./middlePane.Style.scss";
-// import { Icon } from "semantic-ui-react";
 import AccordionComponent from "./AccordionComponent";
 import SetupTearDown from "./SetupTearDown";
 import Step from "./Step";
@@ -82,20 +81,9 @@ class middlePane extends React.Component {
     } = this.props;
     return (
       <div className="middle-pane">
-        {/* <Modal trigger={
-            <Button size='mini' color='instagram' icon labelPosition='right'>
-            <Icon name='cogs' />
-            AI Mapper
-            </Button>}>
-          <Modal.Header>AI Mapper</Modal.Header>
-          <Modal.Content>
-          <ClassMapper />
-          </Modal.Content>
-          </Modal> */}
-        <Button color="primary" onClick={this.toggle}>
-          AI Mapper
-        </Button>
+        <Button onClick={this.toggle}>AI Mapper</Button>
         <Modal
+          backdrop="static"
           isOpen={this.state.modal}
           toggle={this.toggle}
           className={this.props.className}
@@ -104,14 +92,6 @@ class middlePane extends React.Component {
           <ModalBody>
             <ClassMapper />
           </ModalBody>
-          {/* <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>
-              Do Something
-            </Button>{" "}
-            <Button color="secondary" onClick={this.toggle}>
-              Cancel
-            </Button>
-          </ModalFooter> */}
         </Modal>
         <Scenario />
         <hr />
