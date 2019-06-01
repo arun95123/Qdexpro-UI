@@ -11,8 +11,12 @@
 
 .grpTCA p {
   width: 100%;
+  display: flex;
+  align-items: center;
   font-size: 17px;
-  font-style: oblique;
+  text-decoration: none;
+  outline: none;
+  // font-style: oblique;
 }
 
 .butTCA {

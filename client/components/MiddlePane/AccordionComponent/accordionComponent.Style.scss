@@ -1,5 +1,5 @@
 .myText {
-  font-style: oblique;
+  // font-style: oblique;
   font-size: 17px;
 }
 
@@ -15,8 +15,7 @@
 
 .myGrpBut:hover,
 .myGrpBut:focus,
-.myGrpBut:active,
-.myGrpBut:active:focus,
+.myGrpBut:active .myGrpBut:active:focus,
 .open > .dropdown-toggle.myGrpBut {
   color: inherit;
   background-color: inherit; /*set the color you want here*/

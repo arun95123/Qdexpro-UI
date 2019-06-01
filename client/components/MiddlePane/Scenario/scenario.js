@@ -17,7 +17,7 @@ import "./scenario.Style.scss";
 class scenario extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { editing: "true", dropdownOpen: false };
+    this.state = { editing: "false", dropdownOpen: false };
     this.textId = "";
     this.edit = this.edit.bind(this);
     this.createSetup = this.createSetup.bind(this);

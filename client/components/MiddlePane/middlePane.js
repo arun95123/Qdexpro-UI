@@ -98,7 +98,7 @@ class middlePane extends React.Component {
         {this.showSetup(scenarioSetup)}
         {this.showTestCase(testCases)}
         {this.showTearDown(scenarioTearDown)}
-        <button onClick={saveScenario}>Create</button>
+        <Button onClick={saveScenario}>Create</Button>
       </div>
     );
   }

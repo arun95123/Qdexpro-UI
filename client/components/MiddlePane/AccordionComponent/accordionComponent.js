@@ -73,11 +73,7 @@ class accordionComponent extends Component {
               />
             </Button>
 
-            <InputGroupAddon
-              className="myGrp3"
-              addonType="prepend"
-              className="col"
-            >
+            <InputGroupAddon className="col myGrp3" addonType="prepend">
               <p>{title}</p>
             </InputGroupAddon>
 
