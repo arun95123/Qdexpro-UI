@@ -20,7 +20,8 @@ class step extends Component {
   render() {
     const { count, isTestCase, title } = this.props;
     return (
-      <div className="step--content step--content--subcontent">
+      // <div className="step--content step--content--subcontent">
+      <div className="row myWrapper">
         {/* <p className="step--content--caret--right">
           <i className="angle right icon" />
         </p> */}
@@ -28,7 +29,8 @@ class step extends Component {
           <FontAwesomeIcon transform="grow-3" icon={faAngleRight} />
         </span> */}
 
-        <Modal trigger={<p className="step--content--text">Step {count}</p>}>
+        {/* <Modal trigger={<p className="step--content--text">Step {count}</p>}> */}
+        <Modal trigger={<p className="col myStepText">Step {count}</p>}>
           <Modal.Header>Step {count} Configuration</Modal.Header>
           <Modal.Content>
             <ConfigWindow

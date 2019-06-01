@@ -59,45 +59,47 @@ class accordionComponent extends Component {
     } = this.props;
     return (
       <div>
-        <InputGroup className="my-1 myText">
-          <Button
-            outline
-            size="sm"
-            className="myGrp3 myGrpBut"
-            onClick={this.toggleClick}
-          >
-            <FontAwesomeIcon
-              transform="grow-12"
-              icon={this.getImage(this.state.expanded)}
-            />
-          </Button>
+        <div className="myWrapperAccordion">
+          <InputGroup className="my-1 myText">
+            <Button
+              outline
+              size="sm"
+              className="myGrp3 myGrpBut"
+              onClick={this.toggleClick}
+            >
+              <FontAwesomeIcon
+                transform="grow-12"
+                icon={this.getImage(this.state.expanded)}
+              />
+            </Button>
 
-          <InputGroupAddon
-            className="myGrp3"
-            addonType="prepend"
-            className="col"
-          >
-            <p>{title}</p>
-          </InputGroupAddon>
+            <InputGroupAddon
+              className="myGrp3"
+              addonType="prepend"
+              className="col"
+            >
+              <p>{title}</p>
+            </InputGroupAddon>
 
-          <Button
-            outline
-            size="sm"
-            className="myGrp3 myGrpBut"
-            onClick={this.stepAdd}
-          >
-            <FontAwesomeIcon transform="grow-12" icon={faPlusSquare} />
-          </Button>
+            <Button
+              outline
+              size="sm"
+              className="myGrp3 myGrpBut"
+              onClick={this.stepAdd}
+            >
+              <FontAwesomeIcon transform="grow-12" icon={faPlusSquare} />
+            </Button>
 
-          <Button
-            outline
-            size="sm"
-            className="myGrp3 myGrpBut"
-            onClick={this.removeSetupTearDown}
-          >
-            <FontAwesomeIcon transform="grow-12" icon={faTrashAlt} />
-          </Button>
-        </InputGroup>
+            <Button
+              outline
+              size="sm"
+              className="myGrp3 myGrpBut"
+              onClick={this.removeSetupTearDown}
+            >
+              <FontAwesomeIcon transform="grow-12" icon={faTrashAlt} />
+            </Button>
+          </InputGroup>
+        </div>
         <AccordionBlock
           expanded={this.state.expanded}
           children={children}

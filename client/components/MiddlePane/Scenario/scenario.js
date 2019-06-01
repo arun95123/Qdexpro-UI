@@ -156,11 +156,7 @@ class scenario extends React.Component {
           </Button>
 
           <InputGroupAddon className="myGrp" addonType="prepend">
-            <Dropdown
-              outline
-              isOpen={this.state.dropdownOpen}
-              toggle={this.toggle}
-            >
+            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
               <DropdownToggle caret>Add</DropdownToggle>
               <DropdownMenu>
                 <DropdownItem header>Select an Option</DropdownItem>
