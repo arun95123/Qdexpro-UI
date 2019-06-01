@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {} from "semantic-ui-react";
+import "./classMapper.style.scss";
 import {
   Input,
   Icon,
@@ -10,6 +11,8 @@ import {
   Button,
   Alert
 } from "reactstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMinusSquare } from "@fortawesome/free-regular-svg-icons";
 
 class classMapper extends React.Component {
   constructor(props) {
@@ -163,8 +166,16 @@ class classMapper extends React.Component {
               {this.populateDropdown(i)}
             </select>
           </div>
-          <Button className="" onClick={() => this.removeMapping(i)}>
-            &ndash;
+          <Button
+            outline
+            className="custBtn"
+            onClick={() => this.removeMapping(i)}
+          >
+            <FontAwesomeIcon
+              transform="grow-8"
+              icon={faMinusSquare}
+              onClick={this.toggleClick}
+            />
           </Button>
         </div>
       );

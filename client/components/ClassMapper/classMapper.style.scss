@@ -1,0 +1,13 @@
+.custBtn {
+  outline: 0;
+  border: 0;
+}
+
+.custBtn:hover,
+.custBtn:focus,
+.custBtn:active,
+.custBtn:active:focus,
+.open > .dropdown-toggle.custBtn {
+  color: inherit;
+  background-color: inherit; /*set the color you want here*/
+}

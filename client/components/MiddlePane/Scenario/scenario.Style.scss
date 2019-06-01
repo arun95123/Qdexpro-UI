@@ -1,4 +1,4 @@
-.scenario-content{
+.scenario-content {
   font-style: oblique;
   font-size: 17px;
   position: relative;
@@ -6,26 +6,57 @@
   justify-content: flex-end;
   padding: 10px 5px 5px 5px;
 
-    &--header{
-      margin-right: auto;
-      margin-bottom: 0;
-      outline:0;
-    }
-    &--button {
+  &--header {
+    margin-right: auto;
+    margin-bottom: 0;
+    outline: 0;
+  }
+  &--button {
+    border-radius: 8px;
+    bottom: 1px;
+    height: 22px;
+    width: 8%;
+    font-size: 12px;
+    color: white;
+    border: solid 1px #5da0ff;
+    background-color: #5da0ff;
+    outline: 0;
+  }
 
-      border-radius: 8px;
-      bottom: 1px;
-      height: 22px;
-      width: 8%;
-      font-size: 12px;
-      color: white;
-      border: solid 1px #5da0ff;
-      background-color: #5da0ff;
-      outline:0;
-    }
+  &--edit {
+    margin-right: 10px;
+    margin-bottom: 0;
+  }
+}
 
-    &--edit {
-      margin-right: 10px;
-      margin-bottom: 0;
-    }
+.myText {
+  display: flex;
+  font-size: 17px;
+  font-style: oblique;
+  align-items: center;
+}
+
+.myText p {
+  width: 100%;
+  text-decoration: none;
+  outline: none;
+}
+
+.myGrp {
+  margin: 0 2.5px;
+}
+
+.myButton {
+  outline: 0;
+  border: 0;
+  margin: 0 5px;
+}
+
+.myButton:hover,
+.myButton:focus,
+.myButton:active,
+.myButton:active:focus,
+.open > .dropdown-toggle.myButton {
+  color: inherit;
+  background-color: inherit; /*set the color you want here*/
 }

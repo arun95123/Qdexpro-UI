@@ -1,19 +1,23 @@
-.accordion-component {
-  &--header {
-    display: flex;
-    flex-flow: row wrap;
-    font-style: oblique;
-    font-size: 17px;
-  }
-  &--plus{
-    margin-left:auto;
-    margin-bottom: 0;
-  }
-  &--trash{
-    align-self: center;
-  }
+.myText {
+  font-style: oblique;
+  font-size: 17px;
 }
 
-.Icon{
-  padding-top: 10px;
+.myGrp3 {
+  margin: 0 2px;
+  outline: none;
+  border: none;
+}
+
+.myGrpBut {
+  margin: 0 5px;
+}
+
+.myGrpBut:hover,
+.myGrpBut:focus,
+.myGrpBut:active,
+.myGrpBut:active:focus,
+.open > .dropdown-toggle.myGrpBut {
+  color: inherit;
+  background-color: inherit; /*set the color you want here*/
 }

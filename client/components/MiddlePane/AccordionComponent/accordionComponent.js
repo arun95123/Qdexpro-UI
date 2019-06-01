@@ -3,6 +3,21 @@ import AccordionBlock from "../AccordionBlock";
 import "./accordionComponent.Style.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusSquare } from "@fortawesome/free-regular-svg-icons";
+import {
+  faTrashAlt,
+  faAngleRight,
+  faAngleDown
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButtonDropdown,
+  Button
+} from "reactstrap";
 
 class accordionComponent extends Component {
   constructor() {
@@ -15,7 +30,7 @@ class accordionComponent extends Component {
   }
 
   getImage(expanded) {
-    return expanded ? "caret down icon" : "caret right icon";
+    return expanded ? faAngleDown : faAngleRight;
   }
 
   stepAdd() {
@@ -43,22 +58,46 @@ class accordionComponent extends Component {
       addStep
     } = this.props;
     return (
-      <div className="accordion-component">
-        <div className="accordion-component--header">
-          <i
-            className={this.getImage(this.state.expanded)}
+      <div>
+        <InputGroup className="my-1 myText">
+          <Button
+            outline
+            size="sm"
+            className="myGrp3 myGrpBut"
             onClick={this.toggleClick}
-          />
-          {title}
-          <p className="accordion-component--plus" onClick={this.stepAdd}>
-            <FontAwesomeIcon icon={faPlusSquare} />
-          </p>
-          <Icon
-            className="accordion-component--trash"
-            name="trash"
+          >
+            <FontAwesomeIcon
+              transform="grow-12"
+              icon={this.getImage(this.state.expanded)}
+            />
+          </Button>
+
+          <InputGroupAddon
+            className="myGrp3"
+            addonType="prepend"
+            className="col"
+          >
+            <p>{title}</p>
+          </InputGroupAddon>
+
+          <Button
+            outline
+            size="sm"
+            className="myGrp3 myGrpBut"
+            onClick={this.stepAdd}
+          >
+            <FontAwesomeIcon transform="grow-12" icon={faPlusSquare} />
+          </Button>
+
+          <Button
+            outline
+            size="sm"
+            className="myGrp3 myGrpBut"
             onClick={this.removeSetupTearDown}
-          />
-        </div>
+          >
+            <FontAwesomeIcon transform="grow-12" icon={faTrashAlt} />
+          </Button>
+        </InputGroup>
         <AccordionBlock
           expanded={this.state.expanded}
           children={children}

@@ -1,13 +1,18 @@
 import React from "react";
-import "./scenario.Style.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSave, faEdit } from "@fortawesome/free-regular-svg-icons";
 import {
   Dropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  InputGroup,
+  InputGroupText,
+  InputGroupAddon,
+  InputGroupButtonDropdown,
+  Button
 } from "reactstrap";
+import "./scenario.Style.scss";
 
 class scenario extends React.Component {
   constructor(props) {
@@ -124,35 +129,48 @@ class scenario extends React.Component {
       addTestCase
     } = this.props;
 
+    document.body.setAttribute("spellcheck", false);
+
     return (
-      <div className="scenario-content">
-        <p
-          className="scenario-content--header"
-          onKeyPress={this.keyPress}
-          contentEditable={this.state.editing}
-          ref={elem => {
-            this.textId = elem;
-          }}
-        >
-          Scenario
-        </p>
-        <p className="scenario-content--edit">
-          <FontAwesomeIcon
-            transform="grow-6 down-2 left-2"
-            icon={this.changeIcon()}
-            onClick={this.edit}
-          />
-        </p>
-        <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-          <DropdownToggle size="sm" caret>
-            Add
-          </DropdownToggle>
-          <DropdownMenu>
-            {this.disableSetup()}
-            <DropdownItem onClick={addTestCase}>TestCase</DropdownItem>
-            {this.disableTearDown()}
-          </DropdownMenu>
-        </Dropdown>
+      <div>
+        <InputGroup className="my-4">
+          <InputGroupAddon addonType="prepend" className="col myText myGrp">
+            <p
+              className="myText"
+              onKeyPress={this.keyPress}
+              contentEditable={this.state.editing}
+              ref={elem => {
+                this.textId = elem;
+              }}
+            >
+              Scenario
+            </p>
+          </InputGroupAddon>
+
+          <Button outline className="myButton myGrp" onClick={this.edit}>
+            <FontAwesomeIcon
+              className="myIcon"
+              transform="grow-12"
+              icon={this.changeIcon()}
+            />
+          </Button>
+
+          <InputGroupAddon className="myGrp" addonType="prepend">
+            <Dropdown
+              outline
+              isOpen={this.state.dropdownOpen}
+              toggle={this.toggle}
+            >
+              <DropdownToggle caret>Add</DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem header>Select an Option</DropdownItem>
+                {this.disableSetup()}
+                <DropdownItem onClick={addTestCase}>TestCase</DropdownItem>
+                {this.disableTearDown()}
+              </DropdownMenu>
+            </Dropdown>
+          </InputGroupAddon>
+        </InputGroup>
       </div>
     );
   }
