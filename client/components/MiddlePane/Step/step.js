@@ -39,11 +39,6 @@ class step extends Component {
         >
           <ModalHeader toggle={this.toggle}>Step {count} Configuration</ModalHeader>
           <ModalBody>
-//       // <div className="step--content step--content--subcontent">
-//       <div className="row myWrapper">
-//         <Modal trigger={<p className="col myStepText">Step {count}</p>}>
-//           <Modal.Header>Step {count} Configuration</Modal.Header>
-//           <Modal.Content>
             <ConfigWindow
               isTestCase={isTestCase}
               title={title}
