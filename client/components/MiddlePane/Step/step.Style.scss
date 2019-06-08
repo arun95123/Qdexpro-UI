@@ -1,30 +1,30 @@
-.step {
-  padding: 0;
-  &--content {
-    font-style: oblique;
-    font-size: 14px;
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
+// .step {
+//   padding: 0;
+//   &--content {
+// font-style: oblique;
+// font-size: 15px;
+//     position: relative;
+//     display: flex;
+//     justify-content: flex-end;
 
-    &--subcontent {
-      padding: 5px;
-      padding-top: 0;
-      padding-right: 0;
-      padding-bottom: 0;
-      margin-left: 2%;
-    }
-    &--text {
-      margin-right: auto;
-      margin-bottom: 0;
-      cursor: alias;
-    }
-    &--caret--right {
-      align-self: center;
-      margin-bottom: 0;
-    }
-  }
-}
+//     &--subcontent {
+//       padding: 5px;
+//       padding-top: 0;
+//       padding-right: 0;
+//       padding-bottom: 0;
+//       margin-left: 2%;
+//     }
+//     &--text {
+//       margin-right: auto;
+//       margin-bottom: 0;
+//       cursor: alias;
+//     }
+//     &--caret--right {
+//       align-self: center;
+//       margin-bottom: 0;
+//     }
+//   }
+// }
 
 .ui.modal > .content {
   display: block;
@@ -53,4 +53,18 @@
 .open > .dropdown-toggle.myGrpStep {
   color: inherit;
   background-color: inherit; /*set the color you want here*/
+}
+
+.myWrapper {
+  // font-style: oblique;
+  font-size: 15px;
+  margin-left: 50px;
+  width: calc(100% - 50px);
+  box-sizing: border-box;
+}
+
+.myStepText {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
 }

@@ -4,10 +4,13 @@ import { Route, Switch } from "react-router-dom";
 import ContentArea from "../ContentArea";
 import Header from "../Header";
 import LeftPane from "../LeftPane";
+import "./App.scss";
+import StickyNav from "../StickyNav";
 
 const App = () => (
   <div>
-    <LeftPane />
+    <StickyNav />
+    {/* <LeftPane /> */}
     <ContentArea />
   </div>
 );

@@ -1,46 +1,42 @@
-.testcase-content{
-  display: flex;
-  flex-flow: column;
-
-  &--header{
-    font-style: oblique;
-    font-size: 17px;
-    display: flex;
-    flex-flow: row;
-
-    &--title{
-      margin-right: auto;
-      outline:0;
-      margin-bottom:0;
-    }
-    &--caret{
-      margin-bottom:0;
-    }
-    &--button {
-      border-radius: 8px;
-      bottom: 1px;
-      height: 22px;
-      width: 8%;
-      font-size: 12px;
-      color: white;
-      border: solid 1px #5da0ff;
-      background-color: #5da0ff;
-      outline:0;
-    }
-
-    &--edit {
-      margin-right: 10px;
-      margin-bottom: 0;
-    }
-  }
-
-  &--body{
-    overflow: hidden;
-    transition: 0.2s;
-    padding-top: 10px;
-  }
+.testcase-content {
+  overflow: hidden;
+  transition: 0.4s;
 }
 
-.testcase--setup-teardown{
-  margin-left: 2%;
+.grpTCA {
+  margin: 0 2px;
+  outline: none;
+  border: none;
+}
+
+.grpTCA p {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 17px;
+  text-decoration: none;
+  outline: none;
+  // font-style: oblique;
+}
+
+.butTCA {
+  margin: 0 5px;
+}
+
+.butTCA:hover,
+.butTCA:focus,
+.butTCA:active,
+.butTCA:active:focus,
+.open > .dropdown-toggle.butTCA {
+  color: inherit;
+  background-color: inherit; /*set the color you want here*/
+}
+
+.TCAWrapper {
+  margin: 0 5px;
+}
+
+.TCAWrapper .TCAfirst {
+  display: flex;
+  align-items: center;
 }

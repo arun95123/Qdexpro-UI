@@ -17,7 +17,7 @@ import "./scenario.Style.scss";
 class scenario extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { editing: "true", dropdownOpen: false };
+    this.state = { editing: "false", dropdownOpen: false };
     this.textId = "";
     this.edit = this.edit.bind(this);
     this.createSetup = this.createSetup.bind(this);
@@ -97,7 +97,7 @@ class scenario extends React.Component {
     if (scenarioTearDown) {
       return (
         <DropdownItem disabled onClick={showScenarioTearDown}>
-          TearDown
+          Tear Down
         </DropdownItem>
       );
     }
@@ -156,16 +156,12 @@ class scenario extends React.Component {
           </Button>
 
           <InputGroupAddon className="myGrp" addonType="prepend">
-            <Dropdown
-              outline
-              isOpen={this.state.dropdownOpen}
-              toggle={this.toggle}
-            >
+            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
               <DropdownToggle caret>Add</DropdownToggle>
               <DropdownMenu>
                 <DropdownItem header>Select an Option</DropdownItem>
                 {this.disableSetup()}
-                <DropdownItem onClick={addTestCase}>TestCase</DropdownItem>
+                <DropdownItem onClick={addTestCase}>Test Case</DropdownItem>
                 {this.disableTearDown()}
               </DropdownMenu>
             </Dropdown>
