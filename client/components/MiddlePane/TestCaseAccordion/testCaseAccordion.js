@@ -222,7 +222,7 @@ class testCaseAccordion extends React.Component {
       //   </div>
       // </div>
       <div className="TCAWrapper">
-        <InputGroup className="my-1">
+        <InputGroup className="my-1 TCAfirst">
           <Button
             outline
             size="sm"
@@ -263,8 +263,9 @@ class testCaseAccordion extends React.Component {
           >
             <DropdownToggle caret>Add</DropdownToggle>
             <DropdownMenu>
+              <DropdownItem header>Select an option</DropdownItem>
               {this.disableSetup()}
-              <DropdownItem onClick={this.stepAdd}>TestStep</DropdownItem>
+              <DropdownItem onClick={this.stepAdd}>Test Step</DropdownItem>
               {this.disableTearDown()}
             </DropdownMenu>
           </Dropdown>

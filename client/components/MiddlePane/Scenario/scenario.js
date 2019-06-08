@@ -97,7 +97,7 @@ class scenario extends React.Component {
     if (scenarioTearDown) {
       return (
         <DropdownItem disabled onClick={showScenarioTearDown}>
-          TearDown
+          Tear Down
         </DropdownItem>
       );
     }
@@ -161,7 +161,7 @@ class scenario extends React.Component {
               <DropdownMenu>
                 <DropdownItem header>Select an Option</DropdownItem>
                 {this.disableSetup()}
-                <DropdownItem onClick={addTestCase}>TestCase</DropdownItem>
+                <DropdownItem onClick={addTestCase}>Test Case</DropdownItem>
                 {this.disableTearDown()}
               </DropdownMenu>
             </Dropdown>
