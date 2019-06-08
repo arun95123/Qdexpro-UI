@@ -1,6 +1,5 @@
 import React from "react";
 import "./leftWindow.Style.scss";
-import { Dropdown } from "semantic-ui-react";
 import { Field, reduxForm } from "redux-form";
 import TextBox from "./TextBox";
 import Button from "./Button";
@@ -123,11 +122,11 @@ class leftWindow extends React.Component {
     return (
       <div className={this.setleftWindowStyle(textAreaExpand)}>
         <form className="left-window--form" onSubmit={handleSubmit}>
-          <div className="left-window--form--field">
-            <label>Name</label>
-            <div>
+          <div className="left-window--form--field row">
+            <label className="col-md-3 col-sm-12">Name</label>
+            <div className="col-md-9 col-sm-12">
               <Field
-                className="left-window--form--field--input"
+                className="w-100 form-control"
                 name="stepName"
                 type="text"
                 component="input"
@@ -135,11 +134,11 @@ class leftWindow extends React.Component {
               />
             </div>
           </div>
-          <div className="left-window--form--field">
-            <label>Identifier-Type</label>
-            <div>
+          <div className="left-window--form--field row">
+            <label className="col-md-3 col-sm-12">Identifier-Type</label>
+            <div className="col-md-9 col-sm-12">
               <Field
-                className="left-window--form--field--dropdown"
+                className="w-100 form-control"
                 name="identfierType"
                 component="select"
               >
@@ -152,11 +151,11 @@ class leftWindow extends React.Component {
               </Field>
             </div>
           </div>
-          <div className="left-window--form--field">
-            <label>Identifier</label>
-            <div>
+          <div className="left-window--form--field row">
+            <label className="col-md-3 col-sm-12">Identifier</label>
+            <div className="col-md-9 col-sm-12">
               <Field
-                className="left-window--form--field--input"
+                className="w-100 form-control"
                 name="identifier"
                 type="text"
                 component="input"
@@ -164,11 +163,11 @@ class leftWindow extends React.Component {
               />
             </div>
           </div>
-          <div className="left-window--form--field">
-            <label>Control Type</label>
-            <div>
+          <div className="left-window--form--field row">
+            <label className="col-md-3 col-sm-12">Control Type</label>
+            <div className="col-md-9 col-sm-12">
               <Field
-                className="left-window--form--field--dropdown"
+                className="w-100 form-control"
                 name="controlType"
                 component="select"
                 onChange={this.setAction}
@@ -183,16 +182,18 @@ class leftWindow extends React.Component {
             </div>
           </div>
           {this.showAction()}
+          <div className="d-flex justify-content-center">
           <div className="left-window--form--button">
-            <button type="submit" disabled={pristine}>
+            <button type="submit" className="btn btn-secondary mx-2" disabled={pristine}>
               Submit
             </button>
-            <button type="button" disabled={pristine} onClick={reset}>
+            <button type="button" className="btn btn-secondary mx-2" disabled={pristine} onClick={reset}>
               Undo Changes
             </button>
           </div>
+        </div>
         </form>
-        <p className="left-window--arrow">
+        <p className="left-window--arrow col-1">
           <i
             className={this.getImage(textAreaExpand)}
             onClick={expandTextArea}

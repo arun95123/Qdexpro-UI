@@ -86,7 +86,6 @@ class middlePane extends React.Component {
           backdrop="static"
           isOpen={this.state.modal}
           toggle={this.toggle}
-          className={this.props.className}
         >
           <ModalHeader toggle={this.toggle}>AI Mapper</ModalHeader>
           <ModalBody>

@@ -1,6 +1,5 @@
 import React from 'react'
 import './rightWindow.Style.scss'
-import { Form, TextArea } from 'semantic-ui-react'
 import brace from 'brace';
 import AceEditor from 'react-ace';
 
@@ -18,11 +17,11 @@ class rightWindow extends React.Component{
   }
 
   windowWidth(expanded){
-    return expanded ? "900px" : "570px";
+    return expanded ? "rightWindow--expanded" : "rightWindow--collapsed";
   }
 
 
-  showTextArea(expanded){
+  showTextArea(){
     const {editorCode} = this.props;
       return (
         <AceEditor
@@ -30,10 +29,9 @@ class rightWindow extends React.Component{
           theme="github"
           value={editorCode}
           onChange={this.onChange}
-          name="codeEditor"
           editorProps={{$blockScrolling: true}}
-          height="auto"
-          width={this.windowWidth(expanded)}
+          height="600px"
+          width="100%"
         />
       );
     }
@@ -42,8 +40,8 @@ class rightWindow extends React.Component{
   render(){
     const {textAreaExpand} = this.props;
     return(
-      <div className='rightWindow'>
-      {this.showTextArea(textAreaExpand)}
+      <div className={this.windowWidth(textAreaExpand)}>
+      {this.showTextArea()}
       </div>
     )
   }

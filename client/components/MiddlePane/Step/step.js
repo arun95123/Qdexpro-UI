@@ -1,15 +1,24 @@
 import React, { Component } from "react";
 import "./step.Style.scss";
-import { Modal, Icon } from "semantic-ui-react";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Icon } from "reactstrap";
 import ConfigWindow from "../../ConfigWindow";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt, faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import { Button } from "reactstrap";
 
 class step extends Component {
   constructor() {
     super();
+    this.state = {
+      modal: false
+    };
     this.remove = this.remove.bind(this);
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
   }
 
   remove() {
@@ -21,25 +30,22 @@ class step extends Component {
     const { count, isTestCase, title } = this.props;
     return (
       <div className="step--content step--content--subcontent">
-        {/* <p className="step--content--caret--right">
-          <i className="angle right icon" />
-        </p> */}
-        {/* <span className="myGrpStep">
-          <FontAwesomeIcon transform="grow-3" icon={faAngleRight} />
-        </span> */}
-
-        <Modal trigger={<p className="step--content--text">Step {count}</p>}>
-          <Modal.Header>Step {count} Configuration</Modal.Header>
-          <Modal.Content>
+        <p className="step--content--text" onClick={this.toggle}>Step {count}</p>
+        <Modal
+          backdrop="static"
+          isOpen={this.state.modal}
+          toggle={this.toggle}
+          size="xl"
+        >
+          <ModalHeader toggle={this.toggle}>Step {count} Configuration</ModalHeader>
+          <ModalBody>
             <ConfigWindow
               isTestCase={isTestCase}
               title={title}
               index={count - 1}
             />
-          </Modal.Content>
+          </ModalBody>
         </Modal>
-        {/* <Icon name="trash" onClick={this.remove}></Icon>
-         */}
         <Button outline className="myGrpStep" onClick={this.remove}>
           <FontAwesomeIcon transform="grow-3" icon={faTrashAlt} />
         </Button>

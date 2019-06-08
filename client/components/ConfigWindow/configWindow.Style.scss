@@ -1,13 +1,19 @@
+// .configWindow{
+//   display: flex;
+//   background: #c5c5c5;
+//   padding: 20px;
+//   position: relative;
+//   width: 118%;
+//   justify-content: flex-start;
+//   min-height: 670px;
+//
+//   &--arrow{
+//     margin-left: 2%;
+//   }
+// }
+
 .configWindow{
   display: flex;
   background: #c5c5c5;
-  padding: 20px;
   position: relative;
-  width: 118%;
-  justify-content: flex-start;
-  min-height: 670px;
-
-  &--arrow{
-    margin-left: 2%;
-  }
 }

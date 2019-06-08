@@ -1,47 +1,66 @@
+// .left-window{
+//   padding:5px;
+//   display: flex;
+//   justify-content: flex-start;
+//   line-height: 1.4em;
+//   font-size: 14px;
+//
+// //   &--form{
+// //   width: 90%;
+// //
+// //     &--field{
+// //       display: flex;
+// //       flex-flow: row;
+// //       justify-content: space-between;
+// //       margin: 10px 5px;
+// //
+// //       &--dropdown{
+// //         cursor: pointer;
+// //         border-radius: 0.28571429rem;
+// //         border: 1px solid rgba(34, 36, 38, 0.15);
+// //         min-width: 13.4em;
+// //         padding:5px;
+// //       }
+// //
+// //       &--input{
+// //         border-radius: 0.28571429rem;
+// //         border: 1px solid rgba(34, 36, 38, 0.15);
+// //         min-width: 12.8em;
+// //         padding:5px;
+// //       }
+// //
+// //     }
+// //
+// //     &--button{
+// //       display: flex;
+// //       justify-content: space-around;
+// //       padding: 10px;
+// //     }
+// //
+// //   }
+// //
+//   &--arrow{
+//   margin-left: auto;
+//   }
+//  }
+
 .left-window{
-  padding:5px;
-  display: flex;
-  justify-content: flex-start;
-  line-height: 1.4em;
-  font-size: 14px;
-
-  &--form{
-  width: 90%;
-
-    &--field{
-      display: flex;
-      flex-flow: row;
-      justify-content: space-between;
-      margin: 10px 5px;
-
-      &--dropdown{
-        cursor: pointer;
-        border-radius: 0.28571429rem;
-        border: 1px solid rgba(34, 36, 38, 0.15);
-        min-width: 13.4em;
-        padding:5px;
-      }
-
-      &--input{
-        border-radius: 0.28571429rem;
-        border: 1px solid rgba(34, 36, 38, 0.15);
-        min-width: 12.8em;
-        padding:5px;
-      }
-
-    }
-
-    &--button{
-      display: flex;
-      justify-content: space-around;
-      padding: 10px; 
-    }
-
-  }
+  position: relative;
 
   &--arrow{
-  margin-left: auto;
+    position: absolute;
+    top:0;
+    right:0;
+
   }
+}
+
+.left-window--form{
+  padding: 10px 30px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 50%;
 }
 
 .expanded-width{
